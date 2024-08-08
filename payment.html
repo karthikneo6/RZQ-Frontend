@@ -47,7 +47,7 @@
         <div class=" hidden lg:block ">
             <div class="flex justify-between items-center container p-5">
                 <div class="items-center flex justify-between lg:w-fit w-full">
-                    <a href="/landing.html" class="flex cursor-pointer">
+                    <a href="/index.css" class="flex cursor-pointer">
                         <img src="/images/s-icon-big.webp" alt="" class="w-12 h-12" />
                         <h1 class="text-[26px] font-medium ml-5">
                             Standard Store
@@ -269,7 +269,7 @@
 
                             <!-- model popup  -->
                             <div @keydown.escape.window="openPopup = false"
-                                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" x-show="openPopup"
+                                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-20" x-show="openPopup"
                                 x-cloak style="display: none">
                                 <!-- Modal -->
                                 <div class="flex items-center justify-center min-h-screen">
