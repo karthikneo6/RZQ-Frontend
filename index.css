@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'Galano Grotesque';
+  src: url('font/GalanoGrotesque.ttf');
+  font-weight: normal;
+
+}
+
+
+
+/* .cards-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cards {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .cards {
+      flex: 0 0 calc(50% - 15px);
+    
+  }
+}
+
+@media (min-width: 1300px) {
+  .cards {
+      flex: 0 0 calc(33.333% - 15px);
+     
+  }
+} */
+
+
+#arrowIcon {
+  display: inline;
+}
+/* Hide scrollbar */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.carousel-container {
+  scroll-behavior: smooth;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Galano Grotesque', sans-serif;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #146eb4;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✔';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+/* Hide .filter and .show elements by default */
+.filter,
+.show {
+  display: none;
+}
+
+.image {
+  width: 122px; /* Fixed width for the image */
+  height: 152px; /* Fixed height for the image */
+  object-fit: contain; /* Ensure the image fits within the dimensions without being cropped */
+}
+
+@media (max-width: 768px) {
+  .image {
+      width: 122px; /* Maintain fixed width on mobile */
+      height: 152px; /* Maintain fixed height on mobile */
+  }
+}
+
+/* Show .filter and hide .show on mobile view */
+@media (max-width: 768px) {
+  .filter {
+    display: block;
+  }
+}
+
+/* Show .show and hide .filter on mobile view when scroll position is 650px or more */
+@media (max-width: 768px) {
+  .show {
+    display: none;
+  }
+}

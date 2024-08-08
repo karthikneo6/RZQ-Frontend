@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <title>cart</title>
+</head>
+
+<body>
+    <main class="bg-white" x-data="{ value: 1, addPopup : false}">
+
+        <div class="fixed hidden lg:block  inset-0 z-50 bg-black/50 " x-show="addPopup" x-cloak>
+            <div class=" flex items-center justify-center flex-col h-full ">
+                <div class="bg-white w-1/2 mx-auto rounded-md">
+                    <div class="grid grid-cols-2 gap-x-2">
+                        <div class="border border-[#e6e6e6] py-10">
+                            <img src="/assets/images/urdal-dal.png" alt="" class="w-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <div class="flex  gap-x-2 ">
+
+                                <h1 class="text-lg text-[#1a181e]">Urad Dal (Black Gram / Black Legume) / உளுத்தம்
+                                    பருப்பு / ಉದ್ದಿನ ಬೀಲೆ / మినపప్పు / उड़द दाल / ഉഴുന്ന് പരിപ്പ്</h1>
+                                <div  @click="addPopup = false">
+                                    <img src="/assets/icons/init.svg" alt=""
+                                        class="w-10 h-10 object-contain cursor-pointer">
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-x-3 mt-3">
+                                <p class="font-medium text-[26px] leading-[34px]">₹80</p>
+                                <p class="text-[22px] leading-[34px]  line-through text-[#808080]">₹95</p>
+                                <p class="text-[#ee741f] font-medium leading-[28px] text-[20px]">(16%
+                                    OFF)</p>
+
+                            </div>
+                            <h1 class="text-sm text-[#1a181e]">Select quantity</h1>
+                            <select name="" id=""
+                                class="border border-[#e6e6e6] py-2 bg-white w-[18%] px-2 rounded mt-5">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
+                            <div class="mt-7">
+                                <h1 class="text-sm leading-5 text-[#1a181e]">
+                                    Select size <sup class="text-red-600">*</sup></h1>
+                                <div class="flex gap-x-2 items-center mt-2">
+                                    <h1 class="border border-[#146eb4] px-3 py-1 rounded-md">500g</h1>
+                                    <h1 class="border border-[#146eb4] px-3 py-1 rounded-md">500g</h1>
+                                </div>
+                            </div>
+                            <div class=" mt-36 " onclick="addTocartToGoToBag()">
+                                <button
+                                    class="text-white addTocartToGoToBag font-medium bg-[#146eb4] px-3 py-3 w-full">Add
+                                    to
+                                    cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- mobile view -->
+        <div class="fixed bottom-0 lg:hidden  bg-white w-full  rounded-lg z-50 p-5 shadow-sm "  x-show="addPopup" x-cloak>
+            <div class="flex  gap-x-2 ">
+                <h1 class=" text-[#1a181e]">Urad Dal (Black Gram / Black Legume) / உளுத்தம்
+                    பருப்பு / ಉದ್ದಿನ ಬೀಲೆ / మినపప్పు / उड़द दाल / ഉഴുന്ന് പരിപ്പ്</h1>
+                <div  @click="addPopup = false">
+                    <img src="/assets/icons/init.svg" alt=""
+                        class="w-8 h-8 object-contain cursor-pointer">
+                </div>
+            </div>
+            <div class="flex items-center gap-x-3 mt-3">
+                <p class="font-medium text-[20px] leading-[34px]">₹80</p>
+                <p class="text-[17px] leading-[34px]  line-through text-[#808080]">₹95</p>
+                <p class="text-[#17b31b] font-medium leading-[28px] text-[20px]">(16%
+                    OFF)</p>
+
+            </div>
+            <h1 class="text-sm text-[#1a181e]">Select quantity</h1>
+                            <select name="" id=""
+                                class="border border-[#e6e6e6] py-2 bg-white w-[18%] px-2 rounded mt-5">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
+
+                            <div class="mt-7">
+                                <h1 class="text-sm leading-5 text-[#1a181e]">
+                                    Select size <sup class="text-red-600">*</sup></h1>
+                                <div class="flex gap-x-2 items-center mt-2">
+                                    <h1 class="border border-[#146eb4] px-3 py-1 rounded-md">500g</h1>
+                                    <h1 class="border border-[#146eb4] px-3 py-1 rounded-md">500g</h1>
+                                </div>
+                            </div>
+
+                            <div class=" mt-10 " onclick="addTocartToGoToBag()">
+                                <button
+                                    class="text-white addTocartToGoToBag font-medium bg-[#146eb4] px-3 py-3 w-full">Add
+                                    to
+                                    cart</button>
+                            </div>
+        </div>
+
+        <!-- mobile view -->
+        <div class="bg-white lg:hidden fixed top-0  w-full z-50 py-4 flex items-center justify-between px-5 border-b border-[#4d4d4d] shopping-mobile">
+            <div class="flex gap-x-2 items-center">
+                <img src="/assets/icons/arrow.svg" alt="" class="w-5 h-5 object-contain" id="arrowImage" style="display: none;">
+                <h1 class="text-base font-medium text-[#1a181e]" id="stepTitle">Shopping Bag</h1>
+            </div>
+            <h1 class="uppercase text-[#4d4d4d] text-sm" id="stepIndicator">step 1/3</h1>
+        </div>
+        
+        
+        <div class="bg-[#f2f2f2] lg:hidden mt-[58px] flex justify-between px-5 py-3 container mx-auto">
+            <h1 class="text-base font-medium text-[#4D4D4D] uppercase">8 Items</h1>
+            <h1 class="uppercase text-[#1a181e] text-sm">Total 123</h1>
+        </div>
+        <!-- header -->
+        <div class="fixed w-full hidden lg:block z-40 top-0  bg-white border-b border-[#e6e6e6] header">
+            <div class="container mx-auto px-5 ">
+                <div class="flex justify-between py-4">
+                    <div class="flex items-center">
+                        <img src="/assets/images/logo.png" alt class="w-[52px] h-[52px] object-contain">
+                        <h1 class="text-lg font-medium">Standard Store</h1>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+
+                        <div class="flex items-center gap-x-2 step" data-step="1">
+                            <h1 class="bg-[#146eb4] h-5 w-5 text-white rounded-full p-1 relative overflow-hidden"><span
+                                    class="absolute top-[2px] text-center left-[6px] text-xs">1</span>
+                                <h1 class="uppercase text-sm text-[#146eb4]">cart</h1>
+                            </h1>
+                            <div class="border-b  border-[#146eb4] w-8">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-x-2  step" data-step="2">
+                            <h1 class="bg-[#808080] h-5 w-5 text-white rounded-full p-1 relative overflow-hidden"><span
+                                    class="absolute top-[2px] text-center left-[6px] text-xs">2</span>
+                                <h1 class="uppercase text-sm text-[#808080]">address</h1>
+                            </h1>
+                            <div class="border-b  border-[#808080] w-8">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-x-2 step" data-step="3">
+                            <h1 class="bg-[#808080] h-5 w-5 text-white rounded-full p-1 relative overflow-hidden"><span
+                                    class="absolute top-[2px] text-center left-[6px] text-xs">3</span>
+                                <h1 class="uppercase text-sm text-[#808080]">payment</h1>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="flex justify-between gap-x-6">
+                        <div class="flex items-center gap-x-2">
+                            <img src="/assets/icons/category.svg" alt class="w-5 h-5 object-contain">
+                            <h1 class="text-sm">Categories</h1>
+                        </div>
+                        <div class="flex items-center gap-x-2">
+                            <img src="/assets/icons/cart.svg" alt class="w-5 h-5 object-contain">
+                            <h1 class="text-sm">cart</h1>
+                        </div>
+                        <div class="flex items-center gap-x-2">
+                            <img src="/assets/icons/account.svg" alt class="w-5 h-5 object-contain">
+                            <h1 class="text-sm">Account</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto md:px-5  lg:mt-32">
+            <div class="lg:flex gap-x-9 ">
+                <div class="lg:w-[70%]">
+                    <div class="shoppingCart  md:space-y-0 next active" id="cartDiv">
+                        <div class="md:flex  justify-between hidden">
+                            <h1 class=" font-medium text-xl text-[#1a181e]">Shopping cart <span
+                                    class=" font-normal text-xl text-[#1a181e]">(9 Items)</span></h1>
+                            <h1 class=" font-normal text-xl text-[#1a181e]">Total ₹832</h1>
+                        </div>
+                        <!-- cart -->
+                        <div class=" space-y-4 bg-[#f2f2f2] md:bg-white ">
+
+                            <div class="md:border border-b bg-white border-[#e6e6e6] md:rounded-md p-3 mt-3"
+                                id="cardDetailOne">
+                                <div class="flex gap-x-4">
+                                    <div class="border border-[#e6e6e6] rounded-md w-[200px] md:w-[160px] h-[152px]">
+                                        <img src="/assets/images/list.png" alt=""
+                                            class="max-w-xs h-[152px] py-3 object-contain">
+                                    </div>
+                                    <div>
+                                        <div class="flex gap-x-12">
+
+                                            <h1>Black Chana (Bengal Gram Whole / Black Chickpeas) / கருப்பு கொண்டைக்கடலை
+                                                (கருப்பு
+                                                மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్ చానా / काला चना / കടലക്കരി</h1>
+                                            <h1 class="font-medium text-base hidden md:block text-[#808080] uppercase cursor-pointer"
+                                                onclick="removeShippingCart('cardDetailOne')">REMOVE</h1>
+                                        </div>
+                                        <div class="flex items-center gap-x-3 mt-4">
+                                            <p class="font-medium text-lg">₹80</p>
+                                            <p class="text-[15px]  leading-5 line-through text-[#808080]">₹95</p>
+                                            <p class="text-[#ee741f] font-md:hidden medium leading-5 text-base">(16%
+                                                OFF)</p>
+                                        </div>
+                                        <h1 class="text-[#17b31b] font-medium text-sm mt-2"> You saved ₹30</h1>
+
+                                        <div class="md:flex space-y-3 md:space-y-0  w-fit items-center gap-4 my-3">
+                                            <div
+                                                class=" border border-[#e6e6e6] rounded-md px-2 py-1 flex items-center">
+                                                <h1 class="text-sm leading-6">Size:</h1>
+                                                <select name id class="md:w-full  px-2 bg-white focus:outline-none">
+                                                    <option value>50 g</option>
+                                                    <option value>500 g</option>
+                                                    <option value>5000 g</option>
+                                                    <option value>6000 g</option>
+
+                                                </select>
+                                            </div>
+                                            <div
+                                                class=" border border-[#e6e6e6] w-fit rounded-md px-2 py-1 flex items-center">
+                                                <h1 class="text-sm leading-6">Qty:</h1>
+                                                <select name id class="md:w-full px-2  bg-white focus:outline-none">
+                                                    <option value>1</option>
+                                                    <option value>2</option>
+                                                    <option value>3</option>
+                                                    <option value>4</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-t lg:hidden border-[#e6e6e6] mt-2">
+
+                                </div>
+                                <div class="lg:hidden bg-white" onclick="removeShippingCart('cardDetailOne')">
+                                    <h1 class="text-[#4d4d4d] text-center mt-4">REMOVE</h1>
+                                </div>
+                            </div>
+                            <!-- 2 -->
+                            <div class="md:border border-b bg-white border-[#e6e6e6] md:rounded-md p-3 mt-3"
+                                id="cardDetailTWo">
+                                <div class="flex gap-x-4">
+                                    <div class="border border-[#e6e6e6] rounded-md w-[200px] md:w-[160px] h-[152px]">
+                                        <img src="/assets/images/list.png" alt=""
+                                            class="max-w-xs h-[152px] py-3 object-contain">
+                                    </div>
+                                    <div>
+                                        <div class="flex gap-x-12">
+
+                                            <h1>Black Chana (Bengal Gram Whole / Black Chickpeas) / கருப்பு கொண்டைக்கடலை
+                                                (கருப்பு
+                                                மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్ చానా / काला चना / കടലക്കരി</h1>
+                                            <h1 class="font-medium text-base hidden md:block text-[#808080] uppercase cursor-pointer"
+                                                onclick="removeShippingCart('cardDetailTwo')">REMOVE</h1>
+                                        </div>
+                                        <div class="flex items-center gap-x-3 mt-4">
+                                            <p class="font-medium text-lg">₹80</p>
+                                            <p class="text-[15px]  leading-5 line-through text-[#808080]">₹95</p>
+                                            <p class="text-[#ee741f] font-md:hidden medium leading-5 text-base">(16%
+                                                OFF)</p>
+                                        </div>
+                                        <h1 class="text-[#17b31b] font-medium text-sm mt-2"> You saved ₹30</h1>
+
+                                        <div class="md:flex space-y-3 md:space-y-0  w-fit items-center gap-4 my-3">
+                                            <div
+                                                class=" border border-[#e6e6e6] rounded-md px-2 py-1 flex items-center">
+                                                <h1 class="text-sm leading-6">Size:</h1>
+                                                <select name id class="md:w-full  px-2 bg-white focus:outline-none">
+                                                    <option value>50 g</option>
+                                                    <option value>500 g</option>
+                                                    <option value>5000 g</option>
+                                                    <option value>6000 g</option>
+
+                                                </select>
+                                            </div>
+                                            <div
+                                                class=" border border-[#e6e6e6] w-fit rounded-md px-2 py-1 flex items-center">
+                                                <h1 class="text-sm leading-6">Qty:</h1>
+                                                <select name id class="md:w-full px-2  bg-white focus:outline-none">
+                                                    <option value>1</option>
+                                                    <option value>2</option>
+                                                    <option value>3</option>
+                                                    <option value>4</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-t lg:hidden border-[#e6e6e6] mt-2">
+
+                                </div>
+                                <div class="lg:hidden bg-white" onclick="removeShippingCart('cardDetailTwo')">
+                                    <h1 class="text-[#4d4d4d] text-center mt-4">REMOVE</h1>
+                                </div>
+                            </div>
+                            <!-- 3 -->
+                            <div class="md:border border-b bg-white border-[#e6e6e6] md:rounded-md p-3 mt-3"
+                                id="cardDetailThree">
+                                <div class="flex gap-x-4">
+                                    <div class="border border-[#e6e6e6] rounded-md w-[200px] md:w-[160px] h-[152px]">
+                                        <img src="/assets/images/list.png" alt=""
+                                            class="max-w-xs h-[152px] py-3 object-contain">
+                                    </div>
+                                    <div>
+                                        <div class="flex gap-x-12">
+
+                                            <h1>Black Chana (Bengal Gram Whole / Black Chickpeas) / கருப்பு கொண்டைக்கடலை
+                                                (கருப்பு
+                                                மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్ చానా / काला चना / കടലക്കരി</h1>
+                                            <h1 class="font-medium text-base hidden md:block text-[#808080] uppercase cursor-pointer"
+                                                onclick="removeShippingCart('cardDetailThree')">REMOVE</h1>
+                                        </div>
+                                        <div class="flex items-center gap-x-3 mt-4">
+                                            <p class="font-medium text-lg">₹80</p>
+                                            <p class="text-[15px]  leading-5 line-through text-[#808080]">₹95</p>
+                                            <p class="text-[#ee741f] font-md:hidden medium leading-5 text-base">(16%
+                                                OFF)</p>
+                                        </div>
+                                        <h1 class="text-[#17b31b] font-medium text-sm mt-2"> You saved ₹30</h1>
+
+                                        <div class="md:flex space-y-3 md:space-y-0  w-fit items-center gap-4 my-3">
+                                            <div
+                                                class=" border border-[#e6e6e6] rounded-md px-2 py-1 flex items-center">
+                                                <h1 class="text-sm leading-6">Size:</h1>
+                                                <select name id class="md:w-full  px-2 bg-white focus:outline-none">
+                                                    <option value>50 g</option>
+                                                    <option value>500 g</option>
+                                                    <option value>5000 g</option>
+                                                    <option value>6000 g</option>
+
+                                                </select>
+                                            </div>
+                                            <div
+                                                class=" border border-[#e6e6e6] w-fit rounded-md px-2 py-1 flex items-center">
+                                                <h1 class="text-sm leading-6">Qty:</h1>
+                                                <select name id class="md:w-full px-2  bg-white focus:outline-none">
+                                                    <option value>1</option>
+                                                    <option value>2</option>
+                                                    <option value>3</option>
+                                                    <option value>4</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-t lg:hidden border-[#e6e6e6] mt-2">
+
+                                </div>
+                                <div class="lg:hidden bg-white" onclick="removeShippingCart('cardDetailThree')">
+                                    <h1 class="text-[#4d4d4d] text-center mt-4">REMOVE</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- form -->
+                    <div class="AddressDetail bg-white p-5 next" id="addressDiv">
+                        <h1 class="text-xl font-medium text-[#1a181e]">Shipping address</h1>
+                        <form action="" class=" space-y-6 mt-5">
+                            <div>
+                                <label for="" class="text-[#4d4d4d] text-sm block">Name <sup
+                                        class="text-[#E50B20]">*</sup></label>
+                                <input type="text" name="" id="" placeholder="Enter name"
+                                    class=" border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2 p-3 w-full placeholder:text-[#4d4d4d]"
+                                    required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                                <div class="w-full">
+                                    <label for="" class="text-[#4d4d4d] text-sm block">
+                                        Mobile Number <sup class="text-[#E50B20]">*</sup></label>
+                                    <input type="text" name="" id="" placeholder="Enter mobile number"
+                                        class="border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2  p-3 w-full placeholder:text-[#4d4d4d]"
+                                        required>
+                                </div>
+                                <div class="w-full">
+                                    <label for="" class="text-[#4d4d4d] text-sm block">Email Address <sup
+                                            class="text-[#E50B20]">*</sup></label>
+                                    <input type="text" name="" id="" placeholder="Enter email address"
+                                        class=" border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2 p-3 w-full placeholder:text-[#4d4d4d]"
+                                        required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="" class="text-[#4d4d4d] text-sm block">Address<sup
+                                        class="text-[#E50B20]">*</sup></label>
+                                <input type="text" name="" id="" placeholder="Flat / House No, Building, Colony"
+                                    class=" border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2 p-3 w-full placeholder:text-[#4d4d4d]"
+                                    required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                                <div class="w-full">
+                                    <label for="" class="text-[#4d4d4d] text-sm block">
+                                        Locality / Area <sup class="text-[#E50B20]">*</sup></label>
+                                    <input type="text" name="" id="" placeholder="E.g. MG Road, Gandhi Nagar"
+                                        class="border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2 p-3 w-full placeholder:text-[#4d4d4d]"
+                                        required>
+                                </div>
+                                <div class="w-full">
+                                    <label for="" class="text-[#4d4d4d] text-sm block">Landmark (optional) </label>
+                                    <input type="text" name="" id="" placeholder="E.g. Near Bank, Chowk, etc"
+                                        class="border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2 p-3 w-full placeholder:text-[#4d4d4d]">
+                                </div>
+                                <div class="w-full">
+                                    <label for="" class="text-[#4d4d4d] text-sm block">
+                                        Pin Code <sup class="text-[#E50B20]">*</sup></label>
+                                    <input type="text" name="" id="" placeholder="Enter pin code"
+                                        class="border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2 p-3 w-full placeholder:text-[#4d4d4d]"
+                                        required>
+                                </div>
+                                <div class="w-full">
+                                    <label for="" class="text-[#4d4d4d] text-sm block">City <sup
+                                            class="text-[#E50B20]">*</sup> </label>
+                                    <input type="text" name="" id="" placeholder="Enter city"
+                                        class="border-b md:border rounded border-[#e6e6e6] mt-1 md:mt-2 p-3 w-full placeholder:text-[#4d4d4d]"
+                                        required>
+                                </div>
+                                <div class="w-full ">
+                                    <label for="" class="text-[#4d4d4d] text-sm block">State <sup
+                                            class="text-[#E50B20]">*</sup> </label>
+
+                                    <div class="border-b md:border rounded border-[#e6e6e6] p-2  mt-1 md:mt-2">
+
+                                        <select name="" id="" class="bg-white w-full   text-[#4d4d4d]" required>
+                                            <option value="" class="text-[#4d4d4d] ">Select state</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- payment -->
+                    <div>
+                        <div class="hidden md:block">
+                            <div class="next hidden bg-white" id="paymentDiv">
+                                <div>
+                                    <h1 class="text-xl font-medium text-[#1a181e]">Choose payment mode</h1>
+                                </div>
+                                <h1 class="bg-[#f2f2f2] text-[#4d4d4d] text-center text-sm p-2 rounded"
+                                    x-show="value === 3">Save extra ₹50 by paying online.</h1>
+                                <div class="flex gap-x-10 mt-3">
+                                    <div class="w-[30%]">
+                                        <div class="space-y-5">
+                                            <!-- button 1 -->
+                                            <div class="cursor-pointer" @click="value = 1">
+                                                <div class="flex gap-x-1 items-center">
+                                                    <div>
+                                                        <img src="/assets/icons/upi.svg" alt=""
+                                                            class="w-6 h-6 object-contain">
+                                                    </div>
+                                                    <div>
+                                                        <h1 class="font-medium text-[#1a181e]">UPI</h1>
+                                                    </div>
+                                                </div>
+                                                <span class="text-white bg-[#17b31b] px-1 py-0.5 rounded-[2px]">extra 50
+                                                    off</span>
+                                            </div>
+                                            <!-- button 2 -->
+                                            <div class="cursor-pointer" @click="value = 2">
+                                                <div class="flex gap-x-1 items-center">
+                                                    <div>
+                                                        <img src="/assets/icons/upi.svg" alt=""
+                                                            class="w-6 h-6 object-contain">
+                                                    </div>
+                                                    <div>
+                                                        <h1 class="font-medium text-[#1a181e]">Online payment</h1>
+                                                    </div>
+                                                </div>
+                                                <span class="text-white bg-[#17b31b] px-1 py-0.5 rounded-[2px]">extra 50
+                                                    off</span>
+                                            </div>
+                                            <!-- button 3 -->
+                                            <div class="cursor-pointer" @click="value = 3">
+                                                <div class="flex gap-x-1 items-center">
+                                                    <div>
+                                                        <img src="/assets/icons/upi.svg" alt=""
+                                                            class="w-6 h-6 object-contain">
+                                                    </div>
+                                                    <div>
+                                                        <h1 class="font-medium text-[#1a181e]">Cash on delivery</h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-r border-[#e6e6e6]"></div>
+                                    <div class="flex-1">
+                                        <!-- card 1 -->
+                                        <div class="h-fit border border-[#e6e6e6] rounded-lg p-5 upiMethod"
+                                            x-show="value === 1">
+                                            <div>
+                                                <h1 class="text-lg font-medium text-[#1a181e]">Pay online using UPI</h1>
+                                                <h1 class="text-sm text-[#4d4d4d]">Scan the QR using any UPI app on your
+                                                    phone</h1>
+                                            </div>
+                                            <div id="qrCodeApp">
+                                                <div class="mt-10">
+                                                    <button id="generateQrCodeBtn"
+                                                        class="bg-[#146eb4] text-white rounded-md p-3 text-center w-full">
+                                                        Generate QR Code
+                                                    </button>
+                                                </div>
+                                                <div class="flex justify-center items-center w-full">
+
+                                                    <div id="qrCodeDiv" style="display: none; height: 200px;">
+                                                        <img src="/assets/icons/qr-code.svg" alt="QR Code"
+                                                            style="max-width: 100%; max-height: 100%;">
+                                                    </div>
+                                                </div>
+                                                <div id="paymentMessage" style="display: none;">
+                                                    <span
+                                                        class="text-sm font-medium text-[#1a181e] text-center block mt-5">
+                                                        Complete your payment within <span id="countdown">03:00</span>
+                                                        minutes
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- card 2 -->
+                                        <div class="h-fit border border-[#e6e6e6] rounded-lg p-5 onlinePayment"
+                                            x-show="value === 2">
+                                            <div>
+                                                <h1 class="text-lg font-medium text-[#1a181e]">Pay online</h1>
+                                                <h1 class="text-sm text-[#4d4d4d]">Use credit/debit card, net-banking,
+                                                    UPI, wallets to complete the payment.</h1>
+                                            </div>
+                                            <div class="mt-10">
+                                                <button
+                                                    class="bg-[#146eb4] text-white rounded-md p-3 text-center w-full">Generate
+                                                    QR Code</button>
+                                            </div>
+                                        </div>
+                                        <!-- card 3 -->
+
+                                        <div class="h-fit border border-[#e6e6e6] rounded-lg p-5 cashOnDelivery"
+                                            x-show="value === 3">
+
+                                            <div>
+                                                <h1 class="text-lg font-medium text-[#1a181e]">Pay on delivery
+                                                    (Cash/Card/UPI)</h1>
+                                                <h1 class="text-sm text-[#4d4d4d]">Pay in cash or pay in person at the
+                                                    time of delivery with GPay/PayTM/PhonePe.</h1>
+                                            </div>
+                                            <div class="mt-10">
+                                                <button
+                                                    class="bg-[#146eb4] text-white rounded-md p-3 text-center w-full">Place
+                                                    order</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- mobile view -->
+                        <div class="bg-[#f2f2f2] md:hidden mt-2" x-data="{ dropdown: false }">
+                            <div class="bg-white py-5 px-5">
+                                <div class="flex justify-between cursor-pointer" @click="dropdown = !dropdown">
+                                    <div class="flex gap-x-1">
+                                        <div>
+                                            <img src="/assets/icons/upi.svg" alt="">
+                                        </div>
+                                        <div class="flex gap-x-1">
+                                            <h1 class="uppercase">UPI</h1>
+                                            <span class="text-white bg-[#17b31b] px-2 rounded-[2px]">extra 50 off</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img src="/assets/icons/down-arrow.svg" alt=""
+                                            class="w-6 h-6 object-contain fill-black">
+                                    </div>
+                                </div>
+                                <div x-show="dropdown" x-transition>
+                                    <div class="flex items-center gap-x-2 py-2">
+                                        <input type="radio" id="phonepe" name="payment-method" class="w-4 h-4">
+                                        <label for="phonepe" class="flex items-center gap-x-2">
+                                            <div>
+                                                <img src="/assets/icons/phone-pay.svg" alt="">
+                                            </div>
+                                            <h1>PhonePe</h1>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center gap-x-2 py-2">
+                                        <input type="radio" id="phonepe" name="payment-method" class="w-4 h-4">
+                                        <label for="phonepe" class="flex items-center gap-x-2">
+                                            <div>
+                                                <img src="/assets/icons/g-pay.svg" alt="">
+                                            </div>
+                                            <h1>Google Pay</h1>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center gap-x-2 py-2">
+                                        <input type="radio" id="phonepe" name="payment-method" class="w-4 h-4">
+                                        <label for="phonepe" class="flex items-center gap-x-2">
+                                            <div>
+                                                <img src="/assets/icons/paytm.svg" alt="">
+                                            </div>
+                                            <h1>paytm</h1>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center gap-x-2 py-2">
+                                        <input type="radio" id="phonepe" name="payment-method" class="w-4 h-4">
+                                        <label for="phonepe" class="flex items-center gap-x-2">
+                                            <div>
+                                                <img src="/assets/icons/bhim.-pay.svg" alt="">
+                                            </div>
+                                            <h1>BHIM</h1>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+<!-- online-payment -->
+                            <div class="bg-white p-5 my-2 md:hidden">
+                                <div class="flex">
+
+                                    <div class="flex gap-x-2">
+                                        <div>
+                                            <img src="/assets//icons/online-payment.svg" alt="">
+                                        </div>
+                                        <div>
+
+                                            <div class="flex gap-x-2">
+                                                <h1 class="text-sm text-[#1a181e]">Online payment</h1>
+                                                <span class="text-white bg-[#17b31b] px-2 rounded-[2px]">extra 50
+                                                    off</span>
+                                            </div>
+                                            <div>
+                                                <h1 class=" text-[13px] text-[#4d4d4d] leading-[16px]">Use credit/debit
+                                                    card, net-banking, UPI, wallets to complete the payment</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="" id="" class="w-4 h-4">
+                                    </div>
+
+                                </div>
+
+                            </div>
+<!-- cash  -->
+                            <div class="bg-white p-5 my-2 md:hidden">
+                                <div class="flex">
+
+                                    <div class="flex gap-x-2">
+                                        <div>
+                                            <img src="/assets//icons/online-payment.svg" alt="">
+                                        </div>
+                                        <div>
+
+                                            <div class="flex gap-x-2">
+                                                <h1 class="text-sm text-[#1a181e]">Cash on delivery</h1>
+                                            
+                                            </div>
+                                            <div>
+                                                <h1 class=" text-[13px] text-[#4d4d4d] leading-[16px]">Pay in cash or pay in person at the time of delivery with GPay/PayTM/PhonePe.</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <input type="radio" name="" id="" class="w-4 h-4">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="lg:w-[30%]  sticky top-52 h-fit  bg-[#f2f2f2] md:bg-white pb-4 md:pb-0">
+                    <div class="flex justify-between border border-[#e6e6e6] bg-white lg:mt-0 rounded-md p-3">
+                        <div class="flex gap-x-2">
+                            <div>
+                                <img src="/assets/icons/coupon.svg" alt="" class="w-6 h-6 object-contain">
+                            </div>
+                            <div>
+                                <h1 class="font-medium text-[15px] leading-[22px]">"STANDARD" applied</h1>
+                                <h1 class="text-[#4D4D4D] text-[13px] leading-4">You saved additional <span
+                                        class="font-medium"> ₹30</span></h1>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-sm text-[#4D4D4D] font-medium">remove</h1>
+                        </div>
+                    </div>
+
+                    <div class="border border-[#e9e9e9] rounded-md bg-white  mt-6">
+                        <div class="p-3">
+                            <div>
+                                <div class="flex justify-between">
+                                    <h1 class="text-sm text-[#14181e]">Item Total</h1>
+                                    <h1><span class="line-through text-[#808080] px-2">₹100</span>₹500</h1>
+                                </div>
+                                <div class="flex justify-between">
+                                    <h1 class="text-sm text-[#14181e]">Delivery fee</h1>
+                                    <h1><span class="line-through text-[#808080] px-2">₹90</span>₹50</h1>
+                                </div>
+                                <div class="flex justify-between">
+                                    <h1 class="text-[#808080] text-[12px]">Free delivery on item total above <span
+                                            class="font-medium text-black">₹1000</span></h1>
+                                </div>
+                            </div>
+                            <div class="border-t border-dotted mt-4">
+
+                            </div>
+                            <div class="my-4">
+                                <div class="flex justify-between">
+                                    <h1 class="text-[#1a181e] font-medium text-base">Grand total</h1>
+                                    <h1 class="text-[#1a181e] font-medium text-base">₹500</h1>
+                                </div>
+                                <h1 class="text-sm text-[#808080]">Inclusive of all taxes</h1>
+                            </div>
+                            <div class="border-t border-dotted mt-4">
+
+                            </div>
+                            <div class="my-3">
+                                <h1 class="text-[#808080] text-sm">Average delivery time: <span
+                                        class="text-[#1a181e] font-medium">2-5 days</span></h1>
+                            </div>
+                            <div class="bg-[#17b31b1a] rounded-md text-center px-4 py-2 my-3">
+
+                                <h1 class="text-[#17b31b] font-medium leading-6">28% (₹112) saved so far on this order
+                                </h1>
+                                <h1 class=" leading-6 text-[#17b31b] text-xs"> Save ₹49 on delivery fee by adding ₹663
+                                    more
+                                    to cart</h1>
+
+                            </div>
+                        </div>
+                        <div class="border-t border-[#e6e6e6]">
+                        </div>
+                        <div class="p-3 hidden lg:block" onclick="continueCard()">
+                            <button
+                                class="bg-[#146eb4] continue text-white font-medium px-4 py-2 w-full rounded-md">Continue</button>
+                        </div>
+                        <div class="px-5 py-3 flex items-center justify-center gap-x-3">
+                            <div>
+                                <img src="/assets/icons/point.svg" alt="" class="w-6 h-6 object-contain">
+                            </div>
+                            <h1 class="text-sm text-[#1a181e] leading-6">You will earn 3.87 Loyalty Points on
+                                this order</h1>
+                        </div>
+                        <div class="flex flex-col justify-center items-center my-3 ">
+                            <div class="flex gap-x-2 justify-center overflow-x-auto">
+                                <img src="/assets/icons/download.svg" alt="">
+                                <img src="/assets/icons/payment.svg" alt="">
+                                <img src="/assets/icons/pay.svg" alt="">
+                                <img src="/assets/icons/pay2.svg" alt="">
+                                <img src="/assets/icons/rupay.svg" alt="">
+                                <img src="/assets/icons/bhim.svg" alt="">
+
+                            </div>
+                            <div class="flex items-center gap-x-2 my-3">
+                                <div>
+                                    <img src="/assets/icons/lock.svg" alt="" class="w-6 h-6 object-contain">
+                                </div>
+                                <h1 class="text-sm text-[#4D4D4D] ">100% secured payments</h1>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- popular product -->
+            <div class="bg-white popular-product">
+                <div class="flex justify-between md:mt-10 mt-5 py-5 px-5">
+                    <h1 class="text-xl font-medium">Other popular products</h1>
+                    <div class="flex items-center gap-x-2 ">
+                        <div class=" hidden lg:block cursor-pointer left-arrow">
+                            <img src="/assets/icons/left-arrow.svg" alt class="w-5 h-5 object-contain">
+                        </div>
+                        <div class=" hidden lg:block cursor-pointer right-arrow">
+                            <img src="/assets/icons/right-arrow.svg" alt class="w-5 h-5 object-contain">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex overflow-x-auto gap-x-5 px-5 no-scrollbar md:mt-6 mt-3 carousel-container pb-48">
+                    <div class="md:w-[286px] w-[180px] carousel-item" id="card_one">
+                        <div class="border border-[#e6e6e6] py-4">
+                            <img src="/assets/images/list.png" alt=""
+                                class=" h-[180px] md:h-[268px] object-cover w-full" >
+                        </div>
+                        <h1 class="text-sm text-[#1a181e] truncate w-full mt-2">
+                            Urad Dal (Black Gram / Black Legume) / உளுத்தம் பருப்பு / ಉದ್ದಿನ ಬೀಲೆ / మినపప్పు / उड़द दाल
+                            / ഉഴുന്ന് പരിപ്പ്</h1>
+                        <div class="flex items-center justify-center gap-x-3 mt-4">
+                            <p class="font-medium text-base text-[#1a181e]">₹80</p>
+                            <p class="text-[13px] leading-6 line-through text-[#808080]">₹95</p>
+                            <p class="text-[#17B31B] font-medium leading-5 text-base">(16% OFF)</p>
+                        </div>
+                        <div class="mt-3">
+                            <button @click="addPopup = true" class="border border-[#146eb4] text-[#146eb4]  rounded-md px-5 py-2 w-full">Add to
+                                cart</button>
+                        </div>
+                    </div>
+                    <!-- <div class="md:w-[286px] w-[180px] carousel-item" id="card_two">
+                        <div class="border border-[#e6e6e6] py-4">
+                            <img src="/assets/images/list.png" alt=""
+                                class="h-[180px] md:h-[268px] object-cover w-full">
+                        </div>
+                        <h1 class="text-sm text-[#1a181e] truncate w-full mt-2">
+                            Urad Dal (Black Gram / Black Legume) / உளுத்தம் பருப்பு / ಉದ್ದಿನ ಬೀಲೆ / మినపప్పు / उड़द दाल
+                            / ഉഴുന്ന് പരിപ്പ്</h1>
+                        <div class="flex items-center justify-center gap-x-3 mt-4">
+                            <p class="font-medium text-base text-[#1a181e]">₹80</p>
+                            <p class="text-[13px] leading-6 line-through text-[#808080]">₹95</p>
+                            <p class="text-[#17B31B] font-medium leading-5 text-base">(16% OFF)</p>
+                        </div>
+                        <div class="mt-3" onclick="addTocartPopup('card_two')">
+                            <button class="border border-[#146eb4] text-[#146eb4]  rounded-md px-5 py-2 w-full">Add to
+                                cart</button>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+        <div class="bg-white hidden md:block mt-16 fixed w-full bottom-0 border-t border-[#e6e6e6]">
+            <div class="container mx-auto p-5">
+                <div class="flex justify-between items-center">
+                    <div class="flex gap-x-2">
+                        <img src="/assets/icons/download.svg" alt="">
+                        <img src="/assets/icons/payment.svg" alt="">
+                        <img src="/assets/icons/pay.svg" alt="">
+                        <img src="/assets/icons/pay2.svg" alt="">
+                        <img src="/assets/icons/rupay.svg" alt="">
+                        <img src="/assets/icons/bhim.svg" alt="">
+
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <div>
+                            <img src="/assets/icons/lock.svg" alt="" class="w-6 h-6 object-contain">
+                        </div>
+                        <h1 class="text-sm text-[#4D4D4D]">100% secured payments</h1>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- mobile view -->
+
+        <div class=" lg:hidden fixed bottom-0 w-full bg-white ">
+
+            <div class="border-y border-[#e6e6e6]">
+                <div class="flex py-4 items-center justify-between px-5 gap-x-2">
+                    <div>
+                        <h1 class="text-[20px] font-medium text-[#1a181e]">235</h1>
+                        <a href="" class="text-[#146eb4] underline text-xs font-medium">View price details</a>
+                    </div>
+                    <div class="w-[70%]">
+                        <button class="bg-[#146eb4] rounded-lg text-white font-medium p-2 w-full text-center"
+                            onclick="continueCard()">Continue</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex justify-center gap-x-8 py-4">
+                <a href="" class="text-black text-[13px]">Home</a>
+                <a href="" class="text-black text-[13px]">cart</a>
+                <a href="" class="text-black text-[13px]">Account</a>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

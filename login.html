@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="//unpkg.com/alpinejs" defer></script>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js"></script>
+        <title>login</title>
+
+    </head>
+    <body>
+        <div x-data="{open:false}">
+            <div x-show="open" class="fixed inset-0 z-50 bg-black/50" x-cloak>
+                <div class="absolute right-0 bottom-0 md:left-0 md:top-20">
+                    <div
+                        class="bg-white md:w-[28%] h-full md:h-fit overflow-y-auto mx-auto rounded-md p-5">
+                        <div class="input-box">
+                            <div class="flex justify-between px-5">
+                                <h1
+                                    class="text-lg text-[#1a181e] leading-[26px] font-medium">Sign
+                                    in</h1>
+                                <div @click="open = false">
+                                    <img src="/assets/icons/init.svg" alt
+                                        class="w-5 h-5 object-contain cursor-pointer">
+                                </div>
+                            </div>
+                            <div class="px-5">
+                                <div
+                                    class="px-5 mt-10 flex items-center border border-[#146eb4] rounded-md">
+                                    <span class="text-[#1a181e]">+91</span>
+                                    <input
+                                        class="w-full pl-2 py-2 appearance-none focus:outline-none"
+                                        type="tel" id="mobile-number"
+                                        name="mobile-number"
+                                        placeholder="Enter your phone number"
+                                        pattern="\d{10}" maxlength="10" required
+                                        oninput="this.value = this.value.replace(/\D/g, '')">
+                                </div>
+                                <p id="error-message"
+                                    class="text-red-500 text-sm mt-2 hidden">Please
+                                    enter a valid 10-digit phone number.</p>
+                            </div>
+                            <div class="flex justify-center"
+                                onclick="myFunction()">
+                                <button
+                                    class="text-white font-medium text-lg bg-[#146eb4] px-10 py-4 mt-8 leading-[26px] rounded-md">Send
+                                    OTP</button>
+                            </div>
+                        </div>
+                        <div class="OTP_verification">
+                            <div class="px-5">
+                                <div class="flex items-center justify-between">
+                                    <h1
+                                        class="text-lg text-[#1a181e] leading-[26px] font-medium">OTP
+                                        verification</h1>
+                                    <div @click="open = false">
+                                        <img src="/assets/icons/init.svg" alt
+                                            class="w-5 h-5 object-contain cursor-pointer">
+                                    </div>
+                                </div>
+                                <div class="flex gap-x-2 items-center">
+                                    <h1
+                                        class="text-[#1a181e] text-sm leading-5">Enter
+                                        6-Digit OTP sent to </h1>
+                                    <span class="font-medium mt-0.5">+91
+                                        9089767543</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center px-5 gap-x-5 mt-6">
+                                <input type="tel"
+                                    class="border border-[#d9d9d9] rounded-md leading-[34px] text-center h-12 w-14"
+                                    maxlength="1" pattern="\d{1}"
+                                    oninput="this.value = this.value.replace(/\D/g, '')">
+                                <input type="tel"
+                                    class="border border-[#d9d9d9] rounded-md leading-[34px] text-center h-12 w-14"
+                                    maxlength="1" pattern="\d{1}"
+                                    oninput="this.value = this.value.replace(/\D/g, '')">
+                                <input type="tel"
+                                    class="border border-[#d9d9d9] rounded-md leading-[34px] text-center h-12 w-14"
+                                    maxlength="1" pattern="\d{1}"
+                                    oninput="this.value = this.value.replace(/\D/g, '')">
+                                <input type="tel"
+                                    class="border border-[#d9d9d9] rounded-md leading-[34px] text-center h-12 w-14"
+                                    maxlength="1" pattern="\d{1}"
+                                    oninput="this.value = this.value.replace(/\D/g, '')">
+                                <input type="tel"
+                                    class="border border-[#d9d9d9] rounded-md leading-[34px] text-center h-12 w-14"
+                                    maxlength="1" pattern="\d{1}"
+                                    oninput="this.value = this.value.replace(/\D/g, '')">
+                                <input type="tel"
+                                    class="border border-[#d9d9d9] rounded-md leading-[34px] text-center h-12 w-14"
+                                    maxlength="1" pattern="\d{1}"
+                                    oninput="this.value = this.value.replace(/\D/g, '')">
+                            </div>
+                            <div class="mt-6 text-center whatsapp">
+                                <h1 class="w-full">Didn't get the code? Send it
+                                    on</h1>
+                                <div class="flex justify-center mt-2">
+                                    <img src="/assets/icons/whatsapp.svg" alt
+                                        class="cursor-pointer whatsapp_icon">
+                                </div>
+                            </div>
+                            <div id="Timer"
+                                class="text-center  mt-10 text-[28px] font-medium text-[#1a181e]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mx-auto px-5 relative">
+                <div class="flex justify-between py-1 md:py-3">
+                    <div>
+                        <div class="flex items-center gap-x-1">
+                            <div>
+                                <img src="/assets/icons/arrow.svg" alt
+                                    class="w-5 h-5 object-contain">
+                            </div>
+                            <h1
+                                class="text-lg leading-[1.625rem] font-medium text-[#1a181e] hidden lg:block">Pulses</h1>
+                            <span class="text-sm hidden lg:block">(7
+                                items)</span>
+                            <div>
+                                <h1
+                                    class="text-lg leading-[1.625rem] font-medium text-[#1a181e] lg:hidden">Pulses</h1>
+                                <span
+                                    class="text-sm lg:hidden text-[#808080]">(7
+                                    items)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-x-4 cursor-pointer"
+                        @click="open = !open">
+                        <h1 class="text-sm hidden lg:block">Account</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
