@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>address</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.2.2/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="/css/address.css">
+</head>
+
+
+<body class="" x-data="{
+    navHamburger: false,
+    openPopup: false,
+    selectedPayment: 'upi',
+
+}">
+    <div class="bg-[#007e20] p-[10px] lg:flex justify-center items-center gap-[24px]">
+        <p class="font-medium text-white text-center text-[12px] lg:text-[16px]">
+            Free Shipping above 1000 | COD Available across India
+        </p>
+        <div class="flex justify-center lg:flex-none pt-1.5 lg:pt-0">
+            <button
+                class="px-[12px] py-[4px] bg-[#EE741F] text-white rounded-[4px] lg:text-[14px] text-[12px] hover:text-[#1a181e]">
+                Use WELCOME for ₹50 OFF
+            </button>
+        </div>
+    </div>
+    <div>
+        <!-- mobile header start -->
+        <div class="lg:hidden flex items-center justify-between  p-5">
+            <div class=" font-medium flex items-center gap-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    color="var(--black-30)">
+                    <g fill="none" fill-rule="evenodd">
+                        <g fill="currentColor" fill-rule="nonzero">
+                            <g>
+                                <g>
+                                    <path
+                                        d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                        transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                    </path>
+                                    <path
+                                        d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                        transform="translate(-16 -95) translate(16 95) translate(1 3)"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span class="block">Payment</span>
+            </div>
+            <span class=" text-[14px] text-[#4d4d4d]">STEP 3/3</span>
+        </div>
+        <!-- mobile header end -->
+
+        <div class=" hidden lg:block ">
+            <div class="flex justify-between items-center container p-5 ">
+                <div class="items-center flex justify-between lg:w-fit w-full">
+                    <a href="/landing.html" class="flex cursor-pointer">
+                        <img src="/images/s-icon-big.webp" alt="" class="w-12 h-12" />
+                        <h1 class="text-[26px] font-medium ml-5">
+                            Standard Store
+                        </h1>
+                    </a>
+                </div>
+                <div x-data="{ active: 1 }" class="flex items-center justify-between">
+                    <a @click.prevent="active = 1" :class="{'text-blue-600': active >= 1, 'text-gray-400': active < 1}" href="#" class="flex items-center gap-x-2">
+                        <div :class="{'bg-blue-600': active >= 1, 'bg-gray-400': active < 1}" class="w-5 h-5 rounded-full flex items-center justify-center">
+                            <span class="text-white block text-center">1</span>
+                        </div>
+                        <span :class="{'text-blue-600': active >= 1, 'text-gray-400': active < 1}" class="font-medium">Cart</span>
+                    </a>
+                    <div :class="{'bg-blue-600': active >= 2, 'bg-gray-400': active < 2}" class="w-10 h-px mx-3"></div>
+                    <a  @click.prevent="active = 2" :class="{'text-blue-600': active >= 2, 'text-gray-400': active < 2}" href="/address.html" class="flex items-center gap-x-2">
+                        <div :class="{'bg-blue-600': active >= 2, 'bg-gray-400': active < 2}" class="w-5 h-5 rounded-full flex items-center justify-center">
+                            <span class="text-white block text-center">2</span>
+                        </div>
+                        <span :class="{'text-blue-600': active >= 2, 'text-gray-400': active < 2}" class="font-medium">Address</span>
+                    </a>
+                    <div :class="{'bg-blue-600': active >= 3, 'bg-gray-400': active < 3}" class="w-10 h-px mx-3"></div>
+                    <a @click.prevent="active = 3" :class="{'text-blue-600': active >= 3, 'text-gray-400': active < 3}" href="/payment.html" class="flex items-center gap-x-2 cursor-pointer">
+                        <div :class="{'bg-blue-600': active >= 3, 'bg-gray-400': active < 3}" class="w-5 h-5 rounded-full flex items-center justify-center">
+                            <span class="text-white block text-center">3</span>
+                        </div>
+                        <span :class="{'text-blue-600': active >= 3, 'text-gray-400': active < 3}" class="font-medium">Payment</span>
+                    </a>
+                </div>
+                <aside x-data="{ active: '' }" class="lg:flex hidden items-center justify-between gap-x-8">
+                    <div :class="{ 'active': active === 'categories' }" @click="active = 'categories'"
+                        class="menu-item flex items-center gap-x-2 cursor-pointer p-2 hover:bg-[#f2f2f2] hover:rounded-full">
+                        <svg :class="{ 'active-icon': active === 'categories' }" class="default" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Categories"
+                            color="black">
+                            <path
+                                d="M20.4971 13C21.3255 13 21.9971 13.6716 21.9971 14.5V20.5C21.9971 21.3284 21.3255 22 20.4971 22H14.4971C13.6686 22 12.9971 21.3284 12.9971 20.5V14.5C12.9971 13.6716 13.6686 13 14.4971 13H20.4971ZM9.5 13C10.3284 13 11 13.6716 11 14.5V20.5C11 21.3284 10.3284 22 9.5 22H3.5C2.67157 22 2 21.3284 2 20.5V14.5C2 13.6716 2.67157 13 3.5 13H9.5ZM20.297 14.7H14.697V20.3H20.297V14.7ZM9.3 14.7H3.7V20.3H9.3V14.7ZM9.5 2C10.3284 2 11 2.67157 11 3.5V9.5C11 10.3284 10.3284 11 9.5 11H3.5C2.67157 11 2 10.3284 2 9.5V3.5C2 2.67157 2.67157 2 3.5 2H9.5ZM20.4971 2C21.3255 2 21.9971 2.67157 21.9971 3.5V9.5C21.9971 10.3284 21.3255 11 20.4971 11H14.4971C13.6686 11 12.9971 10.3284 12.9971 9.5V3.5C12.9971 2.67157 13.6686 2 14.4971 2H20.4971ZM9.3 3.7H3.7V9.3H9.3V3.7ZM20.297 3.7H14.697V9.3H20.297V3.7Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <h5 class="{ 'active-icon': active === 'categories' }" class="text-[#4d4d4d]">Categories</h5>
+                    </div>
+                    <div :class="{ 'active': active === 'cart' }" @click="active = 'cart'"
+                        class="menu-item flex items-center gap-x-2 cursor-pointer p-2 hover:bg-[#f2f2f2] hover:rounded-full relative">
+                        <svg :class="{ 'active-icon': active === 'cart' }" class="badgeItem" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Bag"
+                            color="var(--black-30)">
+                            <path
+                                d="M17.5303 2C17.7769 2 18.0091 2.1161 18.157 2.31336L20.9105 5.985C20.9338 6.01451 20.955 6.04575 20.974 6.07848C20.9829 6.09427 20.9915 6.11041 20.9995 6.12681C21.0067 6.14109 21.0133 6.15592 21.0196 6.17098C21.0243 6.18292 21.0289 6.19482 21.0331 6.20682C21.0407 6.22728 21.0472 6.24826 21.0528 6.2696C21.0698 6.33447 21.0787 6.40189 21.0787 6.47005V19.3733C21.0787 20.824 19.9027 22 18.452 22H5.54873C4.09802 22 2.922 20.824 2.922 19.3733V6.47005C2.922 6.36611 2.94267 6.26389 2.98211 6.16909C2.98795 6.15455 2.99438 6.14034 3.00121 6.12636C3.02283 6.08242 3.04873 6.03994 3.07868 6L3.027 6.07799C3.02812 6.07606 3.02925 6.07413 3.03039 6.07221L3.07868 6L5.84366 2.31336C5.99161 2.1161 6.2238 2 6.47038 2H17.5303ZM19.511 7.253H4.488L4.48882 19.3733C4.48882 19.8806 4.84525 20.3047 5.32135 20.4087L5.43324 20.427L5.54873 20.4332H18.452C19.0373 20.4332 19.5119 19.9586 19.5119 19.3733L19.511 7.253ZM15.687 9.37327C16.1196 9.37327 16.4704 9.72402 16.4704 10.1567C16.4704 12.6254 14.4691 14.6267 12.0003 14.6267C9.5316 14.6267 7.53029 12.6254 7.53029 10.1567C7.53029 9.72402 7.88104 9.37327 8.3137 9.37327C8.74637 9.37327 9.09711 9.72402 9.09711 10.1567C9.09711 11.7601 10.3969 13.0599 12.0003 13.0599C13.6037 13.0599 14.9036 11.7601 14.9036 10.1567C14.9036 9.72402 15.2543 9.37327 15.687 9.37327ZM17.1386 3.56682H6.86117L5.27 5.686H18.728L17.1386 3.56682Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <span
+                        class="inline-block text-white text-center text-sm font-normal bg-red-600 rounded-full px-1 py-0.5 absolute top-[-2px] left-[2px] min-w-[18px] h-[18px] leading-[14px] whitespace-nowrap">
+                        3
+                    </span>
+                        <h5 class="{ 'active-icon': active === 'cart' }" class="text-[#4d4d4d]">Cart</h5>
+                    </div>
+                    <div :class="{ 'active': active === 'account' }" @click="active = 'account'"
+                        class="menu-item flex items-center gap-x-2 cursor-pointer p-2 hover:bg-[#f2f2f2] hover:rounded-full">
+                        <svg :class="{ 'active-icon': active === 'account' }" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg" alt="Account" color="var(--black-30)">
+                            <path
+                                d="M15.9255 13.7621C18.9394 13.7621 21.3459 16.3793 21.4562 19.6018L21.4602 19.833V21.0911C21.4602 21.6264 21.0536 22.0672 20.5314 22.1236L20.4178 22.1297H3.57165C3.03435 22.1297 2.59201 21.7246 2.53541 21.2042L2.5293 21.0911V19.833C2.5293 16.5828 4.86571 13.89 7.84974 13.7665L8.06396 13.7621H15.9255ZM15.9255 15.5623H8.06396C6.09351 15.5623 4.4325 17.3302 4.33364 19.6171L4.32899 19.833L4.32799 20.3288H19.6605V19.833C19.6605 17.5149 18.0592 15.6768 16.1093 15.5675L15.9255 15.5623ZM11.9947 2.60028C14.6914 2.60028 16.8734 4.79535 16.8734 7.49817C16.8734 10.201 14.6914 12.3961 11.9947 12.3961C9.29806 12.3961 7.11604 10.201 7.11604 7.49817C7.11604 4.79535 9.29806 2.60028 11.9947 2.60028ZM11.9947 4.40053C10.2953 4.40053 8.91574 5.78635 8.91574 7.49817C8.91574 9.20999 10.2953 10.5958 11.9947 10.5958C13.6942 10.5958 15.0737 9.20999 15.0737 7.49817C15.0737 5.78635 13.6942 4.40053 11.9947 4.40053Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <h5 class="{ 'active-icon': active === 'account' }" class="text-[#4d4d4d]">Account</h5>
+                    </div>
+                </aside>
+            </div>
+            <div class="  border-t border-[#e6e6e6]">
+                <div class="container px-5 py-10">
+                    <!-- left side form section  -->
+                    <span class=" font-medium text-[20px] text-[#1a181e]">Shipping address</span>
+                    <div class=" flex justify-between gap-5 w-full pt-5">
+                        <div class="w-[70%]">
+                            <form action="" class="">
+                                <div>
+                                    <label class=" text-[#4d4d4d] text-[14px]">Name</label>
+                                    <span class=" text-[#e50b20] text-[14px]">*</span>
+                                </div>
+                                <input type="text" name="" id=""
+                                    class="mt-2 border border-[#d9d9d9] rounded text-[16px] px-[16px] py-[11px] text-[#1a181e] outline-none w-full"
+                                    placeholder="Enter name">
+                                <div class="pt-5 flex justify-between items-center gap-x-5">
+                                    <div class=" w-full">
+                                        <label for="" class=" text-[#4d4d4d] text-[14px]">Mobile Number <span
+                                                class=" text-[#e50b20] text-[14px]">*</span></label>
+                                        <div class="relative border border-[#d9d9d9] rounded-sm mt-2">
+                                            <span
+                                                class="absolute left-0 top-0 h-full flex items-center justify-end w-10 bg-transparent rounded-l-sm px-1.5 text-black">+91</span>
+                                            <input
+                                                class="w-full pl-10 pr-4 py-2.5 text-black bg-transparent border-0 rounded-sm transition-colors duration-200  outline-none"
+                                                name="mobile" placeholder="Enter mobile number" autocomplete="off"
+                                                type="text" inputmode="numeric">
+                                            <!-- <span class="block text-red-500 text-xs shakeFormLabel">Mobile number is required</span> -->
+                                        </div>
+                                    </div>
+                                    <div class=" w-full">
+                                        <div>
+                                            <label class=" text-[#4d4d4d] text-[14px]">Email Address</label>
+                                            <span class=" text-[#e50b20] text-[14px]">*</span>
+                                        </div>
+                                        <input type="text" name="" id=""
+                                            class="mt-2 border border-[#d9d9d9]  rounded text-[16px] px-[16px] py-[11px] text-[#1a181e] outline-none w-full"
+                                            placeholder="Enter email address">
+                                    </div>
+                                </div>
+                                <div class=" pt-5">
+                                    <label class=" text-[#4d4d4d] text-[14px]">Address</label>
+                                    <span class=" text-[#e50b20] text-[14px]">*</span>
+                                </div>
+                                <input type="text" name="" id=""
+                                    class="mt-2 border border-[#d9d9d9] rounded text-[16px] px-[16px] py-[11px] text-[#1a181e] outline-none w-full"
+                                    placeholder="Flat / House No, Building, Colony">
+                                <div class="pt-5 grid grid-cols-2 justify-between items-center gap-5">
+                                    <div class=" w-full">
+                                        <div class=" w-full">
+                                            <div>
+                                                <label class=" text-[#4d4d4d] text-[14px]">Locality / Area</label>
+                                                <span class=" text-[#e50b20] text-[14px]">*</span>
+                                            </div>
+                                            <input type="text" name="" id=""
+                                                class="mt-2 border border-[#d9d9d9]  rounded text-[16px] px-[16px] py-[11px] text-[#1a181e] outline-none w-full"
+                                                placeholder="E.g. MG Road, Gandhi Nagar">
+                                        </div>
+                                    </div>
+                                    <div class=" w-full">
+                                        <div>
+                                            <label class=" text-[#4d4d4d] text-[14px]">Landmark (optional)</label>
+                                            <span class=" text-[#e50b20] text-[14px]">*</span>
+                                        </div>
+                                        <input type="text" name="" id=""
+                                            class="mt-2 border border-[#d9d9d9]  rounded text-[16px] px-[16px] py-[11px] text-[#1a181e] outline-none w-full"
+                                            placeholder="E.g. Near Bank, Chowk, etc.">
+                                    </div>
+                                    <div class=" w-full">
+                                        <div class=" w-full">
+                                            <div>
+                                                <label class=" text-[#4d4d4d] text-[14px]">Pin Code</label>
+                                                <span class=" text-[#e50b20] text-[14px]">*</span>
+                                            </div>
+                                            <input type="text" name="" id=""
+                                                class="mt-2 border border-[#d9d9d9]  rounded text-[16px] px-[16px] py-[11px] text-[#1a181e] outline-none w-full"
+                                                placeholder="Enter pin code">
+                                        </div>
+                                    </div>
+                                    <div class=" w-full">
+                                        <div>
+                                            <label class=" text-[#4d4d4d] text-[14px]">City</label>
+                                            <span class=" text-[#e50b20] text-[14px]">*</span>
+                                        </div>
+                                        <input type="text" name="" id=""
+                                            class="mt-2 border border-[#d9d9d9]  rounded text-[16px] px-[16px] py-[11px] text-[#1a181e] outline-none w-full"
+                                            placeholder="Enter city">
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="states" class="block text-sm font-medium text-gray-700">Select
+                                            State</label>
+                                        <div class="relative custom-select mt-1">
+                                            <select id="states" name="states"
+                                                class="mt-2 border border-[#d9d9d9]  rounded text-[16px] px-[16px] py-[11px] text-[#999] outline-none w-full bg-white focus:outline-none">
+                                                <option value="" class=" text-[#999]">Select a state</option>
+                                            </select>
+                                            <div
+                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" class="text-gray-400"
+                                                    fill="currentColor">
+                                                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- right section upi -->
+                        <div class="w-[30%]">
+                            <div @click="openPopup = true"
+                                class="flex justify-between h-fit cursor-pointer border border-[#e6e6e6] rounded-lg py-[12px] px-[20px]">
+                                <div class="flex gap-x-3">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" class="mr8">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M15.0167 2.74015L14.8893 2.79164L13.1203 3.59164C12.4748 3.88255 11.7384 3.909 11.0765 3.67098L10.8803 3.59164L9.11027 2.79164C8.81027 2.65164 8.48027 2.65164 8.18027 2.77164C7.91455 2.88307 7.70688 3.07531 7.58432 3.31689L7.53027 3.44164L6.84927 5.26164C6.59352 5.93081 6.08484 6.47393 5.43955 6.76778L5.26027 6.84164L3.45027 7.52164C3.13927 7.64164 2.90027 7.87164 2.77027 8.18164C2.66741 8.43878 2.65271 8.71797 2.73878 8.98141L2.79027 9.11164L3.59027 10.8816C3.89277 11.5325 3.91797 12.2757 3.66589 12.942L3.59027 13.1216L2.79027 14.8816C2.65027 15.1816 2.65027 15.5116 2.77027 15.8216C2.88169 16.0788 3.0732 16.2845 3.3215 16.4136L3.45027 16.4716L5.26027 17.1516C5.9386 17.4083 6.47409 17.9087 6.77352 18.5603L6.84927 18.7416L7.53027 20.5516C7.63927 20.8616 7.88027 21.1016 8.18027 21.2216C8.32027 21.2816 8.48027 21.3116 8.63027 21.3116C8.75027 21.3116 8.87589 21.2948 8.9987 21.2568L9.12027 21.2116L10.8803 20.4116C11.5311 20.1091 12.2744 20.0839 12.9406 20.336L13.1203 20.4116L14.8893 21.2116C15.1903 21.3416 15.5203 21.3516 15.8203 21.2216C16.086 21.1188 16.2929 20.9278 16.4159 20.6801L16.4703 20.5516L17.1503 18.7416C17.4069 18.0633 17.9157 17.5194 18.561 17.2255L18.7403 17.1516L20.5503 16.4716C20.8603 16.3516 21.0993 16.1216 21.2303 15.8216C21.3323 15.5559 21.3468 15.2755 21.2614 15.0119L21.2103 14.8816L20.4103 13.1216C20.1194 12.4762 20.0929 11.7398 20.3309 11.0778L20.4103 10.8816L21.2103 9.11164C21.3493 8.81164 21.3493 8.48164 21.2303 8.18164C21.118 7.91593 20.9263 7.70899 20.6787 7.57972L20.5503 7.52164L18.7403 6.84164C18.0711 6.59414 17.528 6.08615 17.2264 5.44092L17.1503 5.26164L16.4703 3.44164C16.3603 3.14164 16.1303 2.90164 15.8203 2.77164C15.5631 2.66878 15.2766 2.65409 15.0167 2.74015ZM16.4299 14.7516C16.4299 13.8216 15.6799 13.0616 14.7499 13.0616C13.8199 13.0616 13.0699 13.8216 13.0699 14.7516C13.0699 15.6816 13.8199 16.4316 14.7499 16.4316C15.6799 16.4316 16.4299 15.6816 16.4299 14.7516ZM15.2101 7.72159C15.0701 7.61159 14.9101 7.56159 14.7501 7.56159C14.5201 7.56159 14.2901 7.67159 14.1401 7.87159L8.6401 15.2016C8.5101 15.3716 8.4601 15.5716 8.4901 15.7716C8.5201 15.9816 8.6301 16.1516 8.7901 16.2816C9.1201 16.5216 9.6201 16.4516 9.8601 16.1216L15.3601 8.79159C15.6201 8.45159 15.5501 7.97159 15.2101 7.72159ZM10.9299 9.25159C10.9299 8.32159 10.1799 7.56159 9.2499 7.56159C8.3199 7.56159 7.5699 8.32159 7.5699 9.25159C7.5699 10.1816 8.3199 10.9316 9.2499 10.9316C10.1799 10.9316 10.9299 10.1816 10.9299 9.25159Z"
+                                            fill="#17B31B"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M17.8393 2.73944C17.5575 2.11859 17.0418 1.61747 16.4103 1.35164C15.7203 1.07164 14.9303 1.08164 14.2503 1.39164L12.4503 2.21164L12.3195 2.25566C12.0539 2.32878 11.7674 2.31164 11.5103 2.19164L9.75027 1.39164L9.53164 1.30524C9.23763 1.20284 8.93427 1.15164 8.63027 1.15164C8.28027 1.15164 7.92027 1.22164 7.59027 1.35164C6.90027 1.64164 6.34927 2.21164 6.09027 2.91164L5.41027 4.72164L5.35929 4.83824C5.22667 5.10211 5.00027 5.30664 4.72027 5.41164L2.91027 6.09164L2.73805 6.1626C2.11713 6.44428 1.61602 6.95914 1.36027 7.59164C1.07027 8.28164 1.08027 9.07164 1.38927 9.75164L2.20027 11.5116L2.25169 11.6472C2.33741 11.9233 2.32027 12.2245 2.20027 12.4816L1.38927 14.2516L1.31241 14.4397C1.08093 15.0745 1.09663 15.7844 1.36027 16.4116C1.63927 17.1016 2.21027 17.6416 2.91027 17.9116L4.72027 18.5916L4.83687 18.6426C5.10073 18.7751 5.30527 19.0004 5.41027 19.2716L6.09027 21.0916L6.16101 21.2636C6.44206 21.8831 6.95777 22.3758 7.59027 22.6416C8.28027 22.9316 9.07027 22.9116 9.75027 22.6016L11.5103 21.8016L11.6459 21.7502C11.9221 21.6645 12.2246 21.6816 12.4903 21.8016L14.2503 22.6016L14.4383 22.679C15.0731 22.9127 15.783 22.9053 16.4103 22.6416C17.0993 22.3516 17.6503 21.7916 17.9103 21.0916L18.5903 19.2716L18.6412 19.1583C18.7739 18.9012 19.0003 18.6966 19.2803 18.5916L21.0903 17.9016L21.2625 17.8309C21.8832 17.5506 22.3835 17.0441 22.6393 16.4116C22.9303 15.7216 22.9103 14.9316 22.6103 14.2516L21.8003 12.4816L21.7488 12.3466C21.6631 12.0725 21.6803 11.7774 21.8003 11.5116L22.6103 9.75164L22.6874 9.56136C22.9196 8.92057 22.9038 8.21891 22.6393 7.59164C22.3603 6.90164 21.7903 6.35164 21.0903 6.09164L19.2803 5.41164L19.1637 5.36066C18.8998 5.22805 18.6953 5.00164 18.5903 4.72164L17.9103 2.91164L17.8393 2.73944ZM14.8893 2.79164L15.0167 2.74015C15.2766 2.65409 15.5631 2.66878 15.8203 2.77164C16.1303 2.90164 16.3603 3.14164 16.4703 3.44164L17.1503 5.26164L17.2264 5.44092C17.528 6.08615 18.0711 6.59414 18.7403 6.84164L20.5503 7.52164L20.6787 7.57972C20.9263 7.70899 21.118 7.91593 21.2303 8.18164C21.3493 8.48164 21.3493 8.81164 21.2103 9.11164L20.4103 10.8816L20.3309 11.0778C20.0929 11.7398 20.1194 12.4762 20.4103 13.1216L21.2103 14.8816L21.2614 15.0119C21.3468 15.2755 21.3323 15.5559 21.2303 15.8216C21.0993 16.1216 20.8603 16.3516 20.5503 16.4716L18.7403 17.1516L18.561 17.2255C17.9157 17.5194 17.4069 18.0633 17.1503 18.7416L16.4703 20.5516L16.4159 20.6801C16.2929 20.9278 16.086 21.1188 15.8203 21.2216C15.5203 21.3516 15.1903 21.3416 14.8893 21.2116L13.1203 20.4116L12.9406 20.336C12.2744 20.0839 11.5311 20.1091 10.8803 20.4116L9.12027 21.2116L8.9987 21.2568C8.87589 21.2948 8.75027 21.3116 8.63027 21.3116C8.48027 21.3116 8.32027 21.2816 8.18027 21.2216C7.88027 21.1016 7.63927 20.8616 7.53027 20.5516L6.84927 18.7416L6.77352 18.5603C6.47409 17.9087 5.9386 17.4083 5.26027 17.1516L3.45027 16.4716L3.3215 16.4136C3.0732 16.2845 2.88169 16.0788 2.77027 15.8216C2.65027 15.5116 2.65027 15.1816 2.79027 14.8816L3.59027 13.1216L3.66589 12.942C3.91797 12.2757 3.89277 11.5325 3.59027 10.8816L2.79027 9.11164L2.73878 8.98141C2.65271 8.71797 2.66741 8.43878 2.77027 8.18164C2.90027 7.87164 3.13927 7.64164 3.45027 7.52164L5.26027 6.84164L5.43955 6.76778C6.08484 6.47393 6.59352 5.93081 6.84927 5.26164L7.53027 3.44164L7.58432 3.31689C7.70688 3.07531 7.91455 2.88307 8.18027 2.77164C8.48027 2.65164 8.81027 2.65164 9.11027 2.79164L10.8803 3.59164L11.0765 3.67098C11.7384 3.909 12.4748 3.88255 13.1203 3.59164L14.8893 2.79164Z"
+                                            fill="#17B31B"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="text-[#1a181e] font-medium block">Coupons and offers</span>
+                                        <span class="font-normal text-[#4d4d4d] text-[13px] block">Save more with coupon
+                                            and
+                                            offers</span>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <span class="block text-[#146EB4] font-medium whitespace-nowrap text-[14px]">4
+                                        Offers</span>
+                                    <div class="pt-[3px]">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" color="var(--primary)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M6.19526 13.138C5.93491 12.8776 5.93491 12.4555 6.19526 12.1952L10.3905 7.99992L6.19526 3.80466C5.93491 3.54431 5.93491 3.1222 6.19526 2.86185C6.45561 2.6015 6.87772 2.6015 7.13807 2.86185L11.8047 7.52851C12.0651 7.78886 12.0651 8.21097 11.8047 8.47132L7.13807 13.138C6.87772 13.3983 6.45561 13.3983 6.19526 13.138Z"
+                                                fill="#146EB4   "></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- model popup  -->
+                            <div @keydown.escape.window="openPopup = false"
+                                class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-20" x-show="openPopup"
+                                x-cloak style="display: none">
+                                <!-- Modal -->
+                                <div class="flex items-center justify-center min-h-screen">
+                                    <div class="bg-white max-h-[80vh] overflow-y-auto scrollbar px-6 rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full"
+                                        x-show="openPopup" x-cloak @click.away="openPopup = false"
+                                        x-transition:enter="transform transition ease-in-out duration-500"
+                                        x-transition:enter-start="translate-y-full opacity-0"
+                                        x-transition:enter-end="translate-y-0 opacity-100"
+                                        x-transition:leave="transform transition ease-in-out duration-500"
+                                        x-transition:leave-start="translate-y-0 opacity-100"
+                                        x-transition:leave-end="translate-y-full opacity-0">
+                                        <!-- Modal header -->
+                                        <div class="flex items-start justify-between pt-[24px]">
+                                            <div class="text-left">
+                                                <h3 class="text-lg font-medium text-[#1a181e]">
+                                                    Coupons and offers
+                                                </h3>
+                                            </div>
+                                            <span class="cursor-pointer" x-on:click="openPopup = false">✕</span>
+                                        </div>
+                                        <!-- search coupon  -->
+                                        <div class="relative w-full py-5">
+                                            <input type="text"
+                                                class="uppercase rounded-md py-3 px-4 outline-none border border-gray-300 bg-white w-full text-black text-base leading-6"
+                                                maxlength="50" placeholder="Enter coupon code" value="" />
+                                            <span
+                                                class="absolute right-4 top-[32px] cursor-pointer min-w-[45px] text-[#EE741F] opacity-50 text-base font-medium transition-colors duration-300 ease-in-out">Apply</span>
+                                        </div>
+                                        <!-- search coupon end -->
+                                        <div class="mt-1">
+                                            <p class="font-medium text-[#1a181e]">
+                                                Available coupons
+                                            </p>
+                                            <span class="mt-2 bg-[#EE741F] w-[64px] h-[4px] block"></span>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">WELCOME</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add items
+                                                worth
+                                                ₹339 more to
+                                                get this offer</span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹50 off on item total above
+                                                ₹499. Applicable on both online
+                                                payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-show="open"
+                                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both online payment and COD
+                                                    </li>
+                                                    <li>
+                                                        Applicable only once per
+                                                        user
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">STD75</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add items
+                                                worth
+                                                ₹2,339 more to
+                                                get this offer
+                                            </span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹75 off on item total above
+                                                ₹2,499. Applicable on both
+                                                online payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-show="open"
+                                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both
+                                                        online payment and COD
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">STD75</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add items
+                                                worth
+                                                ₹2,339 more to
+                                                get this offer
+                                            </span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹75 off on item total above
+                                                ₹2,499. Applicable on both
+                                                online payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-show="open"
+                                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both
+                                                        online payment and COD
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">STD75</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add items
+                                                worth
+                                                ₹2,339 more to
+                                                get this offer
+                                            </span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹75 off on item total above
+                                                ₹2,499. Applicable on both
+                                                online payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-show="open"
+                                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both
+                                                        online payment and COD
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-[#e6e6e6] rounded-lg mt-5">
+                                <div class="p-[20px]">
+                                    <div class="space-y-1 border-b border-[#d9d9d9] border-dashed pb-5">
+                                        <div class="flex justify-between">
+                                            <span>Item total</span>
+                                            <div class="flex gap-x-1.5">
+                                                <span class="line-through text-[grey]">₹390</span>
+                                                <span>₹340</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span>Delivery fee</span>
+                                            <div class="flex gap-x-1.5">
+                                                <span class="line-through text-[grey]">₹99</span>
+                                                <span>₹49</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-[grey] text-[12px]">
+                                            Free delivery on item total above
+                                        </p>
+                                    </div>
+                                    <div class="border-b border-[#d9d9d9] border-dashed pb-5 py-3">
+                                        <div class="flex justify-between">
+                                            <span class="font-medium">Grand total
+                                            </span>
+                                            <span class="font-medium">₹389</span>
+                                        </div>
+                                        <p class="text-[grey] text-[14px] pt-[2px]">
+                                            Inclusive of all taxes
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center py-3 gap-x-[3px] text-[14px]">
+                                            <h5 class="text-[grey]">
+                                                Average delivery time:
+                                            </h5>
+                                            <span class="font-medium block">2-5 days</span>
+                                        </div>
+                                        <div class="rounded-[4px] py-[8px] px-[24px] text-center" style="
+                                    background-color: rgba(
+                                        23,
+                                        179,
+                                        27,
+                                        0.1
+                                    );
+                                ">
+                                            <h5 class="font-medium text-[#17b31b] text-[14px]">
+                                                26% (₹100) saved so far on this
+                                                order
+                                            </h5>
+                                            <span class="text-[#17b31b] text-[12px] block">Save ₹49 on delivery fee by
+                                                adding ₹661 more to cart</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                              <!-- TODO continue button if need -->
+                                <!-- <div class="border-t border-[#e6e6e6] px-[8px] py-[8px]">
+                                    <button class="text-white bg-[#146EB4] rounded-md py-[12px] px-[20px] font-medium w-full ">
+                        Continue
+                         </button> -->
+
+                                    <div class="pt-[12px] pb-[4px] flex items-center gap-x-2 justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" style="min-width: 20px">
+                                            <g clip-path="url(#clip0_11931_187443)">
+                                                <path
+                                                    d="M16.2183 15.7484H7.78169C7.38794 15.7484 7.07861 16.0577 7.07861 16.4515V23.2945C7.07861 23.5476 7.21919 23.7866 7.44419 23.9132C7.68316 24.0398 7.95039 24.0257 8.1754 23.885L12 21.3259L15.8246 23.8851C16.0496 24.0257 16.3169 24.0398 16.5558 23.9132C16.7808 23.7866 16.9214 23.5477 16.9214 23.2945V16.4514C16.9214 16.0577 16.6121 15.7484 16.2183 15.7484Z"
+                                                    fill="#EE741F"></path>
+                                                <path
+                                                    d="M16.9214 16.4514V23.2945C16.9214 23.5476 16.7808 23.7866 16.5558 23.9132C16.3169 24.0398 16.0496 24.0257 15.8246 23.885L12 21.3259V15.7484H16.2183C16.6121 15.7484 16.9214 16.0577 16.9214 16.4514Z"
+                                                    fill="#EE741F"></path>
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M2.86035 9.13974C2.86035 4.10578 6.96609 0 12 0C12 0 12.0001 0 12.0001 0C12.6293 1.42598e-06 13.244 0.0641535 13.8381 0.18625C17.5507 0.949337 20.4543 3.97579 21.0341 7.75059C21.1037 8.20373 21.1398 8.66765 21.1398 9.13973C21.1398 14.1736 17.0341 18.2795 12.0001 18.2795V18.2794C12.0001 18.2794 12 18.2794 12 18.2794C6.96609 18.2794 2.86035 14.1737 2.86035 9.13974Z"
+                                                    fill="#EE741F"></path>
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M15.22 10.3068L17.3995 8.22568C17.5962 8.0289 17.6666 7.74765 17.5964 7.49448C17.512 7.2414 17.287 7.04452 17.02 7.01635L13.9825 6.58046L12.6327 3.89485C12.5062 3.65579 12.253 3.54333 12 3.54333V3.54343C12 3.54343 11.9999 3.54343 11.9999 3.54343C11.7469 3.54343 11.4937 3.65589 11.3672 3.89495L10.0174 6.58056L6.97994 7.01645C6.71289 7.04462 6.48799 7.2415 6.40357 7.49457C6.33321 7.74765 6.40357 8.0289 6.6003 8.22568L8.7798 10.3068L8.25972 13.2315C8.21749 13.4986 8.32994 13.7658 8.54088 13.9206C8.75168 14.0893 9.04708 14.1034 9.28614 13.9768L12 12.5847L12 12.5847V12.5847L14.7137 13.9768C14.9528 14.1034 15.2482 14.0893 15.459 13.9206C15.6699 13.7658 15.7824 13.4986 15.7401 13.2315L15.22 10.3068Z"
+                                                    fill="white"></path>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_11931_187443">
+                                                    <rect width="24" height="24" fill="white"></rect>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <span class="text-[14px] block">You will earn 3.89 Loyalty Points
+                                            on this order</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- mobile section forms  -->
+        <div class=" bg-[#e6e6e6] lg:hidden block">
+            <div class="container px-5  bg-white rounded-md pb-[10px] lg:hidden block">
+                <form action="#" id="userForm" class="custom-form">
+                    <div class="form-group">
+                        <input type="text"
+                            class="form-control block w-full border-0 border-b-2 border-gray-400 bg-transparent placeholder-transparent focus:outline-none "
+                            name="user" id="user" placeholder="Enter name" required/>
+                        <label for="user" class="animated-label">Name<span
+                                class="text-[#e50b20] text-[14px]">*</span></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="number"
+                            class="form-control block w-full border-0 border-b-2 border-gray-400 bg-transparent placeholder-transparent focus:outline-none"
+                            name="number" id="number" placeholder="Enter mobile number" required />
+                        <label for="number" class="animated-label">Enter mobile number<span
+                                class="text-[#e50b20] text-[14px]">*</span></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text"
+                            class="form-control block w-full border-0 border-b-2 border-gray-400 bg-transparent placeholder-transparent focus:outline-none"
+                            name="email" id="email" placeholder="Enter email number" required />
+                        <label for="email" class="animated-label">Enter email address<span
+                                class="text-[#e50b20] text-[14px]">*</span></label>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" class="form-control placeholder-transparent outline-none w-full"
+                            name="Address" id="Address" placeholder="Flat / House No, Building, Colony" required />
+                        <label for="Address" class="animated-label">Address<span
+                                class="text-red-600 text-sm">*</span></label>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" class="form-control placeholder-transparent outline-none w-full" name="area"
+                            id="area" placeholder="E.g. MG Road, Gandhi Nagar" required />
+                        <label for="area" class="animated-label">Locality / Area<span
+                                class="text-red-600 text-sm">*</span></label>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" class="form-control placeholder-transparent outline-none w-full"
+                            name="Landmark" id="Landmark" placeholder="E.g. Near Bank, Chowk, etc." required />
+                        <label for="Landmark" class="animated-label">Landmark (optional)<span
+                                class="text-red-600 text-sm">*</span></label>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" class="form-control placeholder-transparent outline-none w-full"
+                            name="pincode" id="pincode" placeholder="Enter pin code" required />
+                        <label for="pincode" class="animated-label">Pin Code<span
+                                class="text-red-600 text-sm">*</span></label>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" class="form-control placeholder-transparent outline-none w-full" name="City"
+                            id="City" placeholder="Enter city" required />
+                        <label for="City" class="animated-label">City<span class="text-red-600 text-sm">*</span></label>
+                    </div>
+                    <div x-data="{ openState: false, selectedState: '', states: [
+                { name: 'Andhra Pradesh', value: 'andhra_pradesh' },
+                { name: 'Arunachal Pradesh', value: 'arunachal_pradesh' },
+                { name: 'Assam', value: 'assam' },
+                { name: 'Bihar', value: 'bihar' },
+                { name: 'Chhattisgarh', value: 'chhattisgarh' },
+                { name: 'Goa', value: 'goa' },
+                { name: 'Gujarat', value: 'gujarat' },
+                { name: 'Haryana', value: 'haryana' },
+                { name: 'Himachal Pradesh', value: 'himachal_pradesh' },
+                { name: 'Jharkhand', value: 'jharkhand' },
+                { name: 'Karnataka', value: 'karnataka' },
+                { name: 'Kerala', value: 'kerala' },
+                { name: 'Madhya Pradesh', value: 'madhya_pradesh' },
+                { name: 'Maharashtra', value: 'maharashtra' },
+                { name: 'Manipur', value: 'manipur' },
+                { name: 'Meghalaya', value: 'meghalaya' },
+                { name: 'Mizoram', value: 'mizoram' },
+                { name: 'Nagaland', value: 'nagaland' },
+                { name: 'Odisha', value: 'odisha' },
+                { name: 'Punjab', value: 'punjab' },
+                { name: 'Rajasthan', value: 'rajasthan' },
+                { name: 'Sikkim', value: 'sikkim' },
+                { name: 'Tamil Nadu', value: 'tamil_nadu' },
+                { name: 'Telangana', value: 'telangana' },
+                { name: 'Tripura', value: 'tripura' },
+                { name: 'Uttar Pradesh', value: 'uttar_pradesh' },
+                { name: 'Uttarakhand', value: 'uttarakhand' },
+                { name: 'West Bengal', value: 'west_bengal' },
+                { name: 'Andaman and Nicobar Islands', value: 'andaman_nicobar' },
+                { name: 'Chandigarh', value: 'chandigarh' },
+                { name: 'Dadra and Nagar Haveli', value: 'dadra_nagar_haveli' },
+                { name: 'Daman and Diu', value: 'daman_diu' },
+                { name: 'Lakshadweep', value: 'lakshadweep' },
+                { name: 'Delhi', value: 'delhi' },
+                { name: 'Puducherry', value: 'puducherry' },
+                { name: 'Ladakh', value: 'ladakh' },
+                { name: 'Jammu and Kashmir', value: 'jammu_kashmir' }
+            ] }">
+                        <!-- Input Field -->
+                        <div class="form-group">
+                            <input type="text"
+                                class="form-control placeholder-transparent outline-none w-full  px-4 py-2" name="State"
+                                id="State" placeholder="Enter city" x-model="selectedState" @click="openState = true" />
+                            <label for="State" class="animated-label">State<span
+                                    class="text-red-600 text-sm">*</span></label>
+                        </div>
+                        <!-- Modal Popup -->
+                        <div x-show="openState" @click.away="openState = false"
+                            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                            <div x-show="openState" x-cloak
+                                class="bg-white p-6 rounded-lg shadow-lg w-4/5 max-w-md max-height-custom overflow-y-auto"
+                                x-transition:enter="transform transition ease-in-out duration-500"
+                                x-transition:enter-start="translate-y-full opacity-0"
+                                x-transition:enter-end="translate-y-0 opacity-100"
+                                x-transition:leave="transform transition ease-in-out duration-500"
+                                x-transition:leave-start="translate-y-0 opacity-100"
+                                x-transition:leave-end="translate-y-full opacity-0">
+                                <div class=" flex items-center justify-between">
+                                    <h2 class="text-xl font-semibold mb-4">State</h2>
+                                    <svg @click="openState = false" xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="16" viewBox="0 0 16 16">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <g fill="#4D4D4D" fill-rule="nonzero">
+                                                <g>
+                                                    <g>
+                                                        <path
+                                                            d="M.363.363c.44-.44 1.136-.484 1.626-.11l.127.11L8 6.248 13.884.363c.452-.452 1.166-.482 1.652-.09l.101.09c.44.44.484 1.136.099 1.641l-.099.112L9.752 8l5.885 5.884c.452.452.482 1.166.09 1.652l-.09.101c-.44.44-1.136.484-1.641.099l-.112-.099L8 9.752l-5.883 5.885c-.452.452-1.166.482-1.652.09l-.101-.09c-.44-.44-.484-1.136-.099-1.64l.099-.113L6.247 8 .363 2.116C-.089 1.664-.119.95.273.464z"
+                                                            transform="translate(-903 -372) translate(497 343) translate(406 29)" />
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <template x-for="state in states" :key="state.value">
+                                        <div class="flex items-center gap-x-3 cursor-pointer"
+                                            @click="selectedState = state.name; openState = false">
+                                            <input type="radio" class="w-5 h-5" name="state" :value="state.name"
+                                                x-model="selectedState">
+                                            <span x-text="state.name" class=" text-[#1a181e]"></span>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- coupen section  -->
+            <div class=" bg-[#e6e6e6]">
+                <div class="bg-white flex  px-5 py-3 border-b  border-t border-[#e6e6e6]  justify-between gap-x-5 my-3">
+                    <div class=" flex gap-x-3 shadow-[#ccc]">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="mr8">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M15.0167 2.74015L14.8893 2.79164L13.1203 3.59164C12.4748 3.88255 11.7384 3.909 11.0765 3.67098L10.8803 3.59164L9.11027 2.79164C8.81027 2.65164 8.48027 2.65164 8.18027 2.77164C7.91455 2.88307 7.70688 3.07531 7.58432 3.31689L7.53027 3.44164L6.84927 5.26164C6.59352 5.93081 6.08484 6.47393 5.43955 6.76778L5.26027 6.84164L3.45027 7.52164C3.13927 7.64164 2.90027 7.87164 2.77027 8.18164C2.66741 8.43878 2.65271 8.71797 2.73878 8.98141L2.79027 9.11164L3.59027 10.8816C3.89277 11.5325 3.91797 12.2757 3.66589 12.942L3.59027 13.1216L2.79027 14.8816C2.65027 15.1816 2.65027 15.5116 2.77027 15.8216C2.88169 16.0788 3.0732 16.2845 3.3215 16.4136L3.45027 16.4716L5.26027 17.1516C5.9386 17.4083 6.47409 17.9087 6.77352 18.5603L6.84927 18.7416L7.53027 20.5516C7.63927 20.8616 7.88027 21.1016 8.18027 21.2216C8.32027 21.2816 8.48027 21.3116 8.63027 21.3116C8.75027 21.3116 8.87589 21.2948 8.9987 21.2568L9.12027 21.2116L10.8803 20.4116C11.5311 20.1091 12.2744 20.0839 12.9406 20.336L13.1203 20.4116L14.8893 21.2116C15.1903 21.3416 15.5203 21.3516 15.8203 21.2216C16.086 21.1188 16.2929 20.9278 16.4159 20.6801L16.4703 20.5516L17.1503 18.7416C17.4069 18.0633 17.9157 17.5194 18.561 17.2255L18.7403 17.1516L20.5503 16.4716C20.8603 16.3516 21.0993 16.1216 21.2303 15.8216C21.3323 15.5559 21.3468 15.2755 21.2614 15.0119L21.2103 14.8816L20.4103 13.1216C20.1194 12.4762 20.0929 11.7398 20.3309 11.0778L20.4103 10.8816L21.2103 9.11164C21.3493 8.81164 21.3493 8.48164 21.2303 8.18164C21.118 7.91593 20.9263 7.70899 20.6787 7.57972L20.5503 7.52164L18.7403 6.84164C18.0711 6.59414 17.528 6.08615 17.2264 5.44092L17.1503 5.26164L16.4703 3.44164C16.3603 3.14164 16.1303 2.90164 15.8203 2.77164C15.5631 2.66878 15.2766 2.65409 15.0167 2.74015ZM16.4299 14.7516C16.4299 13.8216 15.6799 13.0616 14.7499 13.0616C13.8199 13.0616 13.0699 13.8216 13.0699 14.7516C13.0699 15.6816 13.8199 16.4316 14.7499 16.4316C15.6799 16.4316 16.4299 15.6816 16.4299 14.7516ZM15.2101 7.72159C15.0701 7.61159 14.9101 7.56159 14.7501 7.56159C14.5201 7.56159 14.2901 7.67159 14.1401 7.87159L8.6401 15.2016C8.5101 15.3716 8.4601 15.5716 8.4901 15.7716C8.5201 15.9816 8.6301 16.1516 8.7901 16.2816C9.1201 16.5216 9.6201 16.4516 9.8601 16.1216L15.3601 8.79159C15.6201 8.45159 15.5501 7.97159 15.2101 7.72159ZM10.9299 9.25159C10.9299 8.32159 10.1799 7.56159 9.2499 7.56159C8.3199 7.56159 7.5699 8.32159 7.5699 9.25159C7.5699 10.1816 8.3199 10.9316 9.2499 10.9316C10.1799 10.9316 10.9299 10.1816 10.9299 9.25159Z"
+                                fill="#17B31B"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M17.8393 2.73944C17.5575 2.11859 17.0418 1.61747 16.4103 1.35164C15.7203 1.07164 14.9303 1.08164 14.2503 1.39164L12.4503 2.21164L12.3195 2.25566C12.0539 2.32878 11.7674 2.31164 11.5103 2.19164L9.75027 1.39164L9.53164 1.30524C9.23763 1.20284 8.93427 1.15164 8.63027 1.15164C8.28027 1.15164 7.92027 1.22164 7.59027 1.35164C6.90027 1.64164 6.34927 2.21164 6.09027 2.91164L5.41027 4.72164L5.35929 4.83824C5.22667 5.10211 5.00027 5.30664 4.72027 5.41164L2.91027 6.09164L2.73805 6.1626C2.11713 6.44428 1.61602 6.95914 1.36027 7.59164C1.07027 8.28164 1.08027 9.07164 1.38927 9.75164L2.20027 11.5116L2.25169 11.6472C2.33741 11.9233 2.32027 12.2245 2.20027 12.4816L1.38927 14.2516L1.31241 14.4397C1.08093 15.0745 1.09663 15.7844 1.36027 16.4116C1.63927 17.1016 2.21027 17.6416 2.91027 17.9116L4.72027 18.5916L4.83687 18.6426C5.10073 18.7751 5.30527 19.0004 5.41027 19.2716L6.09027 21.0916L6.16101 21.2636C6.44206 21.8831 6.95777 22.3758 7.59027 22.6416C8.28027 22.9316 9.07027 22.9116 9.75027 22.6016L11.5103 21.8016L11.6459 21.7502C11.9221 21.6645 12.2246 21.6816 12.4903 21.8016L14.2503 22.6016L14.4383 22.679C15.0731 22.9127 15.783 22.9053 16.4103 22.6416C17.0993 22.3516 17.6503 21.7916 17.9103 21.0916L18.5903 19.2716L18.6412 19.1583C18.7739 18.9012 19.0003 18.6966 19.2803 18.5916L21.0903 17.9016L21.2625 17.8309C21.8832 17.5506 22.3835 17.0441 22.6393 16.4116C22.9303 15.7216 22.9103 14.9316 22.6103 14.2516L21.8003 12.4816L21.7488 12.3466C21.6631 12.0725 21.6803 11.7774 21.8003 11.5116L22.6103 9.75164L22.6874 9.56136C22.9196 8.92057 22.9038 8.21891 22.6393 7.59164C22.3603 6.90164 21.7903 6.35164 21.0903 6.09164L19.2803 5.41164L19.1637 5.36066C18.8998 5.22805 18.6953 5.00164 18.5903 4.72164L17.9103 2.91164L17.8393 2.73944ZM14.8893 2.79164L15.0167 2.74015C15.2766 2.65409 15.5631 2.66878 15.8203 2.77164C16.1303 2.90164 16.3603 3.14164 16.4703 3.44164L17.1503 5.26164L17.2264 5.44092C17.528 6.08615 18.0711 6.59414 18.7403 6.84164L20.5503 7.52164L20.6787 7.57972C20.9263 7.70899 21.118 7.91593 21.2303 8.18164C21.3493 8.48164 21.3493 8.81164 21.2103 9.11164L20.4103 10.8816L20.3309 11.0778C20.0929 11.7398 20.1194 12.4762 20.4103 13.1216L21.2103 14.8816L21.2614 15.0119C21.3468 15.2755 21.3323 15.5559 21.2303 15.8216C21.0993 16.1216 20.8603 16.3516 20.5503 16.4716L18.7403 17.1516L18.561 17.2255C17.9157 17.5194 17.4069 18.0633 17.1503 18.7416L16.4703 20.5516L16.4159 20.6801C16.2929 20.9278 16.086 21.1188 15.8203 21.2216C15.5203 21.3516 15.1903 21.3416 14.8893 21.2116L13.1203 20.4116L12.9406 20.336C12.2744 20.0839 11.5311 20.1091 10.8803 20.4116L9.12027 21.2116L8.9987 21.2568C8.87589 21.2948 8.75027 21.3116 8.63027 21.3116C8.48027 21.3116 8.32027 21.2816 8.18027 21.2216C7.88027 21.1016 7.63927 20.8616 7.53027 20.5516L6.84927 18.7416L6.77352 18.5603C6.47409 17.9087 5.9386 17.4083 5.26027 17.1516L3.45027 16.4716L3.3215 16.4136C3.0732 16.2845 2.88169 16.0788 2.77027 15.8216C2.65027 15.5116 2.65027 15.1816 2.79027 14.8816L3.59027 13.1216L3.66589 12.942C3.91797 12.2757 3.89277 11.5325 3.59027 10.8816L2.79027 9.11164L2.73878 8.98141C2.65271 8.71797 2.66741 8.43878 2.77027 8.18164C2.90027 7.87164 3.13927 7.64164 3.45027 7.52164L5.26027 6.84164L5.43955 6.76778C6.08484 6.47393 6.59352 5.93081 6.84927 5.26164L7.53027 3.44164L7.58432 3.31689C7.70688 3.07531 7.91455 2.88307 8.18027 2.77164C8.48027 2.65164 8.81027 2.65164 9.11027 2.79164L10.8803 3.59164L11.0765 3.67098C11.7384 3.909 12.4748 3.88255 13.1203 3.59164L14.8893 2.79164Z"
+                                fill="#17B31B"></path>
+                        </svg>
+                        <div>
+                            <div class="  flex-wrap flex-row flex gap-x-3">
+                                <span class=" text-[14px] font-medium">Coupons and offers</span>
+                            </div>
+                            <p class=" text-[13px] text-[grey]">Save more with coupon and offers</p>
+                        </div>
+                    </div>
+                    <div class="flex" @click="navHamburger = true">
+                        <span class="block text-[#146EB4] font-medium whitespace-nowrap text-[14px]">4
+                            Offers</span>
+                        <div class="pt-[3px]">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" color="var(--primary)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M6.19526 13.138C5.93491 12.8776 5.93491 12.4555 6.19526 12.1952L10.3905 7.99992L6.19526 3.80466C5.93491 3.54431 5.93491 3.1222 6.19526 2.86185C6.45561 2.6015 6.87772 2.6015 7.13807 2.86185L11.8047 7.52851C12.0651 7.78886 12.0651 8.21097 11.8047 8.47132L7.13807 13.138C6.87772 13.3983 6.45561 13.3983 6.19526 13.138Z"
+                                    fill="#146EB4   "></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div x-show="navHamburger" x-cloak
+                        class="fixed inset-y-0 right-0  w-full z-20 bg-white shadow-lg transform transition-transform duration-300 ease-in-out"
+                        @click.away="navHamburger = false"
+                        :class="{ 'translate-x-full': !navHamburger, 'translate-x-0': navHamburger }">
+                        <div class="">
+                            <!-- Modal -->
+                            <div class="flex items-center justify-center">
+                                <div class="bg-white max-h-[100vh] overflow-y-auto scrollbar  overflow-hidden z-50 transform transition-all w-full"
+                                    x-cloak @click.away="navHamburger = false" x-show="navHamburger"
+                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                    x-transition:enter-start="translate-x-full opacity-0"
+                                    x-transition:enter-end="translate-x-0 opacity-100"
+                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                    x-transition:leave-start="translate-x-0 opacity-100"
+                                    x-transition:leave-end="translate-x-full opacity-0">
+                                    <!-- Modal header -->
+                                    <div class="flex items-start px-[16px] gap-x-3 py-[12px] border-b border-[#d9d9d9]">
+                                        <svg class="cursor-pointer" x-on:click="navHamburger = false"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" color="#1A181E">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <g fill="currentColor" fill-rule="nonzero">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                                                transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                                            </path>
+                                                            <path
+                                                                d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                                                transform="translate(-16 -95) translate(16 95) translate(1 3)">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                        <div class="text-left">
+                                            <h3 class="text-[16px] font-medium text-[#1a181e]">
+                                                Coupons and offers
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <!-- search coupon  -->
+                                    <div class="px-5">
+                                        <div class="relative w-full py-5">
+                                            <input type="text"
+                                                class=" py-3 outline-none border-b border-gray-300 bg-white w-full text-black text-base leading-6"
+                                                maxlength="50" placeholder="Enter Coupon Code" value="" />
+                                            <span
+                                                class="absolute right-0 top-[32px] cursor-pointer min-w-[45px] text-[#EE741F] opacity-50 text-base font-medium transition-colors duration-300 ease-in-out">Apply</span>
+                                        </div>
+                                        <!-- search coupon end -->
+                                        <div class="mt-1">
+                                            <p class="font-medium text-[#1a181e]">
+                                                Available coupons
+                                            </p>
+                                            <span class="mt-2 bg-[#EE741F] w-[64px] h-[4px] block"></span>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">WELCOME</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add
+                                                items
+                                                worth
+                                                ₹339 more to
+                                                get this offer</span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹50 off on item total above
+                                                ₹499. Applicable on both online
+                                                payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-show="open"
+                                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both online payment and COD
+                                                    </li>
+                                                    <li>
+                                                        Applicable only once per
+                                                        user
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">STD75</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add
+                                                items
+                                                worth
+                                                ₹2,339 more to
+                                                get this offer
+                                            </span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹75 off on item total above
+                                                ₹2,499. Applicable on both
+                                                online payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-show="open"
+                                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both
+                                                        online payment and COD
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">STD75</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add
+                                                items
+                                                worth
+                                                ₹2,339 more to
+                                                get this offer
+                                            </span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹75 off on item total above
+                                                ₹2,499. Applicable on both
+                                                online payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both
+                                                        online payment and COD
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="border-b border-[#e6e6e6]">
+                                            <div class="flex justify-between pt-5">
+                                                <div class="coupon-code-wrapper">
+                                                    <div class="circle-left"></div>
+                                                    <div class="circle-right"></div>
+                                                    <div class="coupon-code">
+                                                        <span class="font-medium">STD75</span>
+                                                    </div>
+                                                </div>
+                                                <button class="font-medium text-[#EE741F]">
+                                                    APPLY
+                                                </button>
+                                            </div>
+                                            <span class="text-[#e50b20] text-[13px] font-medium pt-2 block">Add
+                                                items
+                                                worth
+                                                ₹2,339 more to
+                                                get this offer
+                                            </span>
+                                            <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                                                Get ₹75 off on item total above
+                                                ₹2,499. Applicable on both
+                                                online payment and COD
+                                            </p>
+                                            <!-- details  -->
+                                            <div x-data="{ open: false }" class="py-3">
+                                                <!-- Toggle Button -->
+                                                <div class="flex items-center cursor-pointer" @click="open = !open">
+                                                    <span class="text-[14px] text-[#4d4d4d] font-medium">Details</span>
+                                                    <svg class="arrow" :class="{ 'open': open }" width="18" height="18"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="grey" fill-rule="evenodd">
+                                                            <g fill="grey" fill-rule="nonzero">
+                                                                <g>
+                                                                    <g>
+                                                                        <g>
+                                                                            <path
+                                                                                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                                                                                transform="translate(-1248 -147) translate(1191 142) translate(16 3) translate(41 2)">
+                                                                            </path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <!-- Details List -->
+                                                <ul x-show="open"
+                                                    x-transition:enter="transform transition ease-in-out duration-500"
+                                                    x-transition:enter-start="translate-y-full opacity-0"
+                                                    x-transition:enter-end="translate-y-0 opacity-100"
+                                                    x-transition:leave="transform transition ease-in-out duration-500"
+                                                    x-transition:leave-start="translate-y-0 opacity-100"
+                                                    x-transition:leave-end="translate-y-full opacity-0"
+                                                    class="list-disc pl-7 mt-2 text-[grey] text-[12px]">
+                                                    <li>
+                                                        Applicable on both
+                                                        online payment and COD
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-b border-[#e6e6e6]  bg-white mb-3" id="price-detail">
+                    <div class="p-[20px] ">
+                        <div class="space-y-1 border-b border-[#d9d9d9] border-dashed pb-5">
+                            <div class="flex justify-between">
+                                <span>Item total</span>
+                                <div class="flex gap-x-1.5">
+                                    <span class="line-through text-[grey]">₹390</span>
+                                    <span>₹340</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Delivery fee</span>
+                                <div class="flex gap-x-1.5">
+                                    <span class="line-through text-[grey]">₹99</span>
+                                    <span>₹49</span>
+                                </div>
+                            </div>
+                            <p class="text-[grey] text-[12px]">
+                                Free delivery on item total above
+                            </p>
+                        </div>
+                        <div class="border-b border-[#d9d9d9] border-dashed pb-5 py-3">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Grand total
+                                </span>
+                                <span class="font-medium">₹389</span>
+                            </div>
+                            <p class="text-[grey] text-[14px] pt-[2px]">
+                                Inclusive of all taxes
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex items-center py-3 gap-x-[3px] text-[14px]">
+                                <h5 class="text-[grey]">
+                                    Average delivery time:
+                                </h5>
+                                <span class="font-medium block">2-5 days</span>
+                            </div>
+                            <div class="rounded-[4px] py-[8px] px-[24px] text-center" style="
+                        background-color: rgba(
+                            23,
+                            179,
+                            27,
+                            0.1
+                        );
+                    ">
+                                <h5 class="font-medium text-[#17b31b] text-[14px]">
+                                    26% (₹100) saved so far on this
+                                    order
+                                </h5>
+                                <span class="text-[#17b31b] text-[12px] block">Save ₹49 on delivery fee by
+                                    adding ₹661 more to cart</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-b border-[#e6e6e6] px-[8px] py-[5px] bg-white mb-3">
+                    <div class="pt-[12px] pb-[4px] flex items-center gap-x-2 justify-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            style="min-width: 20px">
+                            <g clip-path="url(#clip0_11931_187443)">
+                                <path
+                                    d="M16.2183 15.7484H7.78169C7.38794 15.7484 7.07861 16.0577 7.07861 16.4515V23.2945C7.07861 23.5476 7.21919 23.7866 7.44419 23.9132C7.68316 24.0398 7.95039 24.0257 8.1754 23.885L12 21.3259L15.8246 23.8851C16.0496 24.0257 16.3169 24.0398 16.5558 23.9132C16.7808 23.7866 16.9214 23.5477 16.9214 23.2945V16.4514C16.9214 16.0577 16.6121 15.7484 16.2183 15.7484Z"
+                                    fill="#EE741F"></path>
+                                <path
+                                    d="M16.9214 16.4514V23.2945C16.9214 23.5476 16.7808 23.7866 16.5558 23.9132C16.3169 24.0398 16.0496 24.0257 15.8246 23.885L12 21.3259V15.7484H16.2183C16.6121 15.7484 16.9214 16.0577 16.9214 16.4514Z"
+                                    fill="#EE741F"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M2.86035 9.13974C2.86035 4.10578 6.96609 0 12 0C12 0 12.0001 0 12.0001 0C12.6293 1.42598e-06 13.244 0.0641535 13.8381 0.18625C17.5507 0.949337 20.4543 3.97579 21.0341 7.75059C21.1037 8.20373 21.1398 8.66765 21.1398 9.13973C21.1398 14.1736 17.0341 18.2795 12.0001 18.2795V18.2794C12.0001 18.2794 12 18.2794 12 18.2794C6.96609 18.2794 2.86035 14.1737 2.86035 9.13974Z"
+                                    fill="#EE741F"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M15.22 10.3068L17.3995 8.22568C17.5962 8.0289 17.6666 7.74765 17.5964 7.49448C17.512 7.2414 17.287 7.04452 17.02 7.01635L13.9825 6.58046L12.6327 3.89485C12.5062 3.65579 12.253 3.54333 12 3.54333V3.54343C12 3.54343 11.9999 3.54343 11.9999 3.54343C11.7469 3.54343 11.4937 3.65589 11.3672 3.89495L10.0174 6.58056L6.97994 7.01645C6.71289 7.04462 6.48799 7.2415 6.40357 7.49457C6.33321 7.74765 6.40357 8.0289 6.6003 8.22568L8.7798 10.3068L8.25972 13.2315C8.21749 13.4986 8.32994 13.7658 8.54088 13.9206C8.75168 14.0893 9.04708 14.1034 9.28614 13.9768L12 12.5847L12 12.5847V12.5847L14.7137 13.9768C14.9528 14.1034 15.2482 14.0893 15.459 13.9206C15.6699 13.7658 15.7824 13.4986 15.7401 13.2315L15.22 10.3068Z"
+                                    fill="white"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_11931_187443">
+                                    <rect width="24" height="24" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span class="text-[14px] block">You will earn 3.89 Loyalty Points
+                            on this order</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+         <!-- mobile payment section end  -->
+         <div class=" bottom-0  w-full z-10 border-b lg:border-t lg:border-b-0 border-[#e6e6e6] sticky">
+            <div class="w-full mx-auto max-w-screen-xl">
+                <div class="lg:flex items-center justify-between  bg-white  mb-3 py-4 px-4 md:px-0 ">
+                    <div class="flex items-start">
+                        <div class="mr-4">
+                            <img src="/icons/visa.svg" alt="" />
+                        </div>
+                        <div class="mr-4">
+                            <img src="/icons/master-card.svg" alt="" />
+                        </div>
+                        <div class="mr-4">
+                            <img src="/icons/rupay.svg" alt="" />
+                        </div>
+                        <div class="mr-4">
+                            <img src="/icons/bhim-bhim.svg" alt="" />
+                        </div>
+                        <div class="mr-4">
+                            <img src="/icons/cod.svg" alt="" />
+                        </div>
+                        <div class="mr-4">
+                            <img src="/icons/net-banking.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-normal mt-3 md:mt-0">
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.72318 10.3954C7.40608 10.2833 7.13882 10.0627 6.96864 9.77259C6.79846 9.48248 6.73631 9.14154 6.79319 8.81005C6.85006 8.47855 7.0223 8.17783 7.27945 7.96105C7.5366 7.74426 7.86211 7.62537 8.19845 7.62537C8.53478 7.62537 8.86029 7.74426 9.11744 7.96105C9.37459 8.17783 9.54684 8.47855 9.60372 8.81005C9.66059 9.14154 9.59844 9.48248 9.42826 9.77259C9.25808 10.0627 8.99081 10.2833 8.67371 10.3954V12.8763C8.67371 13.0023 8.62365 13.1232 8.53452 13.2124C8.44539 13.3015 8.32449 13.3515 8.19845 13.3515C8.0724 13.3515 7.95152 13.3015 7.86239 13.2124C7.77326 13.1232 7.72318 13.0023 7.72318 12.8763V10.3954ZM4.12544 6.11802C3.91119 6.11801 3.69904 6.16037 3.50122 6.24265C3.30339 6.32493 3.12378 6.4455 2.97273 6.59744C2.82167 6.74939 2.70214 6.9297 2.62102 7.128C2.5399 7.3263 2.49877 7.53868 2.50003 7.75293V13.171C2.4994 13.3854 2.5411 13.5979 2.62275 13.7963C2.70439 13.9946 2.82436 14.1748 2.9758 14.3267C3.12724 14.4786 3.30716 14.5991 3.50525 14.6813C3.70334 14.7635 3.91571 14.8059 4.13018 14.8059H12.2715C12.4863 14.8065 12.6992 14.7646 12.8979 14.6827C13.0965 14.6007 13.277 14.4803 13.4289 14.3284C13.5809 14.1765 13.7013 13.996 13.7832 13.7974C13.8652 13.5987 13.907 13.3858 13.9064 13.171V7.75293C13.9064 7.32015 13.7348 6.90503 13.4292 6.59856C13.1236 6.29209 12.709 6.11928 12.2762 6.11802V4.21696C12.2949 3.67006 12.2033 3.125 12.0069 2.61425C11.8105 2.10349 11.5133 1.63748 11.133 1.24399C10.7528 0.850498 10.2972 0.537577 9.79341 0.323858C9.28966 0.11014 8.74804 0 8.20082 0C7.65361 0 7.11199 0.11014 6.60823 0.323858C6.10448 0.537577 5.64889 0.850498 5.26861 1.24399C4.88833 1.63748 4.59113 2.10349 4.39473 2.61425C4.19834 3.125 4.10676 3.67006 4.12544 4.21696V6.11802ZM5.75559 6.11802V4.21696C5.74103 3.88678 5.79349 3.55708 5.90981 3.24772C6.02613 2.93836 6.20389 2.65576 6.43239 2.41696C6.66088 2.17817 6.93538 1.98814 7.23932 1.8583C7.54325 1.72847 7.87032 1.66153 8.20082 1.66153C8.53133 1.66153 8.85841 1.72847 9.16235 1.8583C9.46628 1.98814 9.74076 2.17817 9.96926 2.41696C10.1978 2.65576 10.3755 2.93836 10.4918 3.24772C10.6082 3.55708 10.6606 3.88678 10.6461 4.21696V6.11802H5.75559Z"
+                                fill="#4D4D4D"></path>
+                        </svg>
+                        <span class="text-gray-500 text-sm ml-2">100% secured payments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- amount pay section bottom  -->
+        <footer class="sticky bottom-0 w-full z-10 bg-white border-t border-[#e6e6e6] lg:hidden block">
+            <div class="container p-5 flex justify-between">
+                <div class=" w-full">
+                    <span class="block text-[20px] font-medium">₹209</span>
+                    <a href="#price-detail"
+                        class=" scroll-link block text-[#146EB4] text-[12px] underline font-medium"
+                        data-target="#price-detail">View price details</a>
+                </div>
+                <button id="submitButton" class="text-white bg-[#146EB4] hover:bg-[#177ccb] rounded-md  font-medium w-full">
+                    <span
+                        x-text="selectedPayment=='upi' || selectedPayment=='online-payment'?'Pay $209':'Place Order'">Pay
+                        $209</span>
+                    <span></span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/state.js"></script>
+    <script src="/js/address.js"></script>
+</body>
+
+</html>

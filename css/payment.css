@@ -1,0 +1,142 @@
+    @font-face {
+        font-family: 'GalanoGrotesque, sans-serif';
+        src: url('/galano-grotesque-alt/GalanoGrotesqueAltMedium.otf') format('truetype');
+        font-style: normal;
+    }
+
+    body {
+        font-family: 'GalanoGrotesque, sans-serif';
+    }
+
+    [x-cloak] {
+        display: none;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .container {
+            width: 1140px;
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
+        .container {
+            width: 960px;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container {
+            width: 720px;
+        }
+    }
+
+    @media only screen and (min-width: 576px) {
+        .container {
+            width: 540px;
+        }
+    }
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .container {
+            width: 1248px !important;
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
+        .container {
+            width: 960px;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container {
+            width: 720px;
+        }
+    }
+
+    @media only screen and (min-width: 576px) {
+        .container {
+            width: 540px;
+        }
+    }
+
+    /* coupen code start */
+    .coupon-code-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .circle-left,
+    .circle-right {
+        height: 12px;
+        width: 12px;
+        background-color: white;
+        position: absolute;
+        top: 7px;
+        border-radius: 50%;
+        border: 1px solid #ee741f;
+        z-index: 1;
+    }
+
+    .circle-left {
+        left: -6px;
+    }
+
+    .circle-right {
+        right: -6px;
+    }
+
+    .coupon-code {
+        padding: 2px 12px;
+        border: 1px solid #ee741f;
+        background-color: rgba(238, 116, 31, 0.1);
+        border-radius: 2px;
+        color: black;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .arrow {
+        transition: transform 0.3s ease;
+    }
+
+    .arrow.open {
+        transform: rotate(180deg);
+    }
+
+    /* coupen code end */
+
+    .scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .custom-gradient {
+        background-image: linear-gradient(to left,
+                rgba(20, 110, 180, 0.08),
+                rgba(20, 110, 180, 0));
+    }
+
+
+    .menu-item.active,
+    .menu-item.active:hover {
+        background-color: #E7F0F7;
+        /* Example active background color */
+        border-radius: 9999px;
+        color: #146EB4;
+    }
+
+    .active-icon {
+        color: #146EB4;
+        /* Example active icon color */
+    }
