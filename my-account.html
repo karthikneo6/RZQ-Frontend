@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/your-project-id.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <!-- header sectiion  -->
+    <div x-data="{ offers: false,
+        navHamburger: false,
+        offerBottomPopup: false,
+        active: '200ML', showInput: true, currentVal: 1, minVal: 0, maxVal: 10, decimalPoints: 0, incrementAmount: 1,
+        cardCount:{
+            '200ML':0,
+            '500ML':0,
+            '600ML':0,
+            '700ML':0,
+            '800ML':0,
+            '850ML':0,
+        },
+        showSnackbar: false,
+        searchInput: false,
+        mobileInput: false,
+        openSearch: false,
+        footerNavButton: '' }" class="">
+        <div class="bg-[#007e20] p-[10px] lg:flex justify-center items-center gap-[24px]">
+            <p class="font-medium text-white text-center text-[12px] lg:text-[16px]">
+                Free Shipping above 1000 | COD Available across India
+            </p>
+            <div class="flex justify-center lg:flex-none pt-1.5 lg:pt-0">
+                <button
+                    class="px-[12px] py-[4px] bg-[#EE741F] text-white rounded-[4px] text-[14px] hover:text-[#1a181e]">
+                    Use WELCOME for ₹50 OFF
+                </button>
+            </div>
+        </div>
+        <div class=" hidden lg:block sticky inset-x-0 top-0 left-0 z-10 bg-white lg:border-b lg:border-gray-300">
+            <header class="flex-col gap-[10px] py-[16px] lg:px-0 px-[12px] flex container mx-auto">
+                <div class="flex justify-between items-center">
+                    <div class="items-center flex justify-between lg:w-fit w-full">
+                        <a href="/landing.html" class="flex cursor-pointer items-center">
+                            <img src="/images/s-icon-big.webp" alt="" class="w-12 h-12" />
+                            <h1 class="text-[25px] font-medium ml-5">
+                                Standard Store
+                            </h1>
+                        </a>
+                        <div class="lg:hidden block">
+                            <div class="navHamburger cursor-pointer pt-1" @click="navHamburger = true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg" alt="menu" class="text-black">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M2.09961 11.9996C2.09961 11.5026 2.50255 11.0996 2.99961 11.0996H20.9996C21.4967 11.0996 21.8996 11.5026 21.8996 11.9996C21.8996 12.4967 21.4967 12.8996 20.9996 12.8996H2.99961C2.50255 12.8996 2.09961 12.4967 2.09961 11.9996Z">
+                                    </path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M2.09961 5.99961C2.09961 5.50255 2.50255 5.09961 2.99961 5.09961H20.9996C21.4967 5.09961 21.8996 5.50255 21.8996 5.99961C21.8996 6.49667 21.4967 6.89961 20.9996 6.89961H2.99961C2.50255 6.89961 2.09961 6.49667 2.09961 5.99961Z">
+                                    </path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M2.09961 17.9996C2.09961 17.5026 2.50255 17.0996 2.99961 17.0996H20.9996C21.4967 17.0996 21.8996 17.5026 21.8996 17.9996C21.8996 18.4967 21.4967 18.8996 20.9996 18.8996H2.99961C2.50255 18.8996 2.09961 18.4967 2.09961 17.9996Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div x-show="navHamburger" x-cloak
+                                class="fixed inset-y-0 right-0 lg:w-[400px] w-full z-20 bg-white shadow-lg p-5 transform transition-transform duration-300 ease-in-out"
+                                @click.away="navHamburger = false"
+                                :class="{ 'translate-x-full': !navHamburger, 'translate-x-0': navHamburger }">
+                                <div class="">
+                                    <div class="flex items-center justify-between pb-[12px] border-b border-[#e6e6e6]">
+                                        <p>Menu</p>
+                                        <svg @click="navHamburger = ! navHamburger"
+                                            class="closeDrawer cursor-pointer MobileMenu_closeMenuIcon__1iun3"
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            viewBox="0 0 16 16" color="var(--black-50)" alt="close">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <g fill="currentColor" fill-rule="nonzero">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M.363.363c.44-.44 1.136-.484 1.626-.11l.127.11L8 6.248 13.884.363c.452-.452 1.166-.482 1.652-.09l.101.09c.44.44.484 1.136.099 1.641l-.099.112L9.752 8l5.885 5.884c.452.452.482 1.166.09 1.652l-.09.101c-.44.44-1.136.484-1.641.099l-.112-.099L8 9.752l-5.883 5.885c-.452.452-1.166.482-1.652.09l-.101-.09c-.44-.44-.484-1.136-.099-1.64l.099-.113L6.247 8 .363 2.116C-.089 1.664-.119.95.273.464z"
+                                                                transform="translate(-903 -372) translate(497 343) translate(406 29)">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <ul class="pt-5 space-y-5">
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Millet Cookies
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Millet Noodles
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Millet Vermicelli
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Millet Pasta
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Millet Flakes
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Millet Snacks
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Healthy Snacks
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Tea Coffee
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Health Mix
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Milk Mix
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Handmade Soaps
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Copper Items
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Liquid Cleaner
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Shipping & Delivery Policy
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Order Cancellation Policy
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Blog
+                                        </li>
+                                        <li class="cursor-pointer font-medium text-[#1a181e]">
+                                            Change store language
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- desktop input search  -->
+                    <div class="searchbar-component searchbar-wrapper w-[432px] rounded-lg pt-1 lg:block hidden">
+                        <div x-ref="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                        <div x-cloak @click.away="openSearch = false; $refs.overlay.classList.add('hidden')"
+                            class="relative">
+                            <div class="searchbar-component searchbar-wrapper w-[432px] rounded-lg pt-1 relative z-50"
+                                @click="openSearch = true; $refs.overlay.classList.remove('hidden')">
+                                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 20 20" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                        fill="#B2B2B2"></path>
+                                </svg>
+                                <input type="text" class="search-input advance-filter__search-input outline-none"
+                                    name="search" autocomplete="off"
+                                    @focus="openSearch = true; $refs.overlay.classList.remove('hidden')"
+                                    placeholder="Search for products..." />
+                                <div x-show="openSearch" x-cloak
+                                    class="absolute mt-2 w-[432px] rounded-lg shadow-lg bg-white z-50 overflow-y-auto max-h-max h-[400px]">
+                                    <div class="p-4">
+                                        <h3 class="text-lg font-semibold mb-2">
+                                            Bestsellers
+                                        </h3>
+                                        <div class="grid grid-cols-4 gap-4">
+                                            <div class="text-center">
+                                                <img src="/images/categorie1.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Cold Pressed Oils
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie2.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    100% Pure Ghee
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie3.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Rices
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie4.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Pulses
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie2.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    100% Pure Ghee
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie3.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Rices
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie4.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Pulses
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie3.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Rices
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie4.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Pulses
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/images/categorie3.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Rices
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <img src="/images/categorie4.webp" alt=""
+                                                    class="aspect-square rounded-[6px]" />
+                                                <p
+                                                    class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                    Pulses
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- desktop input search end -->
+                    <aside class="lg:flex hidden items-center justify-between gap-x-8">
+                        <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full">
+                            <svg class="default" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" alt="Categories" color="black" text="">
+                                <path
+                                    d="M20.4971 13C21.3255 13 21.9971 13.6716 21.9971 14.5V20.5C21.9971 21.3284 21.3255 22 20.4971 22H14.4971C13.6686 22 12.9971 21.3284 12.9971 20.5V14.5C12.9971 13.6716 13.6686 13 14.4971 13H20.4971ZM9.5 13C10.3284 13 11 13.6716 11 14.5V20.5C11 21.3284 10.3284 22 9.5 22H3.5C2.67157 22 2 21.3284 2 20.5V14.5C2 13.6716 2.67157 13 3.5 13H9.5ZM20.297 14.7H14.697V20.3H20.297V14.7ZM9.3 14.7H3.7V20.3H9.3V14.7ZM9.5 2C10.3284 2 11 2.67157 11 3.5V9.5C11 10.3284 10.3284 11 9.5 11H3.5C2.67157 11 2 10.3284 2 9.5V3.5C2 2.67157 2.67157 2 3.5 2H9.5ZM20.4971 2C21.3255 2 21.9971 2.67157 21.9971 3.5V9.5C21.9971 10.3284 21.3255 11 20.4971 11H14.4971C13.6686 11 12.9971 10.3284 12.9971 9.5V3.5C12.9971 2.67157 13.6686 2 14.4971 2H20.4971ZM9.3 3.7H3.7V9.3H9.3V3.7ZM20.297 3.7H14.697V9.3H20.297V3.7Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <h5>Categories</h5>
+                        </div>
+                        <div
+                            class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full relative">
+                            <svg class="badgeItem" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" alt="Bag" color="var(--black-30)" text="">
+                                <path
+                                    d="M17.5303 2C17.7769 2 18.0091 2.1161 18.157 2.31336L20.9105 5.985C20.9338 6.01451 20.955 6.04575 20.974 6.07848C20.9829 6.09427 20.9915 6.11041 20.9995 6.12681C21.0067 6.14109 21.0133 6.15592 21.0196 6.17098C21.0243 6.18292 21.0289 6.19482 21.0331 6.20682C21.0407 6.22728 21.0472 6.24826 21.0528 6.2696C21.0698 6.33447 21.0787 6.40189 21.0787 6.47005V19.3733C21.0787 20.824 19.9027 22 18.452 22H5.54873C4.09802 22 2.922 20.824 2.922 19.3733V6.47005C2.922 6.36611 2.94267 6.26389 2.98211 6.16909C2.98795 6.15455 2.99438 6.14034 3.00121 6.12636C3.02283 6.08242 3.04873 6.03994 3.07868 6L3.027 6.07799C3.02812 6.07606 3.02925 6.07413 3.03039 6.07221L3.07868 6L5.84366 2.31336C5.99161 2.1161 6.2238 2 6.47038 2H17.5303ZM19.511 7.253H4.488L4.48882 19.3733C4.48882 19.8806 4.84525 20.3047 5.32135 20.4087L5.43324 20.427L5.54873 20.4332H18.452C19.0373 20.4332 19.5119 19.9586 19.5119 19.3733L19.511 7.253ZM15.687 9.37327C16.1196 9.37327 16.4704 9.72402 16.4704 10.1567C16.4704 12.6254 14.4691 14.6267 12.0003 14.6267C9.5316 14.6267 7.53029 12.6254 7.53029 10.1567C7.53029 9.72402 7.88104 9.37327 8.3137 9.37327C8.74637 9.37327 9.09711 9.72402 9.09711 10.1567C9.09711 11.7601 10.3969 13.0599 12.0003 13.0599C13.6037 13.0599 14.9036 11.7601 14.9036 10.1567C14.9036 9.72402 15.2543 9.37327 15.687 9.37327ZM17.1386 3.56682H6.86117L5.27 5.686H18.728L17.1386 3.56682Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <span
+                                class="inline-block text-white text-center text-sm font-normal bg-red-600 rounded-full px-1 py-0.5 absolute top-[-2px] left-[2px] min-w-[18px] h-[18px] leading-[14px] whitespace-nowrap">
+                                3
+                            </span>
+                            <h5>Cart</h5>
+                        </div>
+                        <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" alt="Account" color="var(--black-30)" text="">
+                                <path
+                                    d="M15.9255 13.7621C18.9394 13.7621 21.3459 16.3793 21.4562 19.6018L21.4602 19.833V21.0911C21.4602 21.6264 21.0536 22.0672 20.5314 22.1236L20.4178 22.1297H3.57165C3.03435 22.1297 2.59201 21.7246 2.53541 21.2042L2.5293 21.0911V19.833C2.5293 16.5828 4.86571 13.89 7.84974 13.7665L8.06396 13.7621H15.9255ZM15.9255 15.5623H8.06396C6.09351 15.5623 4.4325 17.3302 4.33364 19.6171L4.32899 19.833L4.32799 20.3288H19.6605V19.833C19.6605 17.5149 18.0592 15.6768 16.1093 15.5675L15.9255 15.5623ZM11.9947 2.60028C14.6914 2.60028 16.8734 4.79535 16.8734 7.49817C16.8734 10.201 14.6914 12.3961 11.9947 12.3961C9.29806 12.3961 7.11604 10.201 7.11604 7.49817C7.11604 4.79535 9.29806 2.60028 11.9947 2.60028ZM11.9947 4.40053C10.2953 4.40053 8.91574 5.78635 8.91574 7.49817C8.91574 9.20999 10.2953 10.5958 11.9947 10.5958C13.6942 10.5958 15.0737 9.20999 15.0737 7.49817C15.0737 5.78635 13.6942 4.40053 11.9947 4.40053Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <h5>Account</h5>
+                        </div>
+                    </aside>
+                </div>
+                <!-- mobile section input search in header  -->
+                <div class="searchbar-component container searchbar-wrapper lg:w-[432px] w-full rounded-lg pt-1 lg:hidden block"
+                    @click.outside="searchInput = false">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 20 20" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                            fill="#B2B2B2"></path>
+                    </svg>
+                    <div>
+                        <div class="searchbar-component searchbar-wrapper lg:w-[432px] w-full rounded-lg pt-1 relative">
+                            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 20 20" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                    fill="#B2B2B2"></path>
+                            </svg>
+                            <input type="text" class="search-input advance-filter__search-input" name="search"
+                                autocomplete="off" @click="searchInput = true" placeholder="Search for products..." />
+                        </div>
+                    </div>
+                    <div x-show="searchInput" x-cloak
+                        class="w-screen h-screen fixed inset-0 z-50 bg-white container py-[16px] lg:px-0 px-[12px]">
+                        <div class="flex items-center gap-x-3">
+                            <svg @click="searchInput = false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="black">
+                                <g fill-rule="evenodd">
+                                    <g fill-rule="nonzero">
+                                        <g>
+                                            <g>
+                                                <path
+                                                    d="M10.72.51c.364.356.398.923.097 1.319l-.082.095-6.698 6.851H22.78c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H4.037l6.698 6.85c.386.396.379 1.029-.016 1.415-.364.356-.932.378-1.32.068l-.094-.084-8.36-8.55-.02-.02c-.02-.022-.039-.045-.057-.068l.077.088c-.033-.034-.063-.07-.09-.106-.019-.025-.036-.051-.052-.078l-.02-.035c-.011-.02-.022-.04-.031-.06l-.02-.049c-.01-.021-.017-.043-.024-.065l-.012-.039C.69 10.018.684 9.994.68 9.97l-.007-.043c-.004-.02-.006-.042-.008-.064L.66 9.794v-.037c0-.023.002-.046.004-.07l-.004.088c0-.052.004-.103.012-.153l.007-.041c.005-.025.01-.05.017-.073l.012-.04.023-.064.02-.048c.01-.02.02-.041.032-.061l.02-.035c.016-.027.033-.053.052-.078l.009-.013c.022-.028.041-.05.061-.072l.02-.021 8.36-8.55C9.691.13 10.325.124 10.719.51z"
+                                                    transform="translate(-16 -12) translate(16 12) translate(0 2)">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1">
+                                <div x-cloak @click.away="mobileInput = false" class="relative">
+                                    <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1 relative z-50"
+                                        @click="mobileInput = true">
+                                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 20 20" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                                fill="#B2B2B2"></path>
+                                        </svg>
+                                        <input type="text" class="search-input advance-filter__search-input"
+                                            name="search" autocomplete="off" @focus="mobileInput = true"
+                                            placeholder="Search for products..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 w-full rounded-lg bg-white z-50 overflow-y-auto h-screen">
+                            <div class="py-4">
+                                <h3 class="text-lg font-medium mb-2">
+                                    Bestsellers
+                                </h3>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 sm:gap-4 gap-2">
+                                    <div class="text-center">
+                                        <img src="/images/categorie1.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name mx-auto text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Cold Pressed Oils
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            100% Pure Ghee
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            100% Pure Ghee
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end  -->
+            </header>
+        </div>
+
+        <div class=" lg:container lg:mx-auto lg:px-5" x-cloak x-data="{
+        open : false,
+        address : false,
+        deleteAddress : false,
+    }">
+            <div class=" hidden lg:flex justify-between items-center py-6">
+                <h1 class=" text-xl text-[#1A181E] leading-[28px] font-medium">Orders</h1>
+                <h5 class=" text-[#1A181E] leading-[20px]">+91-8523997959</h5>
+            </div>
+
+            <!-- orders section  -->
+            <section class=" grid lg:grid-cols-4 lg:gap-x-8" x-data="{
+            orders: window.innerWidth >= 1024 ? 1 : null,
+            setOrderBasedOnScreen() {
+                this.orders = window.innerWidth >= 1024 ? 1 : null;
+            }
+         }" x-init="setOrderBasedOnScreen(); window.addEventListener('resize', setOrderBasedOnScreen)">
+                <div :class="orders != null ? ' hidden lg:block' : ' block' "
+                    class=" lg:hidden flex justify-between items-center py-4 px-5 lg:px-0 border-b border-gray-300 lg:border-b-0">
+                    <h1 class=" text-[#1A181E] leading-[24px] font-medium">Account</h1>
+                    <h5 class=" text-[#1A181E] leading-[20px]">+91-8523997959</h5>
+                </div>
+                <!-- lists section  -->
+                <div :class="orders != null ? ' hidden lg:block' : ' block' "
+                    class=" lg:col-span-1 lg:border-r lg:border-gray-300 h-screen">
+                    <div class=" grid grid-cols-1 gap-y-2">
+                        <div @click="orders = 1" class=" border-b border-gray-300 lg:border-b-0 mx-5 lg:mx-0"
+                            :class="orders == '1' ? ' text-[#146EB4] bg-[#F0F6FA] border-r-4 border-[#146EB4] flex items-center justify-between p-2.5 mt-9 cursor-pointer' : ' flex items-center justify-between p-2.5 mt-9 cursor-pointer' ">
+                            <div class=" flex items-center gap-x-3">
+                                <svg width="24" height="25" viewBox="0 0 24 25" fill="currentColor"
+                                    :class="orders == '1' ? ' fill-[#146EB4] size-5 lg:size-6' : ' fill-black size-5 lg:size-6' "
+                                    class="AccountMenu_itemIcon__2UHeR">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M2.25061 18.2319C2.99019 18.2319 3.58974 18.8315 3.58974 19.5711C3.58974 20.2671 3.05865 20.8392 2.37958 20.9041L2.23913 20.9102C1.49955 20.9102 0.900002 20.3106 0.900002 19.5711C0.900002 18.875 1.43109 18.3029 2.11016 18.2381L2.25061 18.2319ZM21.9435 18.5189C22.5246 18.5189 22.9957 18.99 22.9957 19.5711C22.9957 20.1134 22.5853 20.5599 22.0581 20.6171L21.9435 20.6232H7.02174C6.44064 20.6232 5.96957 20.1522 5.96957 19.5711C5.96957 19.0287 6.37992 18.5822 6.90709 18.5251L7.02174 18.5189H21.9435ZM2.25061 11.345C2.99019 11.345 3.58974 11.9445 3.58974 12.6841C3.58974 13.3802 3.05865 13.9522 2.37958 14.0171L2.23913 14.0232C1.49955 14.0232 0.900002 13.4237 0.900002 12.6841C0.900002 11.988 1.43109 11.416 2.11016 11.3511L2.25061 11.345ZM21.9435 11.6319C22.5246 11.6319 22.9957 12.103 22.9957 12.6841C22.9957 13.2265 22.5853 13.673 22.0581 13.7301L21.9435 13.7363H7.02174C6.44064 13.7363 5.96957 13.2652 5.96957 12.6841C5.96957 12.1417 6.37992 11.6952 6.90709 11.6381L7.02174 11.6319H21.9435ZM2.25061 4.45801C2.99019 4.45801 3.58974 5.05756 3.58974 5.79714C3.58974 6.49321 3.05865 7.06525 2.37958 7.13014L2.23913 7.13627C1.49955 7.13627 0.900002 6.53672 0.900002 5.79714C0.900002 5.10106 1.43109 4.52903 2.11016 4.46414L2.25061 4.45801ZM21.9435 4.74496C22.5246 4.74496 22.9957 5.21604 22.9957 5.79714C22.9957 6.3395 22.5853 6.78601 22.0581 6.84314L21.9435 6.84931H7.02174C6.44064 6.84931 5.96957 6.37824 5.96957 5.79714C5.96957 5.25478 6.37992 4.80826 6.90709 4.75114L7.02174 4.74496H21.9435Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <h3
+                                    :class="orders == '1' ? ' lg:text-lg text-[#146EB4] leading-[26px] font-medium' : ' lg:text-lg text-[#4D4D4D] leading-[26px] font-medium pt-1 lg:pt-0' ">
+                                    My orders</h3>
+                            </div>
+                            <div class=" lg:hidden">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" alt="">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M7.68317 4.01422C7.9964 3.70099 8.50425 3.70099 8.81748 4.01422L15.2342 10.4309C15.5474 10.7441 15.5474 11.252 15.2342 11.5652L8.81748 17.9819C8.50425 18.2951 7.9964 18.2951 7.68317 17.9819C7.36993 17.6686 7.36993 17.1608 7.68317 16.8476L13.5327 10.998L7.68317 5.14854C7.36993 4.83531 7.36993 4.32745 7.68317 4.01422Z"
+                                        fill="#4D4D4D"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div @click="orders = 2" class=" border-b border-gray-300 lg:border-b-0 mx-5 lg:mx-0"
+                            :class="orders == '2' ? ' text-[#146EB4] bg-[#F0F6FA] flex items-center justify-between border-r-4 border-[#146EB4] p-2.5 h-fit cursor-pointer' : ' flex items-center justify-between p-2.5 h-fit cursor-pointer' ">
+                            <div class=" flex items-center gap-x-3">
+                                <svg width="24" height="25" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"
+                                    color="currentColor"
+                                    :class="orders == '2' ? ' fill-[#146EB4] size-5 lg:size-6' : ' fill-black size-5 lg:size-6' "
+                                    class="AccountMenu_itemIcon__2UHeR">
+                                    <g clip-path="url(#clip0_617_26098)">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M3.09058 6.75004C3.09058 3.48835 5.73469 0.844238 8.99638 0.844238C12.2581 0.844238 14.9022 3.48835 14.9022 6.75004C14.9022 8.418 13.9998 10.4905 13.0039 12.2779C11.9905 14.0969 10.8039 15.7519 10.0969 16.6263L10.0969 16.6263C9.52977 17.3275 8.46299 17.3275 7.89587 16.6263L7.89583 16.6263C7.18883 15.7519 6.00229 14.0969 4.98883 12.2779C3.99294 10.4905 3.09058 8.418 3.09058 6.75004ZM8.99638 2.15664C6.45951 2.15664 4.40298 4.21317 4.40298 6.75004C4.40298 8.0496 5.14444 9.86076 6.1353 11.6392C7.10859 13.386 8.2517 14.9791 8.91636 15.8011C8.95819 15.8527 9.03457 15.8527 9.0764 15.8011C9.74105 14.9791 10.8842 13.386 11.8575 11.6392C12.8483 9.86076 13.5898 8.0496 13.5898 6.75004C13.5898 4.21317 11.5332 2.15664 8.99638 2.15664ZM8.99638 5.53138C8.32312 5.53138 7.77772 6.07678 7.77772 6.75004C7.77772 7.4233 8.32312 7.9687 8.99638 7.9687C9.66964 7.9687 10.215 7.4233 10.215 6.75004C10.215 6.07678 9.66964 5.53138 8.99638 5.53138ZM6.46532 6.75004C6.46532 5.35196 7.5983 4.21898 8.99638 4.21898C10.3945 4.21898 11.5274 5.35196 11.5274 6.75004C11.5274 8.14812 10.3945 9.2811 8.99638 9.2811C7.5983 9.2811 6.46532 8.14812 6.46532 6.75004Z"
+                                            fill="currentColor"></path>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_617_26098">
+                                            <rect width="18" height="17.9986" fill="currentColor"
+                                                transform="translate(0 0.000488281)"></rect>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <h3
+                                    :class="orders == '2' ? ' lg:text-lg text-[#146EB4] leading-[26px] font-medium' : ' lg:text-lg text-[#4D4D4D] leading-[26px] font-medium pt-1 lg:pt-0' ">
+                                    My addresses</h3>
+                            </div>
+                            <div class=" lg:hidden">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" alt=">">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M7.68317 4.01422C7.9964 3.70099 8.50425 3.70099 8.81748 4.01422L15.2342 10.4309C15.5474 10.7441 15.5474 11.252 15.2342 11.5652L8.81748 17.9819C8.50425 18.2951 7.9964 18.2951 7.68317 17.9819C7.36993 17.6686 7.36993 17.1608 7.68317 16.8476L13.5327 10.998L7.68317 5.14854C7.36993 4.83531 7.36993 4.32745 7.68317 4.01422Z"
+                                        fill="#4D4D4D"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div @click="orders = 3" class=" border-b border-gray-300 lg:border-b-0 mx-5 lg:mx-0"
+                            :class="orders == '3' ? ' text-[#146EB4] bg-[#F0F6FA] flex items-center justify-between border-r-4 border-[#146EB4] p-2.5 h-fit cursor-pointer' : ' flex items-center justify-between p-2.5 h-fit cursor-pointer' ">
+                            <div class=" flex items-center gap-x-3">
+                                <svg width="24" height="24" viewBox="0 0 25 24" fill="#4D4D4D"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    :class="orders == '3' ? ' fill-[#146EB4] size-5 lg:size-6' : ' fill-black size-5 lg:size-6' "
+                                    class="AccountMenu_itemIcon__2UHeR">
+                                    <path
+                                        d="M12.0019 0.0999756C7.63817 0.0999756 4.10065 3.63662 4.10065 7.99929C4.10065 12.362 7.63817 15.8986 12.0019 15.8986C16.3657 15.8986 19.9032 12.362 19.9032 7.99929C19.9032 3.63662 16.3657 0.0999756 12.0019 0.0999756ZM12.0019 1.89982C15.3714 1.89982 18.1029 4.63065 18.1029 7.99929C18.1029 11.3679 15.3714 14.0988 12.0019 14.0988C8.63245 14.0988 5.90094 11.3679 5.90094 7.99929C5.90094 4.63065 8.63245 1.89982 12.0019 1.89982Z"
+                                        fill="currentColor"></path>
+                                    <path
+                                        d="M15.6742 12.9867C16.1291 12.9263 16.5497 13.2169 16.6631 13.6494L16.6849 13.7604L17.8951 22.8796C17.9895 23.5911 17.2609 24.1064 16.633 23.8189L16.5397 23.7697L12.002 21.0472L7.46428 23.7697C6.84866 24.139 6.08621 23.6751 6.10073 22.9847L6.10885 22.8795L7.31905 13.7703C7.3845 13.2776 7.83707 12.9313 8.32987 12.9967C8.78478 13.0571 9.11496 13.4473 9.11158 13.8944L9.10367 14.0073L8.13935 21.2651L11.5389 19.2266C11.7883 19.077 12.0921 19.0583 12.3551 19.1705L12.4651 19.2266L15.8636 21.2651L14.9003 13.9971C14.8399 13.5423 15.1305 13.1219 15.5632 13.0085L15.6742 12.9867Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <h3
+                                    :class="orders == '3' ? ' lg:text-lg text-[#146EB4] leading-[26px] font-medium' : ' lg:text-lg text-[#4D4D4D] leading-[26px] font-medium pt-1 lg:pt-0' ">
+                                    My loyalty points</h3>
+                            </div>
+                            <div class=" lg:hidden">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" alt=">">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M7.68317 4.01422C7.9964 3.70099 8.50425 3.70099 8.81748 4.01422L15.2342 10.4309C15.5474 10.7441 15.5474 11.252 15.2342 11.5652L8.81748 17.9819C8.50425 18.2951 7.9964 18.2951 7.68317 17.9819C7.36993 17.6686 7.36993 17.1608 7.68317 16.8476L13.5327 10.998L7.68317 5.14854C7.36993 4.83531 7.36993 4.32745 7.68317 4.01422Z"
+                                        fill="#4D4D4D"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div @click="orders = 4" class=" border-b border-gray-300 lg:border-b-0 mx-5 lg:mx-0"
+                            :class="orders == '4' ? ' text-[#146EB4] bg-[#F0F6FA] flex items-center justify-between border-r-4 border-[#146EB4] p-2.5 h-fit cursor-pointer' : ' flex items-center justify-between p-2.5 h-fit cursor-pointer' ">
+                            <div class=" flex items-center gap-x-3">
+                                <svg :class="orders == '4' ? ' stroke-[#146EB4] size-5 lg:size-6' : ' stroke-black size-5 lg:size-6' "
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z">
+                                    </path>
+                                </svg>
+                                <h3
+                                    :class="orders == '4' ? ' lg:text-lg text-[#146EB4] leading-[26px] font-medium' : ' lg:text-lg text-[#4D4D4D] leading-[26px] font-medium pt-1 lg:pt-0' ">
+                                    Wishlist</h3>
+                            </div>
+                            <div class=" lg:hidden">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" alt=">">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M7.68317 4.01422C7.9964 3.70099 8.50425 3.70099 8.81748 4.01422L15.2342 10.4309C15.5474 10.7441 15.5474 11.252 15.2342 11.5652L8.81748 17.9819C8.50425 18.2951 7.9964 18.2951 7.68317 17.9819C7.36993 17.6686 7.36993 17.1608 7.68317 16.8476L13.5327 10.998L7.68317 5.14854C7.36993 4.83531 7.36993 4.32745 7.68317 4.01422Z"
+                                        fill="#4D4D4D"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div @click="orders = 5" class=" border-b border-gray-300 lg:border-b-0 mx-5 lg:mx-0"
+                            :class="orders == '5' ? ' text-[#146EB4] bg-[#F0F6FA] flex items-center justify-between border-r-4 border-[#146EB4] p-2.5 h-fit cursor-pointer' : ' flex items-center justify-between p-2.5 h-fit cursor-pointer' ">
+                            <div class=" flex items-center gap-x-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    :class="orders == '5' ? ' fill-[#146EB4] size-5 lg:size-6' : ' fill-black size-5 lg:size-6' "
+                                    class="AccountMenu_itemIcon__2UHeR">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M21.6222 12.0903C21.964 12.432 21.964 12.986 21.6222 13.3277L16.6214 18.3277C16.2797 18.6694 15.7255 18.6694 15.3838 18.3277C15.042 17.986 15.042 17.432 15.3838 17.0903L18.8906 13.584L8.93782 13.584C8.48964 13.584 8.12632 13.1922 8.12632 12.709C8.12632 12.2257 8.48964 11.834 8.93782 11.834L18.8906 11.834L15.3838 8.3277C15.042 7.98599 15.042 7.43197 15.3838 7.09026C15.7256 6.74856 16.2797 6.74856 16.6214 7.09027L21.6222 12.0903ZM8.00131 4.58398C8.48463 4.58398 8.87645 4.19223 8.87645 3.70898C8.87645 3.22573 8.48463 2.83398 8.00131 2.83398L5.00082 2.83398C4.2382 2.83398 3.50681 3.13688 2.96755 3.67605C2.4283 4.21522 2.12535 4.94649 2.12535 5.70898L2.12535 19.709C2.12535 20.4715 2.4283 21.2028 2.96755 21.7419C3.50681 22.2811 4.23819 22.584 5.00082 22.584L8.0013 22.584C8.48463 22.584 8.87645 22.1922 8.87645 21.709C8.87645 21.2257 8.48463 20.834 8.0013 20.834L5.00082 20.834C4.7024 20.834 4.4162 20.7155 4.20519 20.5045C3.99418 20.2935 3.87563 20.0074 3.87563 19.709L3.87563 5.70898C3.87563 5.41062 3.99418 5.12447 4.20519 4.91349C4.4162 4.70251 4.7024 4.58398 5.00082 4.58398L8.00131 4.58398Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <h3
+                                    :class="orders == '5' ? ' lg:text-lg text-[#146EB4] leading-[26px] font-medium' : ' lg:text-lg text-[#4D4D4D] leading-[26px] font-medium pt-1 lg:pt-0' ">
+                                    Sign out</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- list item section  -->
+                <div :class="orders != null ? ' block col-span-3' : ' hidden lg:block lg:col-span-3' ">
+                    <div :class="orders == '1' ? ' block pt-7 mb-32' : ' hidden' ">
+                        <div @click="orders = null" class=" flex items-center gap-x-3 px-5 w-fit lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                color="var(--black-30)">
+                                <g fill="none" fill-rule="evenodd">
+                                    <g fill="currentColor" fill-rule="nonzero">
+                                        <g>
+                                            <g>
+                                                <path
+                                                    d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                                </path>
+                                                <path
+                                                    d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3)">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h3 class=" text-[#1A181E] leading-[24px] font-medium">My orders</h3>
+                        </div>
+                        <div
+                            class=" flex justify-between items-center border-b border-gray-300 px-5 pb-2 pt-4 lg:border-b-0 lg:px-0 lg:pb-0">
+                            <h3 class=" text-sm lg:text-base text-[#1A181E] leading-[26px] font-medium">Showing All
+                                orders
+                            </h3>
+                            <div @click="open = true"
+                                class=" flex items-center gap-x-1 border border-gray-300 px-2 py-1 rounded cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="mr4">
+                                    <path fill="currentColor"
+                                        d="M8.607 2.704c-2.395 0-4.334 1.951-4.334 4.355 0 2.404 1.939 4.355 4.333 4.355 2.395 0 4.334-1.951 4.334-4.355 0-2.404-1.939-4.355-4.334-4.355zm0 2c1.287 0 2.333 1.053 2.333 2.355S9.894 9.414 8.606 9.414c-1.287 0-2.333-1.053-2.333-2.355s1.046-2.355 2.334-2.355z">
+                                    </path>
+                                    <path fill="currentColor"
+                                        d="M5.273 6.059a1 1 0 01.136 1.991l-.136.01H2.055a1.001 1.001 0 01-.136-1.992l.136-.009h3.218zm16.872 0c.448 0 .812.448.812 1 0 .506-.306.925-.702.991l-.11.01h-9.898c-.449 0-.813-.449-.813-1 0-.507.306-.925.702-.992l.11-.009h9.898zM15.395 12.587c2.394 0 4.333 1.95 4.333 4.355 0 2.403-1.939 4.355-4.333 4.355-2.395 0-4.334-1.952-4.334-4.355 0-2.404 1.939-4.356 4.334-4.356zm0 2a2.344 2.344 0 00-2.334 2.355 2.345 2.345 0 002.334 2.355 2.344 2.344 0 002.333-2.355 2.344 2.344 0 00-2.333-2.356z">
+                                    </path>
+                                    <path fill="currentColor"
+                                        d="M18.728 15.942a1 1 0 00-.135 1.99l.135.01h3.219a1 1 0 00.136-1.991l-.136-.01h-3.218zM1.856 15.942c-.449 0-.812.447-.812 1 0 .506.305.924.702.99l.11.01h9.896c.448 0 .812-.448.812-1 0-.507-.305-.925-.702-.991l-.11-.01H1.855z">
+                                    </path>
+                                </svg>
+                                <span
+                                    class=" text-xs lg:text-sm text-[#1A181E] leading-[18px] font-medium">FILTER</span>
+                            </div>
+                        </div>
+                        <div class=" grid md:grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-6 pt-4 lg:pt-8 px-5 lg:px-0">
+                            <div
+                                class=" border border-gray-300 p-3 lg:p-6 hover:bg-[#FAFAFA] transition-all duration-500 rounded-md cursor-pointer">
+                                <div class=" flex items-center gap-x-3">
+                                    <div class=" border border-gray-300 w-fit rounded">
+                                        <img src="/assets/images/logo.png" alt="" class=" w-12 h-12">
+                                    </div>
+                                    <a href="#"
+                                        class=" text-sm lg:text-base text-[#146eb4] leading-[20px] font-medium hover:underline hover:underline-offset-1">Standard
+                                        Store</a>
+                                </div>
+                                <div class=" flex justify-between items-center pt-5">
+                                    <h4 class=" text-sm lg:text-base text-[#4d4d4d] leading-[20px]">Order #14610705</h4>
+                                    <div class=" lg:text-lg text-[#4d4d4d] leading-[26px] font-semibold">₹179</div>
+                                </div>
+                                <div class=" flex justify-between items-centern pt-3 pb-6">
+                                    <span class=" text-sm text-[#808080] leading-[14px]">1 item</span>
+                                    <p class=" text-sm lg:text-base text-[#808080] leading-[14px]">26th Jul 2024, 01:58
+                                        PM
+                                    </p>
+                                </div>
+                                <div class=" flex items-center gap-x-1.5">
+                                    <div class=" bg-[#E50B20] w-3 h-3 rounded-full"></div>
+                                    <div class=" text-sm lg:text-base text-[#808080] leading-[16px] font-medium">
+                                        Rejected
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class=" border border-gray-300 p-3 lg:p-6 hover:bg-[#FAFAFA] transition-all duration-500 rounded-md cursor-pointer">
+                                <div class=" flex items-center gap-x-3">
+                                    <div class=" border border-gray-300 w-fit rounded">
+                                        <img src="/assets/images/logo.png" alt="" class=" w-12 h-12">
+                                    </div>
+                                    <a href="#"
+                                        class=" text-sm lg:text-base text-[#146eb4] leading-[20px] font-medium hover:underline hover:underline-offset-1">Standard
+                                        Store</a>
+                                </div>
+                                <div class=" flex justify-between items-center pt-5">
+                                    <h4 class=" text-sm lg:text-base text-[#4d4d4d] leading-[20px]">Order #14609318</h4>
+                                    <div class=" lg:text-lg text-[#4d4d4d] leading-[26px] font-semibold">₹499</div>
+                                </div>
+                                <div class=" flex justify-between items-centern pt-3 pb-6">
+                                    <span class=" text-sm text-[#808080] leading-[14px]">5 items</span>
+                                    <p class=" text-sm lg:text-base text-[#808080] leading-[14px]">26th Jul 2024, 12:21
+                                        PM
+                                    </p>
+                                </div>
+                                <div class=" flex items-center gap-x-1.5">
+                                    <div class=" bg-[#E50B20] w-3 h-3 rounded-full"></div>
+                                    <div class=" text-sm lg:text-base text-[#808080] leading-[16px] font-medium">
+                                        Cancelled
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        :class="orders == '2' ? ' block lg:pt-7 bg-[#F5F5F5] h-screen lg:bg-white lg:h-fit' : ' hidden'">
+                        <div @click="orders = null" class=" flex items-center gap-x-3 px-5 py-3 bg-white lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                color="var(--black-30)">
+                                <g fill="none" fill-rule="evenodd">
+                                    <g fill="currentColor" fill-rule="nonzero">
+                                        <g>
+                                            <g>
+                                                <path
+                                                    d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                                </path>
+                                                <path
+                                                    d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3)">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h3 class=" text-[#1A181E] leading-[24px] font-medium">My address</h3>
+                        </div>
+                        <div class=" grid md:grid-cols-1 lg:grid-cols-2 gap-x-6 mt-5">
+                            <div class=" lg:border lg:border-gray-300 bg-white px-7 py-5 lg:rounded-md">
+                                <h4 class=" text-[#1a181e] leading-[20px] font-medium py-2">Velmurugan</h4>
+                                <p class=" text-sm text-[#808080] leading-[18px]">Email: <span
+                                        class=" font-semibold">velmurugan93@gmail.com</span></p>
+                                <p class=" text-sm text-[#808080] leading-[20px] pt-2">2/43, East Street, Madurai <span
+                                        class=" block">Madurai . 625535</span></p>
+                                <div class=" flex items-center gap-x-3 pt-2">
+                                    <button @click="address = true"
+                                        class=" text-sm text-[#1a181e] leading-[20px] font-medium">EDIT</button>
+                                    <button @click="deleteAddress = true"
+                                        class=" text-sm text-[#e50b20] leading-[20px] font-medium">DELETE</button>
+                                </div>
+                            </div>
+                            <div @click="address = true"
+                                class=" lg:border lg:border-gray-300 flex justify-center items-center bg-white px-7 py-5 mt-5 lg:mt-0 lg:rounded-md cursor-pointer hover:border hover:border-[#146EB4]">
+                                <div class=" flex items-center gap-x-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                        class="mr6 fill-[#ee741f]">
+                                        <g fill="var(--secondary)" fill-rule="nonzero">
+                                            <path
+                                                d="M8 0a1 1 0 01.993.883L9 1v14a1 1 0 01-1.993.117L7 15V1a1 1 0 011-1z">
+                                            </path>
+                                            <path d="M15 7a1 1 0 01.117 1.993L15 9H1a1 1 0 01-.117-1.993L1 7h14z">
+                                            </path>
+                                        </g>
+                                    </svg>
+                                    <h2 class=" text-[#ee741f] leading-[20px] font-medium">Add new address</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div :class="orders == '3' ? ' block mt-7' : ' hidden'">
+                        <div @click="orders = null"
+                            class=" flex items-center gap-x-3 px-5 border-b border-gray-300 pb-5 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                color="var(--black-30)">
+                                <g fill="none" fill-rule="evenodd">
+                                    <g fill="currentColor" fill-rule="nonzero">
+                                        <g>
+                                            <g>
+                                                <path
+                                                    d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                                </path>
+                                                <path
+                                                    d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3)">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h3 class=" text-[#1A181E] leading-[24px] font-medium">My loyalty points</h3>
+                        </div>
+                        <div class=" border border-gray-300 flex items-center p-3 lg:p-6 rounded-md mx-5 mt-3">
+                            <div class=" ">
+                                <h5 class=" text-sm text-[#808080] leading-[20px]">Available points</h5>
+                                <h3 class=" text-[28px] lg:text-[32px] text-[#1a181e] lg:leading-[40px]">0</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div :class="orders == '4' ? ' block mt-7' : ' hidden'">
+                        <div @click="orders = null"
+                            class=" flex items-center gap-x-3 px-5 border-b border-gray-300 pb-5 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                color="var(--black-30)">
+                                <g fill="none" fill-rule="evenodd">
+                                    <g fill="currentColor" fill-rule="nonzero">
+                                        <g>
+                                            <g>
+                                                <path
+                                                    d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                                </path>
+                                                <path
+                                                    d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3)">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h3 class=" text-[#1A181E] leading-[24px] font-medium">Wishlist</h3>
+                        </div>
+                        <div class=" border border-gray-300 flex items-center p-3 lg:p-6 rounded-md mx-5 mt-3">
+                            <div class=" ">
+                                <h5 class=" text-lg lg:text-xl text-[#1a181e] font-semibold">Favorite List</h5>
+                                <h3 class=" text-sm leading-[20px] pt-10">No Wishlist</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- filter popup -->
+            <div x-show="open" x-transition:leave-start="delay-500" x-cloak id="outside-filter"
+                class=" bg-black/40 fixed inset-0 z-10 flex justify-center items-end lg:items-center">
+                <div @click.outside="open = false"
+                    class=" filter-modal h-fit w-full md:w-1/2 lg:w-[30%] p-6 rounded-ss-lg rounded-se-lg lg:rounded-lg">
+                    <div class=" flex justify-between items-center">
+                        <h4 class=" text-lg text-[#1a181e] leading-[26px] font-medium">Filter by</h4>
+                        <svg @click="open = false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" id="close-modal" class="size-6 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </div>
+                    <div class=" grid grid-cols-1 gap-y-4 pt-6">
+                        <div class=" flex items-center gap-x-2">
+                            <input type="radio" name="orders" class=" w-[18px] h-[18px]" checked>
+                            <label for="" class=" text-sm text-[#1a181e] leading-[20px] pt-0.5">All orders</label>
+                        </div>
+                        <div class=" flex items-center gap-x-2">
+                            <input type="radio" name="orders" class=" w-[18px] h-[18px]">
+                            <label for="" class=" text-sm text-[#1a181e] leading-[20px] pt-0.5">Active orders</label>
+                        </div>
+                        <div class=" flex items-center gap-x-2">
+                            <input type="radio" name="orders" class=" w-[18px] h-[18px]">
+                            <label for="" class=" text-sm text-[#1a181e] leading-[20px] pt-0.5">Completed orders</label>
+                        </div>
+                        <div class=" flex items-center gap-x-2">
+                            <input type="radio" name="orders" class=" w-[18px] h-[18px]">
+                            <label for="" class=" text-sm text-[#1a181e] leading-[20px] pt-0.5">Failed orders</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- address popup  -->
+            <div x-show="address" x-transition:leave-start="delay-500" x-cloak
+                class=" bg-black/40 fixed inset-0 z-10 flex justify-center items-end lg:items-center">
+                <div @click.outside="address = false"
+                    class=" address-modal w-full lg:w-[46%] h-[800px] p-6 rounded-ss-lg rounded-se-lg lg:rounded-lg overflow-y-auto">
+                    <div class=" flex justify-between items-center">
+                        <h4 class=" text-lg text-[#1a181e] leading-[22px] font-medium">Add new address</h4>
+                        <svg @click="address = false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" id="address-close-modal"
+                            class="size-6 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </div>
+                    <div class=" grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-7 pt-6">
+                        <div class=" lg:col-span-2">
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Name <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="Enter name">
+                        </div>
+                        <div class=" relative">
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Mobile Number <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 pl-8 lg:pl-11 lg:py-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="Enter mobile number">
+                            <span
+                                class=" text-[#1a181e] leading-[24px] absolute bottom-[1px] lg:bottom-[13px] lg:left-3">+91</span>
+                        </div>
+                        <div>
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Email Address <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="Enter email address">
+                        </div>
+                        <div class=" lg:col-span-2">
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Address <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="Flat / House No, Building, Colony">
+                        </div>
+                        <div>
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Locality / Area <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="E.g. MG Road, Gandhi Nagar">
+                        </div>
+                        <div>
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Landmark (optional)</label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="E.g. Near Bank, Chowk, etc.">
+                        </div>
+                        <div>
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Pin Code <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="Enter pin code">
+                        </div>
+                        <div>
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">City <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <input type="text"
+                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="Enter city">
+                        </div>
+                        <div>
+                            <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">State <span
+                                    class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
+                            <select name="" id=""
+                                class=" text-[#999] leading-[20px] block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full bg-white">
+                                <option value="">Select state</option>
+                                <option value="tamilnadu">Tamilnadu</option>
+                            </select>
+                        </div>
+                        <div class=" lg:col-span-2 lg:place-self-center">
+                            <button
+                                class=" text-lg text-white leading-[26px] bg-[#146EB4] font-medium lg:px-10 py-3 w-full lg:w-fit rounded-md">Add
+                                Address</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- delete address popup  -->
+            <div x-show="deleteAddress" x-transition:leave-start="delay-500" x-cloak
+                class=" bg-black/40 fixed inset-0 z-10 flex justify-center items-end lg:items-center">
+                <div @click.outside="deleteAddress = false"
+                    class=" delete-modal h-fit w-full md:w-1/2 lg:w-[30%] xl:w-[22%] p-6 rounded-ss-lg rounded-se-lg lg:rounded-lg">
+                    <div class=" flex justify-between items-center">
+                        <h1 class=" text-lg text-[#1a181e] leading-[26px] font-medium">Delete this address?</h1>
+                        <svg @click="deleteAddress = false" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" id="close-modal-delete"
+                            class="size-6 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </div>
+                    <div class=" flex justify-center pt-8">
+                        <button @click="deleteAddress = false"
+                            class=" text-lg text-white leading-[26px] font-medium px-10 py-3 bg-[#e50b20] hover:bg-[#CC0A1D] rounded-lg">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer section  -->
+        <div
+            class=" bg-[#49C759] flex justify-center items-center w-14 h-14 rounded-full cursor-pointer fixed bottom-20 right-2">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_2032_888)">
+                    <path
+                        d="M27.36 4.59867C24.32 1.66 20.32 0 16.06 0C3.83333 0 -3.844 13.2467 2.26133 23.784L0 32L8.44667 29.7973C12.1267 31.7853 15.1413 31.6093 16.068 31.7267C30.2453 31.7267 37.3027 14.5747 27.34 4.65067L27.36 4.59867Z"
+                        fill="white"></path>
+                    <path
+                        d="M16.0892 29.0016L16.0812 29.0003H16.0598C11.8172 29.0003 9.10651 26.991 8.83984 26.875L3.83984 28.175L5.17984 23.315L4.86118 22.815C3.54118 20.7136 2.83984 18.2936 2.83984 15.8016C2.83984 4.07762 17.1665 -1.78505 25.4572 6.50162C33.7278 14.7016 27.9212 29.0016 16.0892 29.0016Z"
+                        fill="#49C759"></path>
+                    <path
+                        d="M23.3429 19.0759L23.3309 19.1759C22.9295 18.9759 20.9749 18.0199 20.6109 17.8879C19.7935 17.5852 20.0242 17.8399 18.4549 19.6372C18.2215 19.8972 17.9895 19.9172 17.5935 19.7372C17.1935 19.5372 15.9095 19.1172 14.3895 17.7572C13.2055 16.6972 12.4109 15.3972 12.1762 14.9972C11.7855 14.3226 12.6029 14.2266 13.3469 12.8186C13.4802 12.5386 13.4122 12.3186 13.3135 12.1199C13.2135 11.9199 12.4175 9.9599 12.0842 9.17857C11.7642 8.3999 11.4349 8.49857 11.1882 8.49857C10.4202 8.4319 9.85885 8.44257 9.36418 8.95723C7.21218 11.3226 7.75485 13.7626 9.59618 16.3572C13.2149 21.0932 15.1429 21.9652 18.6682 23.1759C19.6202 23.4786 20.4882 23.4359 21.1749 23.3372C21.9402 23.2159 23.5309 22.3759 23.8629 21.4359C24.2029 20.4959 24.2029 19.7159 24.1029 19.5359C24.0042 19.3559 23.7429 19.2559 23.3429 19.0759V19.0759Z"
+                        fill="white"></path>
+                </g>
+                <defs>
+                    <clipPath id="clip0_2032_888">
+                        <rect width="32" height="32" fill="white"></rect>
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+        <footer
+            class=" flex justify-center items-center gap-x-8 bg-white border-t border-gray-300 py-3 fixed bottom-0 z-0 w-full lg:hidden">
+            <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] hover:rounded-full">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    alt="Home" color="var(--black-60)" text="">
+                    <path
+                        d="M19.9592 21.51H15.5316C15.1302 21.51 14.745 21.3512 14.4603 21.0682C14.1756 20.7853 14.0144 20.4011 14.0119 19.9997V13.9774H9.99703V19.9997C9.99455 20.4011 9.83335 20.7853 9.54863 21.0682C9.2639 21.3512 8.87879 21.51 8.47737 21.51H4.04972C3.58698 21.51 3.14318 21.3262 2.81597 20.999C2.48876 20.6717 2.30493 20.228 2.30493 19.7652V9.21203C2.30529 8.94037 2.36909 8.67254 2.49123 8.42988C2.61337 8.18722 2.79049 7.97644 3.00848 7.81432L11.057 1.84826C11.3589 1.62219 11.7259 1.5 12.103 1.5C12.4801 1.5 12.8471 1.62219 13.1489 1.84826L21.038 7.80494C21.2476 7.97382 21.4157 8.18843 21.5295 8.43233C21.6433 8.67622 21.6998 8.94293 21.6946 9.21203V19.7652C21.6959 19.9939 21.6519 20.2206 21.5652 20.4322C21.4786 20.6438 21.3509 20.8363 21.1897 20.9984C21.0284 21.1605 20.8367 21.2892 20.6255 21.377C20.4144 21.4648 20.1879 21.51 19.9592 21.51ZM15.6254 19.9153H19.978C20.0161 19.9129 20.052 19.896 20.0781 19.8682C20.1043 19.8403 20.1188 19.8034 20.1187 19.7652V9.21203C20.1195 9.19005 20.1148 9.16823 20.1049 9.14856C20.0951 9.1289 20.0805 9.11201 20.0624 9.09946L12.1546 3.14278C12.1282 3.12503 12.0972 3.11556 12.0655 3.11556C12.0337 3.11556 12.0027 3.12503 11.9763 3.14278L3.93716 9.10884C3.91775 9.12292 3.90176 9.1412 3.8904 9.16231C3.87903 9.18343 3.87257 9.20683 3.87149 9.23079V19.7652C3.87149 19.805 3.88731 19.8432 3.91545 19.8713C3.9436 19.8995 3.98178 19.9153 4.02158 19.9153H8.37418V13.8179C8.37664 13.438 8.52864 13.0744 8.79727 12.8058C9.0659 12.5371 9.42953 12.3851 9.80941 12.3827H14.1714C14.3611 12.3814 14.5492 12.4176 14.7249 12.489C14.9007 12.5605 15.0606 12.6659 15.1956 12.7991C15.3307 12.9324 15.4381 13.091 15.5118 13.2658C15.5856 13.4406 15.6242 13.6282 15.6254 13.8179V19.9153Z"
+                        fill="#808080"></path>
+                </svg>
+                <h5 class=" text-[#808080]">Home</h5>
+            </div>
+            <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] hover:rounded-full relative">
+                <svg class="badgeItem" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" alt="Bag" color="var(--black-30)" text="">
+                    <path
+                        d="M17.5303 2C17.7769 2 18.0091 2.1161 18.157 2.31336L20.9105 5.985C20.9338 6.01451 20.955 6.04575 20.974 6.07848C20.9829 6.09427 20.9915 6.11041 20.9995 6.12681C21.0067 6.14109 21.0133 6.15592 21.0196 6.17098C21.0243 6.18292 21.0289 6.19482 21.0331 6.20682C21.0407 6.22728 21.0472 6.24826 21.0528 6.2696C21.0698 6.33447 21.0787 6.40189 21.0787 6.47005V19.3733C21.0787 20.824 19.9027 22 18.452 22H5.54873C4.09802 22 2.922 20.824 2.922 19.3733V6.47005C2.922 6.36611 2.94267 6.26389 2.98211 6.16909C2.98795 6.15455 2.99438 6.14034 3.00121 6.12636C3.02283 6.08242 3.04873 6.03994 3.07868 6L3.027 6.07799C3.02812 6.07606 3.02925 6.07413 3.03039 6.07221L3.07868 6L5.84366 2.31336C5.99161 2.1161 6.2238 2 6.47038 2H17.5303ZM19.511 7.253H4.488L4.48882 19.3733C4.48882 19.8806 4.84525 20.3047 5.32135 20.4087L5.43324 20.427L5.54873 20.4332H18.452C19.0373 20.4332 19.5119 19.9586 19.5119 19.3733L19.511 7.253ZM15.687 9.37327C16.1196 9.37327 16.4704 9.72402 16.4704 10.1567C16.4704 12.6254 14.4691 14.6267 12.0003 14.6267C9.5316 14.6267 7.53029 12.6254 7.53029 10.1567C7.53029 9.72402 7.88104 9.37327 8.3137 9.37327C8.74637 9.37327 9.09711 9.72402 9.09711 10.1567C9.09711 11.7601 10.3969 13.0599 12.0003 13.0599C13.6037 13.0599 14.9036 11.7601 14.9036 10.1567C14.9036 9.72402 15.2543 9.37327 15.687 9.37327ZM17.1386 3.56682H6.86117L5.27 5.686H18.728L17.1386 3.56682Z"
+                        fill="#808080"></path>
+                </svg>
+                <h5 class=" text-[#808080]">Cart</h5>
+                <div
+                    class=" text-sm text-white w-4 h-4 flex justify-center items-center rounded-full bg-red-600 absolute -top-1.5 -left-1.5">
+                    3</div>
+            </div>
+            <div class="flex items-center gap-x-2 cursor-pointer bg-[#dfeef7] px-3 py-2 rounded-full">
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="#146eb4" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M15.9684 13.3302C19.0546 13.3302 21.504 16.0732 21.504 19.4003V20.6582C21.504 21.2317 21.0373 21.6966 20.4615 21.6966H3.61248C3.0367 21.6966 2.56995 21.2317 2.56995 20.6582V19.4003C2.56995 16.0732 5.01936 13.3302 8.10556 13.3302H15.9684ZM12.037 2.16998C14.7341 2.16998 16.9165 4.36475 16.9165 7.06719C16.9165 9.76963 14.7341 11.9644 12.037 11.9644C9.33987 11.9644 7.15748 9.76963 7.15748 7.06719C7.15748 4.36475 9.33987 2.16998 12.037 2.16998Z"
+                        fill="var(--primary)"></path>
+                </svg>
+                <h5 class=" text-[#146eb4]">Account</h5>
+            </div>
+        </footer>
+        <script src="/js/account.js"></script>
+</body>
+
+</html>
