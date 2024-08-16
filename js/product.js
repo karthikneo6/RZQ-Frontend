@@ -87,6 +87,25 @@ function disabledNextButton() {
     }
 }
 
+document.querySelectorAll('.product-zoom').forEach(elem => {
+    let x, y, width, height;
+    elem.onmouseenter = () => {
+        const size = elem.getBoundingClientRect();
+        x = size.x;
+        y = size.y;
+        width = size.width;
+        height = size.height;
+    };
+
+    elem.onmousemove = e => {
+        const horizontal = (e.clientX - x) / width * 100;
+        const vertical = (e.clientY - y) / height * 100;
+
+        elem.style.setProperty('--x', horizontal + '%');
+        elem.style.setProperty('--y', vertical + '%');
+    };
+});
+
 
 // reviews slider 
 const number = document.querySelectorAll('.number');
@@ -99,7 +118,6 @@ let numberId = 0;
 number.forEach((num => {
     num.addEventListener('click', function () {
         numberId = num.dataset.id;
-        console.log(num);
         updateReview();
     });
 }));
@@ -113,24 +131,43 @@ function updateReview() {
         reviews.classList.remove('review-active');
     });
     review[numberId].classList.add('review-active');
+    console.log(numberId);
+    if (numberId == 0) {
+        reviewPrevBtn.classList.remove("flex");
+        reviewPrevBtn.classList.add("hidden");
+        reviewNextBtn.classList.remove("hidden");
+        reviewNextBtn.classList.add("flex");
+    }
+    if (numberId ==  review.length - 1) {
+        reviewPrevBtn.classList.remove("hidden");
+        reviewPrevBtn.classList.add("flex");
+        reviewNextBtn.classList.remove("flex");
+        reviewNextBtn.classList.add("hidden");
+    }
+    if (numberId > 0 && numberId <  review.length - 1) {
+        reviewPrevBtn.classList.remove("hidden");
+        reviewNextBtn.classList.remove("hidden");
+        reviewPrevBtn.classList.add("flex");
+        reviewNextBtn.classList.add("flex");
+    }
+    
 }
 
 reviewPrevBtn.addEventListener('click', function () {
     if (numberId > 0) {
         numberId--;
+        console.log(numberId);
+
         updateReview();
     }
 });
 
 reviewNextBtn.addEventListener('click', function () {
-    console.log(numberId);
     if (numberId < review.length - 1) {
         numberId++;
         updateReview();
+        console.log(numberId);
     }
-    // else{
-    //     reviewNextBtn.style.display = 'none';
-    // }
 });
 
 // star javascript
@@ -181,55 +218,3 @@ const timerInterval = setInterval(updateTimer, 1000);
 
 // Initialize the timer
 updateTimer();
-
-
-// my account js 
-let closeModal = document.getElementById('close-modal');
-let filterModal = document.querySelector('.filter-modal');
-let outsideFilter = document.getElementById('outside-filter');
-
-let addressCloseModal = document.getElementById('address-close-modal');
-let addressModal = document.querySelector('.address-modal');
-let closeModalDelete = document.getElementById('close-modal-delete');
-let deleteModal = document.querySelector('.delete-modal');
-
-// console.log(closeModal);
-closeModal.addEventListener('click', function () {
-    // Add the 'close-modal' class
-    filterModal.classList.add('close-modal');
-    // Set a timeout to remove the 'close-modal' class after a delay
-    setTimeout(function () {
-        filterModal.classList.remove('close-modal');
-    }, 1000); // 1000 milliseconds = 1 second
-    console.log(filterModal);
-});
-
-addressCloseModal.addEventListener('click', function () {
-    // Add the 'close-modal' class
-    addressModal.classList.add('close-modal-address');
-    console.log(addressModal);
-    // Set a timeout to remove the 'close-modal' class after a delay
-    setTimeout(function () {
-        addressModal.classList.remove('close-modal-address');
-    }, 1000); // 1000 milliseconds = 1 second
-    // console.log(addressModal);
-});
-
-closeModalDelete.addEventListener('click', function () {
-    // Add the 'close-modal' class
-    deleteModal.classList.add('close-modal-delete');
-    // Set a timeout to remove the 'close-modal' class after a delay
-    setTimeout(function () {
-        deleteModal.classList.remove('close-modal-delete');
-    }, 1000); // 1000 milliseconds = 1 second
-    // console.log(addressModal);
-});
-
-// outsideFilter.addEventListener('click', function () {
-//     filterModal.classList.add('close-outside-modal');
-//     // Set a timeout to remove the 'close-modal' class after a delay
-//     setTimeout(function () {
-//         filterModal.classList.remove('close-outside-modal');
-//     }, 1000); // 1000 milliseconds = 1 second
-//     console.log(filterModal);
-// });

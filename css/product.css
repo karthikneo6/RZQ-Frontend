@@ -1,6 +1,12 @@
 /* product list css */
+@font-face {
+    font-family: 'GalanoGrotesque, sans-serif';
+    src: url('/galano-grotesque-alt/GalanoGrotesqueAltMedium.otf') format('truetype');
+    font-style: normal;
+}
+
 body {
-    font-family: 'Galano Grotesque', sans-serif;
+    font-family: 'GalanoGrotesque, sans-serif';
 }
 
 [x-cloak] {
@@ -51,6 +57,18 @@ body {
     /* transform: translateX(-200px); */
 }
 
+.product-zoom img {
+    width: 100%;
+    height: 100%;
+    transform: scale(var(--zoom, 1));
+    transform-origin: var(--x) var(--y);
+    transition: transform 0.3s ease;
+}
+
+.product-zoom:hover {
+    --zoom: 3;
+}
+
 /* star css  */
 .rating-box {
     position: relative;
@@ -84,34 +102,6 @@ body {
 .searchbar-component {
     position: relative;
 }
-
-/* .search-popup {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    z-index: 1000;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.search-popup[x-cloak] {
-    display: none !important;
-} */
-
-
-
-/* .headerBackground {
-    z-index: 10;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    left: 0;
-} */
 
 .searchbar-wrapper .search-input {
     width: 100%;
