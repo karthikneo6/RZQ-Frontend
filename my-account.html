@@ -872,43 +872,43 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </div>
-                    <div class=" grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-7 pt-6">
+                    <form class=" grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-7 pt-6">
                         <div class=" lg:col-span-2">
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Name <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
                             <input type="text"
                                 class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Enter name">
+                                placeholder="Enter name" required>
                         </div>
                         <div class=" relative">
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Mobile Number <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
-                            <input type="text"
+                            <input type="number"
                                 class=" block border-b lg:border border-gray-300 pl-8 lg:pl-11 lg:py-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Enter mobile number">
-                            <span
+                                placeholder="Enter mobile number" required>
+                            <spanx
                                 class=" text-[#1a181e] leading-[24px] absolute bottom-[1px] lg:bottom-[13px] lg:left-3">+91</span>
                         </div>
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Email Address <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
-                            <input type="text"
+                            <input type="email"
                                 class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Enter email address">
+                                placeholder="Enter email address" required>
                         </div>
                         <div class=" lg:col-span-2">
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Address <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
                             <input type="text"
                                 class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Flat / House No, Building, Colony">
+                                placeholder="Flat / House No, Building, Colony" required>
                         </div>
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Locality / Area <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
                             <input type="text"
                                 class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="E.g. MG Road, Gandhi Nagar">
+                                placeholder="E.g. MG Road, Gandhi Nagar" required>
                         </div>
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Landmark (optional)</label>
@@ -919,32 +919,32 @@
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Pin Code <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
-                            <input type="text"
+                            <input type="number"
                                 class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Enter pin code">
+                                placeholder="Enter pin code" required>
                         </div>
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">City <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
                             <input type="text"
                                 class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Enter city">
+                                placeholder="Enter city" required>
                         </div>
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">State <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
                             <select name="" id=""
-                                class=" text-[#999] leading-[20px] block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full bg-white">
+                                class=" text-[#999] leading-[20px] block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full bg-white" required>
                                 <option value="">Select state</option>
                                 <option value="tamilnadu">Tamilnadu</option>
                             </select>
                         </div>
                         <div class=" lg:col-span-2 lg:place-self-center">
-                            <button
+                            <button type="submit"
                                 class=" text-lg text-white leading-[26px] bg-[#146EB4] font-medium lg:px-10 py-3 w-full lg:w-fit rounded-md">Add
                                 Address</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -999,7 +999,7 @@
                         d="M19.9592 21.51H15.5316C15.1302 21.51 14.745 21.3512 14.4603 21.0682C14.1756 20.7853 14.0144 20.4011 14.0119 19.9997V13.9774H9.99703V19.9997C9.99455 20.4011 9.83335 20.7853 9.54863 21.0682C9.2639 21.3512 8.87879 21.51 8.47737 21.51H4.04972C3.58698 21.51 3.14318 21.3262 2.81597 20.999C2.48876 20.6717 2.30493 20.228 2.30493 19.7652V9.21203C2.30529 8.94037 2.36909 8.67254 2.49123 8.42988C2.61337 8.18722 2.79049 7.97644 3.00848 7.81432L11.057 1.84826C11.3589 1.62219 11.7259 1.5 12.103 1.5C12.4801 1.5 12.8471 1.62219 13.1489 1.84826L21.038 7.80494C21.2476 7.97382 21.4157 8.18843 21.5295 8.43233C21.6433 8.67622 21.6998 8.94293 21.6946 9.21203V19.7652C21.6959 19.9939 21.6519 20.2206 21.5652 20.4322C21.4786 20.6438 21.3509 20.8363 21.1897 20.9984C21.0284 21.1605 20.8367 21.2892 20.6255 21.377C20.4144 21.4648 20.1879 21.51 19.9592 21.51ZM15.6254 19.9153H19.978C20.0161 19.9129 20.052 19.896 20.0781 19.8682C20.1043 19.8403 20.1188 19.8034 20.1187 19.7652V9.21203C20.1195 9.19005 20.1148 9.16823 20.1049 9.14856C20.0951 9.1289 20.0805 9.11201 20.0624 9.09946L12.1546 3.14278C12.1282 3.12503 12.0972 3.11556 12.0655 3.11556C12.0337 3.11556 12.0027 3.12503 11.9763 3.14278L3.93716 9.10884C3.91775 9.12292 3.90176 9.1412 3.8904 9.16231C3.87903 9.18343 3.87257 9.20683 3.87149 9.23079V19.7652C3.87149 19.805 3.88731 19.8432 3.91545 19.8713C3.9436 19.8995 3.98178 19.9153 4.02158 19.9153H8.37418V13.8179C8.37664 13.438 8.52864 13.0744 8.79727 12.8058C9.0659 12.5371 9.42953 12.3851 9.80941 12.3827H14.1714C14.3611 12.3814 14.5492 12.4176 14.7249 12.489C14.9007 12.5605 15.0606 12.6659 15.1956 12.7991C15.3307 12.9324 15.4381 13.091 15.5118 13.2658C15.5856 13.4406 15.6242 13.6282 15.6254 13.8179V19.9153Z"
                         fill="#808080"></path>
                 </svg>
-                <h5 class=" text-[#808080]">Home</h5>
+                <h5 class=" text-sm text-[#808080]">Home</h5>
             </div>
             <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] hover:rounded-full relative">
                 <svg class="badgeItem" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -1008,18 +1008,18 @@
                         d="M17.5303 2C17.7769 2 18.0091 2.1161 18.157 2.31336L20.9105 5.985C20.9338 6.01451 20.955 6.04575 20.974 6.07848C20.9829 6.09427 20.9915 6.11041 20.9995 6.12681C21.0067 6.14109 21.0133 6.15592 21.0196 6.17098C21.0243 6.18292 21.0289 6.19482 21.0331 6.20682C21.0407 6.22728 21.0472 6.24826 21.0528 6.2696C21.0698 6.33447 21.0787 6.40189 21.0787 6.47005V19.3733C21.0787 20.824 19.9027 22 18.452 22H5.54873C4.09802 22 2.922 20.824 2.922 19.3733V6.47005C2.922 6.36611 2.94267 6.26389 2.98211 6.16909C2.98795 6.15455 2.99438 6.14034 3.00121 6.12636C3.02283 6.08242 3.04873 6.03994 3.07868 6L3.027 6.07799C3.02812 6.07606 3.02925 6.07413 3.03039 6.07221L3.07868 6L5.84366 2.31336C5.99161 2.1161 6.2238 2 6.47038 2H17.5303ZM19.511 7.253H4.488L4.48882 19.3733C4.48882 19.8806 4.84525 20.3047 5.32135 20.4087L5.43324 20.427L5.54873 20.4332H18.452C19.0373 20.4332 19.5119 19.9586 19.5119 19.3733L19.511 7.253ZM15.687 9.37327C16.1196 9.37327 16.4704 9.72402 16.4704 10.1567C16.4704 12.6254 14.4691 14.6267 12.0003 14.6267C9.5316 14.6267 7.53029 12.6254 7.53029 10.1567C7.53029 9.72402 7.88104 9.37327 8.3137 9.37327C8.74637 9.37327 9.09711 9.72402 9.09711 10.1567C9.09711 11.7601 10.3969 13.0599 12.0003 13.0599C13.6037 13.0599 14.9036 11.7601 14.9036 10.1567C14.9036 9.72402 15.2543 9.37327 15.687 9.37327ZM17.1386 3.56682H6.86117L5.27 5.686H18.728L17.1386 3.56682Z"
                         fill="#808080"></path>
                 </svg>
-                <h5 class=" text-[#808080]">Cart</h5>
+                <h5 class=" text-sm text-[#808080]">Cart</h5>
                 <div
                     class=" text-sm text-white w-4 h-4 flex justify-center items-center rounded-full bg-red-600 absolute -top-1.5 -left-1.5">
                     3</div>
             </div>
-            <div class="flex items-center gap-x-2 cursor-pointer bg-[#dfeef7] px-3 py-2 rounded-full">
+            <div class="flex items-center gap-x-1.5 cursor-pointer bg-[#dfeef7] px-3 py-2 rounded-full">
                 <svg width="25" height="24" viewBox="0 0 25 24" fill="#146eb4" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M15.9684 13.3302C19.0546 13.3302 21.504 16.0732 21.504 19.4003V20.6582C21.504 21.2317 21.0373 21.6966 20.4615 21.6966H3.61248C3.0367 21.6966 2.56995 21.2317 2.56995 20.6582V19.4003C2.56995 16.0732 5.01936 13.3302 8.10556 13.3302H15.9684ZM12.037 2.16998C14.7341 2.16998 16.9165 4.36475 16.9165 7.06719C16.9165 9.76963 14.7341 11.9644 12.037 11.9644C9.33987 11.9644 7.15748 9.76963 7.15748 7.06719C7.15748 4.36475 9.33987 2.16998 12.037 2.16998Z"
                         fill="var(--primary)"></path>
                 </svg>
-                <h5 class=" text-[#146eb4]">Account</h5>
+                <h5 class=" text-sm text-[#146eb4]">Account</h5>
             </div>
         </footer>
         <script src="/js/account.js"></script>
