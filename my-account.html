@@ -47,7 +47,7 @@
             <header class="flex-col gap-[10px] py-[16px] lg:px-0 px-[12px] flex container mx-auto">
                 <div class="flex justify-between items-center">
                     <div class="items-center flex justify-between lg:w-fit w-full">
-                        <a href="/landing.html" class="flex cursor-pointer items-center">
+                        <a href="/index.html" class="flex cursor-pointer items-center">
                             <img src="/images/s-icon-big.webp" alt="" class="w-12 h-12" />
                             <h1 class="text-[25px] font-medium ml-5">
                                 Standard Store
@@ -293,15 +293,17 @@
                             </span>
                             <h5>Cart</h5>
                         </div>
-                        <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" alt="Account" color="var(--black-30)" text="">
-                                <path
-                                    d="M15.9255 13.7621C18.9394 13.7621 21.3459 16.3793 21.4562 19.6018L21.4602 19.833V21.0911C21.4602 21.6264 21.0536 22.0672 20.5314 22.1236L20.4178 22.1297H3.57165C3.03435 22.1297 2.59201 21.7246 2.53541 21.2042L2.5293 21.0911V19.833C2.5293 16.5828 4.86571 13.89 7.84974 13.7665L8.06396 13.7621H15.9255ZM15.9255 15.5623H8.06396C6.09351 15.5623 4.4325 17.3302 4.33364 19.6171L4.32899 19.833L4.32799 20.3288H19.6605V19.833C19.6605 17.5149 18.0592 15.6768 16.1093 15.5675L15.9255 15.5623ZM11.9947 2.60028C14.6914 2.60028 16.8734 4.79535 16.8734 7.49817C16.8734 10.201 14.6914 12.3961 11.9947 12.3961C9.29806 12.3961 7.11604 10.201 7.11604 7.49817C7.11604 4.79535 9.29806 2.60028 11.9947 2.60028ZM11.9947 4.40053C10.2953 4.40053 8.91574 5.78635 8.91574 7.49817C8.91574 9.20999 10.2953 10.5958 11.9947 10.5958C13.6942 10.5958 15.0737 9.20999 15.0737 7.49817C15.0737 5.78635 13.6942 4.40053 11.9947 4.40053Z"
-                                    fill="currentColor"></path>
-                            </svg>
-                            <h5>Account</h5>
-                        </div>
+                        <a href="/my-account.html">
+                            <div class="flex items-center gap-x-1.5 cursor-pointer bg-[#dfeef7] px-3 py-2 rounded-full">
+                                <svg width="25" height="24" viewBox="0 0 25 24" fill="#146eb4"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M15.9684 13.3302C19.0546 13.3302 21.504 16.0732 21.504 19.4003V20.6582C21.504 21.2317 21.0373 21.6966 20.4615 21.6966H3.61248C3.0367 21.6966 2.56995 21.2317 2.56995 20.6582V19.4003C2.56995 16.0732 5.01936 13.3302 8.10556 13.3302H15.9684ZM12.037 2.16998C14.7341 2.16998 16.9165 4.36475 16.9165 7.06719C16.9165 9.76963 14.7341 11.9644 12.037 11.9644C9.33987 11.9644 7.15748 9.76963 7.15748 7.06719C7.15748 4.36475 9.33987 2.16998 12.037 2.16998Z"
+                                        fill="var(--primary)"></path>
+                                </svg>
+                                <h5 class=" text-[#146eb4]">Account</h5>
+                            </div>
+                        </a>
                     </aside>
                 </div>
                 <!-- mobile section input search in header  -->
@@ -456,19 +458,27 @@
         open : false,
         address : false,
         deleteAddress : false,
-    }">
+        orders: window.innerWidth >= 1024 ? 1 : null,
+        setOrderBasedOnScreen() {
+            this.orders = window.innerWidth >= 1024 ? 1 : null;
+        },
+        getNavText() {
+            switch(this.orders) {
+                case 1: return 'Orders';
+                case 2: return 'Addresses';
+                case 3: return 'Loyalty points';
+                case 4: return 'Wishlist';
+                case 5: return 'Sign out';
+            }
+        },
+    }" x-init="setOrderBasedOnScreen(); window.addEventListener('resize', setOrderBasedOnScreen)">
             <div class=" hidden lg:flex justify-between items-center py-6">
-                <h1 class=" text-xl text-[#1A181E] leading-[28px] font-medium">Orders</h1>
+                <h1 x-text="getNavText()" class=" text-xl text-[#1A181E] leading-[28px] font-medium"></h1>
                 <h5 class=" text-[#1A181E] leading-[20px]">+91-8523997959</h5>
             </div>
 
             <!-- orders section  -->
-            <section class=" grid lg:grid-cols-4 lg:gap-x-8" x-data="{
-            orders: window.innerWidth >= 1024 ? 1 : null,
-            setOrderBasedOnScreen() {
-                this.orders = window.innerWidth >= 1024 ? 1 : null;
-            }
-         }" x-init="setOrderBasedOnScreen(); window.addEventListener('resize', setOrderBasedOnScreen)">
+            <section class=" grid lg:grid-cols-4 lg:gap-x-8">
                 <div :class="orders != null ? ' hidden lg:block' : ' block' "
                     class=" lg:hidden flex justify-between items-center py-4 px-5 lg:px-0 border-b border-gray-300 lg:border-b-0">
                     <h1 class=" text-[#1A181E] leading-[24px] font-medium">Account</h1>
@@ -865,10 +875,31 @@
                 <div @click.outside="address = false"
                     class=" address-modal w-full lg:w-[46%] h-[800px] p-6 rounded-ss-lg rounded-se-lg lg:rounded-lg overflow-y-auto">
                     <div class=" flex justify-between items-center">
-                        <h4 class=" text-lg text-[#1a181e] leading-[22px] font-medium">Add new address</h4>
+                        <div class=" flex items-center gap-x-3">
+                            <svg @click="address = false" class=" md:hidden" xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" viewBox="0 0 24 24" color="var(--black-30)">
+                                <g fill="none" fill-rule="evenodd">
+                                    <g fill="currentColor" fill-rule="nonzero">
+                                        <g>
+                                            <g>
+                                                <path
+                                                    d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                                </path>
+                                                <path
+                                                    d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                                    transform="translate(-16 -95) translate(16 95) translate(1 3)">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <h4 class=" text-lg text-[#1a181e] leading-[22px] font-medium">Add new address</h4>
+                        </div>
                         <svg @click="address = false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" id="address-close-modal"
-                            class="size-6 cursor-pointer">
+                            class=" hidden lg:block size-6 cursor-pointer">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </div>
@@ -883,11 +914,14 @@
                         <div class=" relative">
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Mobile Number <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
-                            <input type="number"
+                            <input type="tel"
                                 class=" block border-b lg:border border-gray-300 pl-8 lg:pl-11 lg:py-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Enter mobile number" required>
+                                id="mobile-number" name="mobile-number" placeholder="Enter mobile number"
+                                pattern="\d{10}" maxlength="10" required
+                                oninput="this.value = this.value.replace(/\D/g, '')">
                             <spanx
-                                class=" text-[#1a181e] leading-[24px] absolute bottom-[1px] lg:bottom-[13px] lg:left-3">+91</span>
+                                class=" text-[#1a181e] leading-[24px] absolute bottom-[1px] lg:bottom-[13px] lg:left-3">
+                                +91</span>
                         </div>
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Email Address <span
@@ -920,8 +954,9 @@
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">Pin Code <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
                             <input type="number"
-                                class=" block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
-                                placeholder="Enter pin code" required>
+                                class="block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full lg:rounded placeholder:text-[#999] placeholder:leading-[24px]"
+                                placeholder="Enter pin code" maxlength="6" pattern="\d{6}"
+                                oninput="this.value = this.value.slice(0, 6).replace(/\D/g, '')" required>
                         </div>
                         <div>
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">City <span
@@ -934,7 +969,8 @@
                             <label for="" class=" text-sm text-[#4d4d4d] leading-[20px]">State <span
                                     class=" text-sm text-[#e50b20] leading-[18px]">*</span></label>
                             <select name="" id=""
-                                class=" text-[#999] leading-[20px] block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full bg-white" required>
+                                class=" text-[#999] leading-[20px] block border-b lg:border border-gray-300 lg:p-3 mt-2 focus:outline-none focus-within:border-[#146EB4] w-full bg-white"
+                                required>
                                 <option value="">Select state</option>
                                 <option value="tamilnadu">Tamilnadu</option>
                             </select>
@@ -999,7 +1035,7 @@
                         d="M19.9592 21.51H15.5316C15.1302 21.51 14.745 21.3512 14.4603 21.0682C14.1756 20.7853 14.0144 20.4011 14.0119 19.9997V13.9774H9.99703V19.9997C9.99455 20.4011 9.83335 20.7853 9.54863 21.0682C9.2639 21.3512 8.87879 21.51 8.47737 21.51H4.04972C3.58698 21.51 3.14318 21.3262 2.81597 20.999C2.48876 20.6717 2.30493 20.228 2.30493 19.7652V9.21203C2.30529 8.94037 2.36909 8.67254 2.49123 8.42988C2.61337 8.18722 2.79049 7.97644 3.00848 7.81432L11.057 1.84826C11.3589 1.62219 11.7259 1.5 12.103 1.5C12.4801 1.5 12.8471 1.62219 13.1489 1.84826L21.038 7.80494C21.2476 7.97382 21.4157 8.18843 21.5295 8.43233C21.6433 8.67622 21.6998 8.94293 21.6946 9.21203V19.7652C21.6959 19.9939 21.6519 20.2206 21.5652 20.4322C21.4786 20.6438 21.3509 20.8363 21.1897 20.9984C21.0284 21.1605 20.8367 21.2892 20.6255 21.377C20.4144 21.4648 20.1879 21.51 19.9592 21.51ZM15.6254 19.9153H19.978C20.0161 19.9129 20.052 19.896 20.0781 19.8682C20.1043 19.8403 20.1188 19.8034 20.1187 19.7652V9.21203C20.1195 9.19005 20.1148 9.16823 20.1049 9.14856C20.0951 9.1289 20.0805 9.11201 20.0624 9.09946L12.1546 3.14278C12.1282 3.12503 12.0972 3.11556 12.0655 3.11556C12.0337 3.11556 12.0027 3.12503 11.9763 3.14278L3.93716 9.10884C3.91775 9.12292 3.90176 9.1412 3.8904 9.16231C3.87903 9.18343 3.87257 9.20683 3.87149 9.23079V19.7652C3.87149 19.805 3.88731 19.8432 3.91545 19.8713C3.9436 19.8995 3.98178 19.9153 4.02158 19.9153H8.37418V13.8179C8.37664 13.438 8.52864 13.0744 8.79727 12.8058C9.0659 12.5371 9.42953 12.3851 9.80941 12.3827H14.1714C14.3611 12.3814 14.5492 12.4176 14.7249 12.489C14.9007 12.5605 15.0606 12.6659 15.1956 12.7991C15.3307 12.9324 15.4381 13.091 15.5118 13.2658C15.5856 13.4406 15.6242 13.6282 15.6254 13.8179V19.9153Z"
                         fill="#808080"></path>
                 </svg>
-                <h5 class=" text-sm text-[#808080]">Home</h5>
+                <h5 class=" text-sm text-[#808080]"><a href="/index.html">Home</a></h5>
             </div>
             <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] hover:rounded-full relative">
                 <svg class="badgeItem" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -1019,7 +1055,7 @@
                         d="M15.9684 13.3302C19.0546 13.3302 21.504 16.0732 21.504 19.4003V20.6582C21.504 21.2317 21.0373 21.6966 20.4615 21.6966H3.61248C3.0367 21.6966 2.56995 21.2317 2.56995 20.6582V19.4003C2.56995 16.0732 5.01936 13.3302 8.10556 13.3302H15.9684ZM12.037 2.16998C14.7341 2.16998 16.9165 4.36475 16.9165 7.06719C16.9165 9.76963 14.7341 11.9644 12.037 11.9644C9.33987 11.9644 7.15748 9.76963 7.15748 7.06719C7.15748 4.36475 9.33987 2.16998 12.037 2.16998Z"
                         fill="var(--primary)"></path>
                 </svg>
-                <h5 class=" text-sm text-[#146eb4]">Account</h5>
+                <h5 class=" text-sm text-[#146eb4]"><a href="/my-account.html">Account</a></h5>
             </div>
         </footer>
         <script src="/js/account.js"></script>

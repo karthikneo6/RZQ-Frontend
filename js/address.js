@@ -1,4 +1,4 @@
-document.getElementById('submitButton').addEventListener('click', function(event) {
+document.getElementById('submitButton').addEventListener('click', function (event) {
     var form = document.getElementById('userForm');
     if (form.checkValidity()) {
         // Submit the form if valid

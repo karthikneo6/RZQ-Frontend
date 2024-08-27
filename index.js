@@ -35,6 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
         valueButton.textContent = value + 1;
     });
 
+    decrementButton.addEventListener('click', function(){
+        const addtocartmsg = document.querySelector('.addtocartmsg');
+        addtocartmsg.classList.add('hidden');
+        setTimeout(() => {
+            addtocartmsg.classList.add('hidden');
+        }, 2000);
+        let value = parseInt(valueButton.textContent);
+        if (value > 0) {
+            valueButton.textContent = value - 1;
+        }
+    })
+
 
 
     const formDetal = document.querySelector('.formDetail');

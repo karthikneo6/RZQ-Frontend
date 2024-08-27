@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/css/landing.css">
 </head>
+
 <body x-data="{
     offers: false,
     navHamburger: false,
@@ -27,7 +28,7 @@
     searchInput: false,
     mobileInput: false,
     openSearch: false,
-    footerNavButton: '' }">
+    footerNavButton: 'home' }">
     <div class="bg-[#007e20] p-[10px] lg:flex justify-center items-center gap-[24px]">
         <p class="font-medium text-white text-center text-[12px] lg:text-[16px]">
             Free Shipping above 1000 | COD Available across India
@@ -38,11 +39,11 @@
             </button>
         </div>
     </div>
-    <div class="sticky inset-x-0 top-0 left-0 z-40 bg-white">
+    <div class="sticky inset-x-0 top-0 left-0 z-40 bg-white lg:border-b lg:border-[#e6e6e6]">
         <header class="flex-col gap-[10px] py-[16px] lg:px-0 px-[12px] flex container mx-auto">
             <div class="flex justify-between items-center">
                 <div class="items-center flex justify-between lg:w-fit w-full">
-                    <a href="/landing.html" class="flex cursor-pointer items-center">
+                    <a href="/index.html" class="flex cursor-pointer items-center">
                         <img src="/images/s-icon-big.webp" alt="" class="w-12 h-12" />
                         <h1 class="text-[25px] font-medium ml-5">
                             Standard Store
@@ -170,77 +171,88 @@
                                     </h3>
                                     <div class="grid grid-cols-4 gap-4">
                                         <div class="text-center">
-                                            <img src="/images/categorie1.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie1.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Cold Pressed Oils
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie2.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie2.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 100% Pure Ghee
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie3.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie3.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Rices
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie4.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie4.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Pulses
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie2.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie2.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 100% Pure Ghee
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie3.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie3.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Rices
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie4.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie4.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Pulses
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie3.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie3.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Rices
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie4.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie4.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Pulses
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/images/categorie3.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/images/categorie3.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Rices
                                             </p>
                                         </div>
                                         <div class="text-center">
-                                            <img src="/images/categorie4.webp" alt="" class="aspect-square rounded-[6px]" />
+                                            <img src="/images/categorie4.webp" alt=""
+                                                class="aspect-square rounded-[6px]" />
                                             <p
                                                 class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
                                                 Pulses
@@ -277,15 +289,17 @@
                         </span>
                         <h5>Cart</h5>
                     </div>
-                    <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            alt="Account" color="var(--black-30)" text="">
-                            <path
-                                d="M15.9255 13.7621C18.9394 13.7621 21.3459 16.3793 21.4562 19.6018L21.4602 19.833V21.0911C21.4602 21.6264 21.0536 22.0672 20.5314 22.1236L20.4178 22.1297H3.57165C3.03435 22.1297 2.59201 21.7246 2.53541 21.2042L2.5293 21.0911V19.833C2.5293 16.5828 4.86571 13.89 7.84974 13.7665L8.06396 13.7621H15.9255ZM15.9255 15.5623H8.06396C6.09351 15.5623 4.4325 17.3302 4.33364 19.6171L4.32899 19.833L4.32799 20.3288H19.6605V19.833C19.6605 17.5149 18.0592 15.6768 16.1093 15.5675L15.9255 15.5623ZM11.9947 2.60028C14.6914 2.60028 16.8734 4.79535 16.8734 7.49817C16.8734 10.201 14.6914 12.3961 11.9947 12.3961C9.29806 12.3961 7.11604 10.201 7.11604 7.49817C7.11604 4.79535 9.29806 2.60028 11.9947 2.60028ZM11.9947 4.40053C10.2953 4.40053 8.91574 5.78635 8.91574 7.49817C8.91574 9.20999 10.2953 10.5958 11.9947 10.5958C13.6942 10.5958 15.0737 9.20999 15.0737 7.49817C15.0737 5.78635 13.6942 4.40053 11.9947 4.40053Z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <h5>Account</h5>
-                    </div>
+                    <a href="/my-account.html">
+                        <div class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" alt="Account" color="var(--black-30)" text="">
+                                <path
+                                    d="M15.9255 13.7621C18.9394 13.7621 21.3459 16.3793 21.4562 19.6018L21.4602 19.833V21.0911C21.4602 21.6264 21.0536 22.0672 20.5314 22.1236L20.4178 22.1297H3.57165C3.03435 22.1297 2.59201 21.7246 2.53541 21.2042L2.5293 21.0911V19.833C2.5293 16.5828 4.86571 13.89 7.84974 13.7665L8.06396 13.7621H15.9255ZM15.9255 15.5623H8.06396C6.09351 15.5623 4.4325 17.3302 4.33364 19.6171L4.32899 19.833L4.32799 20.3288H19.6605V19.833C19.6605 17.5149 18.0592 15.6768 16.1093 15.5675L15.9255 15.5623ZM11.9947 2.60028C14.6914 2.60028 16.8734 4.79535 16.8734 7.49817C16.8734 10.201 14.6914 12.3961 11.9947 12.3961C9.29806 12.3961 7.11604 10.201 7.11604 7.49817C7.11604 4.79535 9.29806 2.60028 11.9947 2.60028ZM11.9947 4.40053C10.2953 4.40053 8.91574 5.78635 8.91574 7.49817C8.91574 9.20999 10.2953 10.5958 11.9947 10.5958C13.6942 10.5958 15.0737 9.20999 15.0737 7.49817C15.0737 5.78635 13.6942 4.40053 11.9947 4.40053Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <h5>Account</h5>
+                        </div>
+                    </a>
                 </aside>
             </div>
             <!-- mobile section input search in header  -->
@@ -309,122 +323,124 @@
                             autocomplete="off" @click="searchInput = true" placeholder="Search for products..." />
                     </div>
                 </div>
-                <div x-show="searchInput" x-cloak
-                    class="w-screen h-screen fixed inset-0 z-50 bg-white container py-[16px] lg:px-0 px-[12px]">
-                    <div class="flex items-center gap-x-3">
-                        <svg @click="searchInput = false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="black">
-                            <g fill-rule="evenodd">
-                                <g fill-rule="nonzero">
-                                    <g>
+                <div x-show="searchInput" x-cloak class=" fixed inset-0 bg-black/40 z-50">
+                    <div class="w-screen h-screen fixed inset-0 z-50 bg-white container py-[16px] lg:px-0 px-[12px]">
+                        <div class="flex items-center gap-x-3">
+                            <svg @click="searchInput = false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="black">
+                                <g fill-rule="evenodd">
+                                    <g fill-rule="nonzero">
                                         <g>
-                                            <path
-                                                d="M10.72.51c.364.356.398.923.097 1.319l-.082.095-6.698 6.851H22.78c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H4.037l6.698 6.85c.386.396.379 1.029-.016 1.415-.364.356-.932.378-1.32.068l-.094-.084-8.36-8.55-.02-.02c-.02-.022-.039-.045-.057-.068l.077.088c-.033-.034-.063-.07-.09-.106-.019-.025-.036-.051-.052-.078l-.02-.035c-.011-.02-.022-.04-.031-.06l-.02-.049c-.01-.021-.017-.043-.024-.065l-.012-.039C.69 10.018.684 9.994.68 9.97l-.007-.043c-.004-.02-.006-.042-.008-.064L.66 9.794v-.037c0-.023.002-.046.004-.07l-.004.088c0-.052.004-.103.012-.153l.007-.041c.005-.025.01-.05.017-.073l.012-.04.023-.064.02-.048c.01-.02.02-.041.032-.061l.02-.035c.016-.027.033-.053.052-.078l.009-.013c.022-.028.041-.05.061-.072l.02-.021 8.36-8.55C9.691.13 10.325.124 10.719.51z"
-                                                transform="translate(-16 -12) translate(16 12) translate(0 2)"></path>
+                                            <g>
+                                                <path
+                                                    d="M10.72.51c.364.356.398.923.097 1.319l-.082.095-6.698 6.851H22.78c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H4.037l6.698 6.85c.386.396.379 1.029-.016 1.415-.364.356-.932.378-1.32.068l-.094-.084-8.36-8.55-.02-.02c-.02-.022-.039-.045-.057-.068l.077.088c-.033-.034-.063-.07-.09-.106-.019-.025-.036-.051-.052-.078l-.02-.035c-.011-.02-.022-.04-.031-.06l-.02-.049c-.01-.021-.017-.043-.024-.065l-.012-.039C.69 10.018.684 9.994.68 9.97l-.007-.043c-.004-.02-.006-.042-.008-.064L.66 9.794v-.037c0-.023.002-.046.004-.07l-.004.088c0-.052.004-.103.012-.153l.007-.041c.005-.025.01-.05.017-.073l.012-.04.023-.064.02-.048c.01-.02.02-.041.032-.061l.02-.035c.016-.027.033-.053.052-.078l.009-.013c.022-.028.041-.05.061-.072l.02-.021 8.36-8.55C9.691.13 10.325.124 10.719.51z"
+                                                    transform="translate(-16 -12) translate(16 12) translate(0 2)">
+                                                </path>
+                                            </g>
                                         </g>
                                     </g>
                                 </g>
-                            </g>
-                        </svg>
-                        <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1">
-                            <div x-cloak @click.away="mobileInput = false" class="relative">
-                                <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1 relative z-50"
-                                    @click="mobileInput = true">
-                                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
-                                            fill="#B2B2B2"></path>
-                                    </svg>
-                                    <input type="text" class="search-input advance-filter__search-input" name="search"
-                                        autocomplete="off" @focus="mobileInput = true"
-                                        placeholder="Search for products..." />
+                            </svg>
+                            <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1">
+                                <div x-cloak @click.away="mobileInput = false" class="relative">
+                                    <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1 relative z-50"
+                                        @click="mobileInput = true">
+                                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 20 20" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                                fill="#B2B2B2"></path>
+                                        </svg>
+                                        <input type="text" class="search-input advance-filter__search-input"
+                                            name="search" autocomplete="off" @focus="mobileInput = true"
+                                            placeholder="Search for products..." />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mt-2 w-full rounded-lg bg-white z-50 overflow-y-auto h-screen">
-                        <div class="py-4">
-                            <h3 class="text-lg font-medium mb-2">
-                                Bestsellers
-                            </h3>
-                            <div class="grid grid-cols-2 sm:grid-cols-3 sm:gap-4 gap-2">
-                                <div class="text-center">
-                                    <img src="/images/categorie1.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name mx-auto text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Cold Pressed Oils
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        100% Pure Ghee
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Rices
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Pulses
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        100% Pure Ghee
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Rices
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Pulses
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Rices
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Pulses
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Rices
-                                    </p>
-                                </div>
-                                <div class="text-center">
-                                    <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
-                                    <p
-                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
-                                        Pulses
-                                    </p>
+                        <div class="mt-2 w-full rounded-lg bg-white z-50 overflow-y-auto h-screen">
+                            <div class="py-4">
+                                <h3 class="text-lg font-medium mb-2">
+                                    Bestsellers
+                                </h3>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 sm:gap-4 gap-2">
+                                    <div class="text-center">
+                                        <img src="/images/categorie1.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name mx-auto text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Cold Pressed Oils
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            100% Pure Ghee
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            100% Pure Ghee
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Rices
+                                        </p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                        <p
+                                            class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                            Pulses
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -571,7 +587,7 @@
 
     <!-- product image lisiting  -->
     <div class="container lg:px-0 px-[12px]">
-        <div class="lg:border-t lg:border-[#e6e6e6] lg:py-5">
+        <div class=" lg:py-5">
             <div class="flex justify-between gap-x-2 overflow-x-auto">
                 <div class="banner bg-cover w-[300px] rounded-md">
                     <img src="/images/product1.blob" alt="" class="bannerImg" />
@@ -620,37 +636,36 @@
                     <span class="cursor-pointer" x-on:click="offerBottomPopup = false">✕</span>
                 </div>
 
-                    <div class="flex justify-between pt-5">
-                        <div class="coupon-code-wrapper">
-                            <div class="circle-left"></div>
-                            <div class="circle-right"></div>
-                            <div class="coupon-code">
-                                <span class="font-medium">WELCOME</span>
-                            </div>
-                        </div>
-                        <button class="font-medium text-[#EE741F]">
-                            Copy code
-                        </button>
-                    </div>
-                    <span class="text-[#17b31b] text-[13px] font-medium pt-2 block">You will save ₹75 with this
-                        coupon</span>
-                    <p class="text-[#1a181e] text-[13px] pt-[10px]">
-                        Get ₹50 off on item total above ₹499. Applicable on both online payment and COD
-                    </p>
-
-                    <!-- details  -->
-                    <div class="py-3">
-                        <!-- Toggle Button -->
-                        <div class="">
-                            <span class="text-[14px] text-[#808080]  block">Details</span>
-                            <ul class="text-[#808080] text-[12px] list-disc block pl-6">
-                                <li>
-                                    Applicable on both online payment and COD
-                                </li>
-                            </ul>
+                <div class="flex justify-between pt-5">
+                    <div class="coupon-code-wrapper">
+                        <div class="circle-left"></div>
+                        <div class="circle-right"></div>
+                        <div class="coupon-code">
+                            <span class="font-medium">WELCOME</span>
                         </div>
                     </div>
+                    <button class="font-medium text-[#EE741F]">
+                        Copy code
+                    </button>
+                </div>
+                <span class="text-[#17b31b] text-[13px] font-medium pt-2 block">You will save ₹75 with this
+                    coupon</span>
+                <p class="text-[#1a181e] text-[13px] pt-[10px]">
+                    Get ₹50 off on item total above ₹499. Applicable on both online payment and COD
+                </p>
 
+                <!-- details  -->
+                <div class="py-3">
+                    <!-- Toggle Button -->
+                    <div class="">
+                        <span class="text-[14px] text-[#808080]  block">Details</span>
+                        <ul class="text-[#808080] text-[12px] list-disc block pl-6">
+                            <li>
+                                Applicable on both online payment and COD
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
 
@@ -873,8 +888,8 @@
                     <!-- Modal -->
                     <div x-cloak x-show="open"
                         class="  bg-black bg-opacity-50 flex lg:items-center bottom-0 justify-center z-50 fixed inset-0">
-                        <div
-                            class="bg-white lg:rounded-lg rounded-tl-[16px] rounded-tr-[16px] shadow-lg md:max-w-[540px] mx-auto md:w-[540px] lg:h-fit  lg:relative fixed bottom-0">
+                        <div @click.outside="open = false"
+                            class="bg-white lg:rounded-lg rounded-tl-[16px] rounded-tr-[16px] shadow-lg md:max-w-[540px] mx-auto md:w-[540px] lg:h-fit lg:relative fixed bottom-0">
                             <div class="p-6">
                                 <div class="flex items-center justify-between border-b pb-3 border-[#e6e6e6]">
                                     <h2 class="font-medium">
@@ -1073,7 +1088,7 @@
                     </button> -->
                     <div @dblclick.prevent
                         class="flex items-center  border border-[#146EB4] rounded-[4px] mx-auto mt-[15px] w-[80px]">
-                        <button @click="cardCount[active]--"
+                        <button @click="if(cardCount[active] > 0) { cardCount[active]--; }"
                             class="flex  w-fit items-center justify-center p-1.5 text-[#146EB4]" aria-label="subtract">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
                                 stroke="currentColor" fill="none" stroke-width="2" class="size-4">
@@ -1081,8 +1096,7 @@
                             </svg>
                         </button>
 
-                        <p style="
-                                                    background-color: rgba(
+                        <p style=" background-color: rgba(
                                                         20,
                                                         110,
                                                         180,
@@ -1091,6 +1105,7 @@
                                                 "
                             class="border-x-none w-5  flex justify-center items-center text-center text-[#146EB4]"
                             x-text="cardCount[active]"></p>
+                        <!-- <div x-show="showAddToCart" @click="showAddToCart = false" class="py-2.5">Add to cart</div> -->
                         <button @click="cardCount[active]++;"
                             class="flex w-fit items-center justify-center  p-1.5 text-[#146EB4]" aria-label="add">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
@@ -2467,15 +2482,15 @@
         x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 transform translate-x-0"
         x-transition:leave-end="opacity-0 transform translate-x-full"
-        class="fixed top-0 right-0 lg:w-[400px] w-full h-full bg-white shadow-lg p-4 z-40 lg:block hidden">
+        class="fixed top-0 right-0 lg:w-[400px] w-full h-full bg-white shadow-lg p-5 z-40 lg:block hidden">
         <!-- Modal header -->
-        <div class="flex items-start justify-between pt-[24px]">
+        <div class="flex items-start justify-between">
             <div class="text-left">
                 <h3 class="text-lg font-medium text-[#1a181e]">
                     Coupons and offers
                 </h3>
             </div>
-            <span class="cursor-pointer" x-on:click="offers = false">✕</span>
+            <span class=" text-2xl cursor-pointer" x-on:click="offers = false">✕</span>
         </div>
 
         <div class="pt-5">
@@ -2724,7 +2739,7 @@
             </svg>
             <p :style="{ color: footerNavButton === 'account' ? '#146EB4' : '#999999' }"
                 class="text-[14px] font-medium">
-                Account
+                <a href="/my-account.html">Account</a>
             </p>
         </button>
     </div>
@@ -2825,7 +2840,7 @@
     </div>
     <!-- decreament popup end -->
 
-   <script src="/js/landing.js"></script>
+    <script src="/js/landing.js"></script>
 </body>
 
 </html>

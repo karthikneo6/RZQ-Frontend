@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/css/product.css">
     <script src="index.js"></script>
     <title>RZQ</title>
 </head>
@@ -19,62 +20,115 @@
     add_popup:false,
 checkout_pop:false,
 continue : false}">
-
+        <div class="bg-[#007e20] p-[10px] lg:flex justify-center items-center gap-[24px]">
+            <p class="font-medium text-white text-center text-[12px] lg:text-[16px]">
+                Free Shipping above 1000 | COD Available across India
+            </p>
+            <div class="flex justify-center lg:flex-none pt-1.5 lg:pt-0">
+                <button
+                    class="px-[12px] py-[4px] bg-[#EE741F] text-white rounded-[4px] text-[14px] hover:text-[#1a181e]">
+                    Use WELCOME for ₹50 OFF
+                </button>
+            </div>
+        </div>
         <!-- add popup -->
-        <div x-show="add_popup" class="fixed inset-0 z-50 bg-black/50" x-cloak>
-            <div class="absolute right-0 bottom-0 md:left-0 md:top-20">
-                <div class="bg-white md:w-fit h-full md:h-fit overflow-y-auto mx-auto rounded-md py-3">
-                    <div class="flex justify-between px-6">
-                        <h1 class="text-lg text-[#1a181e]">Select options</h1>
-                        <div @click="add_popup = false">
-                            <img src="/assets/icons/init.svg" alt="" class="w-5 h-5 object-contain cursor-pointer">
-                        </div>
+        <div x-show="add_popup" class="bg-black/40 fixed inset-0 z-30 flex justify-center items-end lg:items-center"
+            x-cloak>
+            <div class="bg-white w-full lg:w-1/2 xl:w-[35%] rounded-ss-lg rounded-se-lg lg:rounded-lg overflow-y-auto">
+                <!-- <div class="flex justify-between px-6">
+                    <h1 class="text-lg text-[#1a181e]">Select options</h1>
+                    <div @click="add_popup = false">
+                        <img src="/assets/icons/init.svg" alt="" class="w-5 h-5 object-contain cursor-pointer">
                     </div>
-                    <div class="px-6">
-                        <div class="border-t-2 border-[#e6e6e6] mt-3"></div>
+                </div> -->
+                <div class=" flex justify-between items-center m-5 pb-5 border-b-2 border-gray-300">
+                    <h4 class=" text-lg text-[#1a181e] leading-[26px] font-medium">Select options</h4>
+                    <svg @click="add_popup = false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </div>
+                <div class=" flex items-center gap-x-2 px-6">
+                    <p class=" text-[#1a181e] leading-[24px] font-medium line-clamp-2">Cold Pressed Groundnut Oil /
+                        மரச்செக்கு கடலை எண்ணெய் / ಕಡಲೆಕಾಯಿ ಎಣ್ಣೆ / వేరుశెనగ నూనె / मूँगफली तेल / നിലക്കടല എണ്ണ
+                    </p>
+                    <div>
+                        <img src="/assets/images/img-1.webp" alt="" class=" min-w-20 h-20">
                     </div>
-                    <div class="flex justify-between gap-x-5 mt-5 px-6">
-                        <div>
-                            <h1 class="font-medium text-base leading-[24px] text-[#1a181e]">Horse Gram / கொள்ளு / ಹುರುಳಿ
-                                / ఉలవలు / कुलथी दाल / മുതിര</h1>
-                            <div class="flex items-center gap-x-2 mt-3">
-                                <p class="font-medium text-sm">₹80</p>
-                                <p class="text-sm leading-5 line-through text-[#808080]">₹95</p>
-                                <p class="text-[#ee741f] leading-5 text-sm">(16% OFF)</p>
-                            </div>
-                        </div>
-                        <div>
-                            <img src="/assets/images/list.png" alt="" class="w-12 h-12 object-contain rounded-lg">
-                        </div>
+                </div>
+                <div class=" flex items-center gap-x-2 px-5">
+                    <h1 class=" text-lg text-[#1a181e] leading-[32px] font-medium">₹320</h1>
+                    <h1 class=" text-[#808080] leading-[26px] line-through">₹340</h1>
+                    <h1 class=" text-[#ee741f] leading-[28px] font-medium">(6% OFF)</h1>
+                </div>
+                <div class=" pt-4 px-5">
+                    <h4 class=" text-[#1a181e] leading-[24px] font-medium">Select size</h4>
+                    <div class=" flex flex-wrap items-center gap-3.5 pt-2" x-data="{
+                    size : 1,
+                }">
+                        <button @click="size = 1"
+                            :class="size == '1' ? ' text-[#146eb4] leading-[20px] border border-[#146eb4] bg-[#E7F0F7] px-4 py-2 w-fit rounded font-medium' : ' text-[#1a181e] leading-[20px] border border-gray-300 px-4 py-2 w-fit rounded hover:text-[#146eb4] hover:border-[#146eb4] hover:bg-[#E7F0F7] hover:transition-all hover:duration-300 font-medium'">200
+                            ML</button>
+                        <button @click="size = 2"
+                            :class="size == '2' ? ' text-[#146eb4] leading-[20px] border border-[#146eb4] bg-[#E7F0F7] px-4 py-2 w-fit rounded font-medium' : ' text-[#1a181e] leading-[20px] border border-gray-300 px-4 py-2 w-fit rounded hover:text-[#146eb4] hover:border-[#146eb4] hover:bg-[#E7F0F7] hover:transition-all hover:duration-300 font-medium'">500
+                            ML</button>
+                        <button @click="size = 3"
+                            :class="size == '3' ? ' text-[#146eb4] leading-[20px] border border-[#146eb4] bg-[#E7F0F7] px-4 py-2 w-fit rounded font-medium' : ' text-[#1a181e] leading-[20px] border border-gray-300 px-4 py-2 w-fit rounded hover:text-[#146eb4] hover:border-[#146eb4] hover:bg-[#E7F0F7] hover:transition-all hover:duration-300 font-medium'">1
+                            Litre</button>
+                        <button @click="size = 4"
+                            :class="size == '4' ? ' text-[#146eb4] leading-[20px] border border-[#146eb4] bg-[#E7F0F7] px-4 py-2 w-fit rounded font-medium' : ' text-[#1a181e] leading-[20px] border border-gray-300 px-4 py-2 w-fit rounded hover:text-[#146eb4] hover:border-[#146eb4] hover:bg-[#E7F0F7] hover:transition-all hover:duration-300 font-medium'">3
+                            Litres</button>
+                        <button @click="size = 5"
+                            :class="size == '5' ? ' text-[#146eb4] leading-[20px] border border-[#146eb4] bg-[#E7F0F7] px-4 py-2 w-fit rounded font-medium' : ' text-[#1a181e] leading-[20px] border border-gray-300 px-4 py-2 w-fit rounded hover:text-[#146eb4] hover:border-[#146eb4] hover:bg-[#E7F0F7] hover:transition-all hover:duration-300 font-medium'">5
+                            Litres</button>
+                        <button @click="size = 6"
+                            :class="size == '6' ? ' text-[#146eb4] leading-[20px] border border-[#146eb4] bg-[#E7F0F7] px-4 py-2 w-fit rounded font-medium' : ' text-[#1a181e] leading-[20px] border border-gray-300 px-4 py-2 w-fit rounded hover:text-[#146eb4] hover:border-[#146eb4] hover:bg-[#E7F0F7] hover:transition-all hover:duration-300 font-medium'">15
+                            Litres</button>
                     </div>
-                    <div class="mt-6 px-6">
-                        <h1 class="font-medium text-base">Select size</h1>
-                        <ul class="flex gap-x-3 items-center mt-3">
-                            <li class="border border-[#146eb4] px-4 py-2 rounded-md">500 g</li>
-                            <li class="border border-[#146eb4] px-4 py-2 rounded-md">500 g</li>
-                        </ul>
-                    </div>
-                    <div class="border-t border-[#e6e6e6] mt-[48px]"></div>
-                    <div class="mt-4 flex items-center gap-x-4 px-6">
-                        <button class="border border-[#146eb4] px-3 py-3 text-[#146eb4] rounded-md w-full cart"
-                            onclick="addTocart()">Add to cart</button>
-                        <div
-                            class="border border-[#146eb4] px-3 py-3 text-[#146eb4] rounded-md w-full flex items-center justify-between incrdecr">
-                            <img src="/assets/icons/decrement.svg" alt="decrement"
-                                class="w-5 h-5 object-contain decrement cursor-pointer">
-                            <button class="text-white font-medium leading-7 value bg-[#146eb4]/50 w-12">1</button>
-                            <img src="/assets/icons/increment.svg" alt="increment"
-                                class="w-5 h-5 object-contain increment cursor-pointer">
-                        </div>
+                </div>
 
+
+                <!-- <div class=" pt-6">
+                    <div class=" flex justify-center items-center gap-x-4 bg-white border-t border-gray-300 w-full p-5"
+                        x-data="{ showAddToCart: true, count: 1 }">
                         <button
-                            class="border border-[#146eb4] px-3 py-3 rounded-md bg-[#146eb4] text-white font-medium w-full buynow">Buy
-                            now</button>
+                            class=" text-lg text-[#146eb4] leading-[26px] font-medium border border-[#146eb4] w-full rounded-md hover:bg-[#E7F0F7]">
+                            <div x-show="showAddToCart" @click="showAddToCart = false" class="py-2.5">Add to cart
+                            </div>
+                            <div x-show="!showAddToCart" x-cloak class="grid grid-cols-3">
+                                <div @click="if(count > 1) { count--; } else { showAddToCart = true; count = 1; }"
+                                    class="py-2.5">-</div>
+                                <div class="py-2.5 bg-[#D9E2E9]" x-text="count"></div>
+                                <div @click="count++" class="py-2.5">+</div>
+                            </div>
+                        </button>
+                        <button
+                            class=" text-lg text-white leading-[26px] bg-[#146EB4] font-medium py-3 w-full rounded-md"
+                            x-text="showAddToCart ? 'Buy now' : 'Go to cart'">
+                        </button>
                     </div>
+                </div> -->
+
+
+                <div class="my-4 flex items-center gap-x-4 px-6">
+                    <button class="border border-[#146eb4] px-3 py-3 text-[#146eb4] rounded-md w-full cart"
+                        onclick="addTocart()">Add to cart</button>
+                    <div
+                        class="border border-[#146eb4] px-3 py-3 text-[#146eb4] rounded-md w-full flex items-center justify-between incrdecr">
+                        <img src="/assets/icons/decrement.svg" alt="decrement"
+                            class="w-5 h-5 object-contain decrement cursor-pointer">
+                        <button class="text-white font-medium leading-7 value bg-[#146eb4]/50 w-12">1</button>
+                        <img src="/assets/icons/increment.svg" alt="increment"
+                            class="w-5 h-5 object-contain increment cursor-pointer">
+                    </div>
+
+                    <button
+                        class="border border-[#146eb4] px-3 py-3 rounded-md bg-[#146eb4] text-white font-medium w-full buynow">Buy
+                        now</button>
                 </div>
             </div>
             <!-- addToCart message notification -->
-            <div class="bg-white max-w-96 p-3 absolute bottom-4 right-4 rounded-lg addtocartmsg hidden ">
+            <div class="bg-white max-w-96 p-3 absolute bottom-4 right-4 rounded-lg addtocartmsg hidden">
                 <div class="flex gap-x-4 overflow-hidden">
                     <div class="border gap-x-2">
                         <img src="/assets/images/list.png" alt=""
@@ -94,7 +148,6 @@ continue : false}">
                 class="bg-white w-[25%] h-screen overflow-y-auto absolute right-0 no-scrollbar shadow-lg mb-28" x-data="{
                 popular_popup:false
             }">
-
                 <div x-show=" popular_popup" class=" w-full h-screen absolute left-0 z-50  bg-black/50">
                     <div class="bg-white absolute  w-full bottom-0">
                         <div class="bg-white remove_item rounded-2xl" id="card1">
@@ -458,7 +511,6 @@ continue : false}">
                             <h1 class="text-[#17b31b] font-medium leading-6">28% (₹112) saved so far on this order</h1>
                             <h1 class=" leading-6 text-[#17b31b] text-xs"> Save ₹49 on delivery fee by adding ₹663 more
                                 to cart</h1>
-
                         </div>
 
                     </div>
@@ -479,76 +531,594 @@ continue : false}">
             </div>
         </div>
 
-        <div class="bg-[#007e20] py-3 md:flex items-center justify-center gap-x-3">
-            <h1 class="font-medium text-center text-xs md:text-base  leading-[24px] text-white">Free
-                Shipping above 1000 | COD Available across India</h1>
-            <div class="flex justify-center mt-1 md:mt-0 ">
-
-                <h1 class=" text-xs md:text-sm py-1 px-3 rounded text-white bg-[#ff741f]">Use
-                    WELCOME for ₹50 OFF</h1>
-            </div>
-        </div>
-        <div class="border lg:hidden border-[#e6e6e6] py-2 bg-white fixed bottom-0 w-full filter">
-            <div class="flex justify-between items-center px-20 ">
-                <h1 class=" flex items-center gap-x-2"><img src="/assets/icons/sort.svg" alt
-                        class="w-4 h-4 object-contain text-[0.833rem]"><a href>sort</a></h1>
-                <div class="border-l border-[#e6e6e6] h-6">
+        <!-- header sectiion  -->
+        <div x-data="{ offers: false,
+        navHamburger: false,
+        offerBottomPopup: false,
+        showSnackbar: false,
+        searchInput: false,
+        mobileInput: false,
+        openSearch: false,
+        footerNavButton: '' }"
+            class=" lg:fixed lg:top-0 bg-white w-full z-20 border-b border-gray-300 pb-4 hidden lg:block">
+            <div class="bg-[#007e20] p-[10px] lg:flex justify-center items-center gap-[24px]">
+                <p class="font-medium text-white text-center text-[12px] lg:text-[16px]">
+                    Free Shipping above 1000 | COD Available across India
+                </p>
+                <div class="flex justify-center lg:flex-none pt-1.5 lg:pt-0">
+                    <button
+                        class="px-[12px] py-[4px] bg-[#EE741F] text-white rounded-[4px] text-[14px] hover:text-[#1a181e]">
+                        Use WELCOME for ₹50 OFF
+                    </button>
                 </div>
-                <h1 class="flex items-center gap-x-2"><img src="/assets/icons/filter.svg" alt
-                        class="w-4 h-4 object-contain text-[0.833rem]"><a href>Filter</a></h1>
+            </div>
+            <div class=" hidden lg:block sticky inset-x-0 top-0 left-0 z-40 bg-white">
+                <header class="flex-col gap-[10px] py-[16px] lg:px-0 px-[12px] flex container mx-auto">
+                    <div class="flex justify-between items-center">
+                        <div class="items-center flex justify-between lg:w-fit w-full">
+                            <a href="/landing.html" class="flex cursor-pointer items-center">
+                                <img src="/images/s-icon-big.webp" alt="" class="w-12 h-12" />
+                                <h1 class="text-[25px] font-medium ml-5">
+                                    Standard Store
+                                </h1>
+                            </a>
+                            <div class="lg:hidden block">
+                                <div class="navHamburger cursor-pointer pt-1" @click="navHamburger = true">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg" alt="menu" class="text-black">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M2.09961 11.9996C2.09961 11.5026 2.50255 11.0996 2.99961 11.0996H20.9996C21.4967 11.0996 21.8996 11.5026 21.8996 11.9996C21.8996 12.4967 21.4967 12.8996 20.9996 12.8996H2.99961C2.50255 12.8996 2.09961 12.4967 2.09961 11.9996Z">
+                                        </path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M2.09961 5.99961C2.09961 5.50255 2.50255 5.09961 2.99961 5.09961H20.9996C21.4967 5.09961 21.8996 5.50255 21.8996 5.99961C21.8996 6.49667 21.4967 6.89961 20.9996 6.89961H2.99961C2.50255 6.89961 2.09961 6.49667 2.09961 5.99961Z">
+                                        </path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M2.09961 17.9996C2.09961 17.5026 2.50255 17.0996 2.99961 17.0996H20.9996C21.4967 17.0996 21.8996 17.5026 21.8996 17.9996C21.8996 18.4967 21.4967 18.8996 20.9996 18.8996H2.99961C2.50255 18.8996 2.09961 18.4967 2.09961 17.9996Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div x-show="navHamburger" x-cloak
+                                    class="fixed inset-y-0 right-0 lg:w-[400px] w-full z-20 bg-white shadow-lg p-5 transform transition-transform duration-300 ease-in-out"
+                                    @click.away="navHamburger = false"
+                                    :class="{ 'translate-x-full': !navHamburger, 'translate-x-0': navHamburger }">
+                                    <div class="">
+                                        <div
+                                            class="flex items-center justify-between pb-[12px] border-b border-[#e6e6e6]">
+                                            <p>Menu</p>
+                                            <svg @click="navHamburger = ! navHamburger"
+                                                class="closeDrawer cursor-pointer MobileMenu_closeMenuIcon__1iun3"
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16" color="var(--black-50)" alt="close">
+                                                <g fill="none" fill-rule="evenodd">
+                                                    <g fill="currentColor" fill-rule="nonzero">
+                                                        <g>
+                                                            <g>
+                                                                <path
+                                                                    d="M.363.363c.44-.44 1.136-.484 1.626-.11l.127.11L8 6.248 13.884.363c.452-.452 1.166-.482 1.652-.09l.101.09c.44.44.484 1.136.099 1.641l-.099.112L9.752 8l5.885 5.884c.452.452.482 1.166.09 1.652l-.09.101c-.44.44-1.136.484-1.641.099l-.112-.099L8 9.752l-5.883 5.885c-.452.452-1.166.482-1.652.09l-.101-.09c-.44-.44-.484-1.136-.099-1.64l.099-.113L6.247 8 .363 2.116C-.089 1.664-.119.95.273.464z"
+                                                                    transform="translate(-903 -372) translate(497 343) translate(406 29)">
+                                                                </path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <ul class="pt-5 space-y-5">
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Millet Cookies
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Millet Noodles
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Millet Vermicelli
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Millet Pasta
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Millet Flakes
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Millet Snacks
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Healthy Snacks
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Tea Coffee
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Health Mix
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Milk Mix
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Handmade Soaps
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Copper Items
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Liquid Cleaner
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Shipping & Delivery Policy
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Order Cancellation Policy
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Blog
+                                            </li>
+                                            <li class="cursor-pointer font-medium text-[#1a181e]">
+                                                Change store language
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- desktop input search  -->
+                        <div class="searchbar-component searchbar-wrapper w-[432px] rounded-lg pt-1 lg:block hidden">
+                            <div x-ref="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                            <div x-cloak @click.away="openSearch = false; $refs.overlay.classList.add('hidden')"
+                                class="relative">
+                                <div class="searchbar-component searchbar-wrapper w-[432px] rounded-lg pt-1 relative z-50"
+                                    @click="openSearch = true; $refs.overlay.classList.remove('hidden')">
+                                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 20 20" fill="none">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                            fill="#B2B2B2"></path>
+                                    </svg>
+                                    <input type="text" class="search-input advance-filter__search-input outline-none"
+                                        name="search" autocomplete="off"
+                                        @focus="openSearch = true; $refs.overlay.classList.remove('hidden')"
+                                        placeholder="Search for products..." />
+                                    <div x-show="openSearch" x-cloak
+                                        class="absolute mt-2 w-[432px] rounded-lg shadow-lg bg-white z-50 overflow-y-auto max-h-max h-[400px]">
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-semibold mb-2">
+                                                Bestsellers
+                                            </h3>
+                                            <div class="grid grid-cols-4 gap-4">
+                                                <div class="text-center">
+                                                    <img src="/images/categorie1.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Cold Pressed Oils
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie2.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        100% Pure Ghee
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie3.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Rices
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie4.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Pulses
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie2.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        100% Pure Ghee
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie3.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Rices
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie4.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Pulses
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie3.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Rices
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie4.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Pulses
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/images/categorie3.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Rices
+                                                    </p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <img src="/images/categorie4.webp" alt=""
+                                                        class="aspect-square rounded-[6px]" />
+                                                    <p
+                                                        class="mt-2 category-name text-center pt-[1px] text-[14px] font-semibold text-[#1a181e]">
+                                                        Pulses
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- desktop input search end -->
+                        <aside class="lg:flex hidden items-center justify-between gap-x-8">
+                            <div
+                                class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full">
+                                <svg class="default" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" alt="Categories" color="black" text="">
+                                    <path
+                                        d="M20.4971 13C21.3255 13 21.9971 13.6716 21.9971 14.5V20.5C21.9971 21.3284 21.3255 22 20.4971 22H14.4971C13.6686 22 12.9971 21.3284 12.9971 20.5V14.5C12.9971 13.6716 13.6686 13 14.4971 13H20.4971ZM9.5 13C10.3284 13 11 13.6716 11 14.5V20.5C11 21.3284 10.3284 22 9.5 22H3.5C2.67157 22 2 21.3284 2 20.5V14.5C2 13.6716 2.67157 13 3.5 13H9.5ZM20.297 14.7H14.697V20.3H20.297V14.7ZM9.3 14.7H3.7V20.3H9.3V14.7ZM9.5 2C10.3284 2 11 2.67157 11 3.5V9.5C11 10.3284 10.3284 11 9.5 11H3.5C2.67157 11 2 10.3284 2 9.5V3.5C2 2.67157 2.67157 2 3.5 2H9.5ZM20.4971 2C21.3255 2 21.9971 2.67157 21.9971 3.5V9.5C21.9971 10.3284 21.3255 11 20.4971 11H14.4971C13.6686 11 12.9971 10.3284 12.9971 9.5V3.5C12.9971 2.67157 13.6686 2 14.4971 2H20.4971ZM9.3 3.7H3.7V9.3H9.3V3.7ZM20.297 3.7H14.697V9.3H20.297V3.7Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <h5>Categories</h5>
+                            </div>
+                            <div
+                                class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full relative">
+                                <svg class="badgeItem" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" alt="Bag" color="var(--black-30)" text="">
+                                    <path
+                                        d="M17.5303 2C17.7769 2 18.0091 2.1161 18.157 2.31336L20.9105 5.985C20.9338 6.01451 20.955 6.04575 20.974 6.07848C20.9829 6.09427 20.9915 6.11041 20.9995 6.12681C21.0067 6.14109 21.0133 6.15592 21.0196 6.17098C21.0243 6.18292 21.0289 6.19482 21.0331 6.20682C21.0407 6.22728 21.0472 6.24826 21.0528 6.2696C21.0698 6.33447 21.0787 6.40189 21.0787 6.47005V19.3733C21.0787 20.824 19.9027 22 18.452 22H5.54873C4.09802 22 2.922 20.824 2.922 19.3733V6.47005C2.922 6.36611 2.94267 6.26389 2.98211 6.16909C2.98795 6.15455 2.99438 6.14034 3.00121 6.12636C3.02283 6.08242 3.04873 6.03994 3.07868 6L3.027 6.07799C3.02812 6.07606 3.02925 6.07413 3.03039 6.07221L3.07868 6L5.84366 2.31336C5.99161 2.1161 6.2238 2 6.47038 2H17.5303ZM19.511 7.253H4.488L4.48882 19.3733C4.48882 19.8806 4.84525 20.3047 5.32135 20.4087L5.43324 20.427L5.54873 20.4332H18.452C19.0373 20.4332 19.5119 19.9586 19.5119 19.3733L19.511 7.253ZM15.687 9.37327C16.1196 9.37327 16.4704 9.72402 16.4704 10.1567C16.4704 12.6254 14.4691 14.6267 12.0003 14.6267C9.5316 14.6267 7.53029 12.6254 7.53029 10.1567C7.53029 9.72402 7.88104 9.37327 8.3137 9.37327C8.74637 9.37327 9.09711 9.72402 9.09711 10.1567C9.09711 11.7601 10.3969 13.0599 12.0003 13.0599C13.6037 13.0599 14.9036 11.7601 14.9036 10.1567C14.9036 9.72402 15.2543 9.37327 15.687 9.37327ZM17.1386 3.56682H6.86117L5.27 5.686H18.728L17.1386 3.56682Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <span
+                                    class="inline-block text-white text-center text-sm font-normal bg-red-600 rounded-full px-1 py-0.5 absolute top-[-2px] left-[2px] min-w-[18px] h-[18px] leading-[14px] whitespace-nowrap">
+                                    3
+                                </span>
+                                <h5>Cart</h5>
+                            </div>
+                            <div
+                                class="flex items-center gap-x-2 cursor-pointer hover:bg-[#f2f2f2] p-2 hover:rounded-full">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" alt="Account" color="var(--black-30)" text="">
+                                    <path
+                                        d="M15.9255 13.7621C18.9394 13.7621 21.3459 16.3793 21.4562 19.6018L21.4602 19.833V21.0911C21.4602 21.6264 21.0536 22.0672 20.5314 22.1236L20.4178 22.1297H3.57165C3.03435 22.1297 2.59201 21.7246 2.53541 21.2042L2.5293 21.0911V19.833C2.5293 16.5828 4.86571 13.89 7.84974 13.7665L8.06396 13.7621H15.9255ZM15.9255 15.5623H8.06396C6.09351 15.5623 4.4325 17.3302 4.33364 19.6171L4.32899 19.833L4.32799 20.3288H19.6605V19.833C19.6605 17.5149 18.0592 15.6768 16.1093 15.5675L15.9255 15.5623ZM11.9947 2.60028C14.6914 2.60028 16.8734 4.79535 16.8734 7.49817C16.8734 10.201 14.6914 12.3961 11.9947 12.3961C9.29806 12.3961 7.11604 10.201 7.11604 7.49817C7.11604 4.79535 9.29806 2.60028 11.9947 2.60028ZM11.9947 4.40053C10.2953 4.40053 8.91574 5.78635 8.91574 7.49817C8.91574 9.20999 10.2953 10.5958 11.9947 10.5958C13.6942 10.5958 15.0737 9.20999 15.0737 7.49817C15.0737 5.78635 13.6942 4.40053 11.9947 4.40053Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <h5>Account</h5>
+                            </div>
+                        </aside>
+                    </div>
+                    <!-- mobile section input search in header  -->
+                    <div class="searchbar-component container searchbar-wrapper lg:w-[432px] w-full rounded-lg pt-1 lg:hidden block"
+                        @click.outside="searchInput = false">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 20 20" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                fill="#B2B2B2"></path>
+                        </svg>
+                        <div>
+                            <div
+                                class="searchbar-component searchbar-wrapper lg:w-[432px] w-full rounded-lg pt-1 relative">
+                                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 20 20" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                        fill="#B2B2B2"></path>
+                                </svg>
+                                <input type="text" class="search-input advance-filter__search-input" name="search"
+                                    autocomplete="off" @click="searchInput = true"
+                                    placeholder="Search for products..." />
+                            </div>
+                        </div>
+                        <div x-show="searchInput" x-cloak
+                            class="w-screen h-screen fixed inset-0 z-50 bg-white container py-[16px] lg:px-0 px-[12px]">
+                            <div class="flex items-center gap-x-3">
+                                <svg @click="searchInput = false" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="black">
+                                    <g fill-rule="evenodd">
+                                        <g fill-rule="nonzero">
+                                            <g>
+                                                <g>
+                                                    <path
+                                                        d="M10.72.51c.364.356.398.923.097 1.319l-.082.095-6.698 6.851H22.78c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H4.037l6.698 6.85c.386.396.379 1.029-.016 1.415-.364.356-.932.378-1.32.068l-.094-.084-8.36-8.55-.02-.02c-.02-.022-.039-.045-.057-.068l.077.088c-.033-.034-.063-.07-.09-.106-.019-.025-.036-.051-.052-.078l-.02-.035c-.011-.02-.022-.04-.031-.06l-.02-.049c-.01-.021-.017-.043-.024-.065l-.012-.039C.69 10.018.684 9.994.68 9.97l-.007-.043c-.004-.02-.006-.042-.008-.064L.66 9.794v-.037c0-.023.002-.046.004-.07l-.004.088c0-.052.004-.103.012-.153l.007-.041c.005-.025.01-.05.017-.073l.012-.04.023-.064.02-.048c.01-.02.02-.041.032-.061l.02-.035c.016-.027.033-.053.052-.078l.009-.013c.022-.028.041-.05.061-.072l.02-.021 8.36-8.55C9.691.13 10.325.124 10.719.51z"
+                                                        transform="translate(-16 -12) translate(16 12) translate(0 2)">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1">
+                                    <div x-cloak @click.away="mobileInput = false" class="relative">
+                                        <div class="searchbar-component searchbar-wrapper w-full rounded-lg pt-1 relative z-50"
+                                            @click="mobileInput = true">
+                                            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                                                height="20" viewBox="0 0 20 20" fill="none">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M3.22916 9.16634C3.22916 5.88715 5.88747 3.22884 9.16666 3.22884C12.4459 3.22884 15.1042 5.88715 15.1042 9.16634C15.1042 10.769 14.4692 12.2234 13.4371 13.2916C13.41 13.312 13.384 13.3345 13.3594 13.3591C13.3348 13.3837 13.3123 13.4097 13.2919 13.4367C12.2237 14.4689 10.7693 15.1038 9.16666 15.1038C5.88747 15.1038 3.22916 12.4455 3.22916 9.16634ZM13.8554 14.8863C12.5792 15.9336 10.9464 16.5622 9.16666 16.5622C5.08206 16.5622 1.77083 13.2509 1.77083 9.16634C1.77083 5.08174 5.08206 1.77051 9.16666 1.77051C13.2513 1.77051 16.5625 5.08174 16.5625 9.16634C16.5625 10.946 15.9339 12.5789 14.8866 13.8551L18.0156 16.9841C18.3004 17.2689 18.3004 17.7305 18.0156 18.0153C17.7309 18.3001 17.2692 18.3001 16.9844 18.0153L13.8554 14.8863Z"
+                                                    fill="#B2B2B2"></path>
+                                            </svg>
+                                            <input type="text" class="search-input advance-filter__search-input"
+                                                name="search" autocomplete="off" @focus="mobileInput = true"
+                                                placeholder="Search for products..." />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 w-full rounded-lg bg-white z-50 overflow-y-auto h-screen">
+                                <div class="py-4">
+                                    <h3 class="text-lg font-medium mb-2">
+                                        Bestsellers
+                                    </h3>
+                                    <div class="grid grid-cols-2 sm:grid-cols-3 sm:gap-4 gap-2">
+                                        <div class="text-center">
+                                            <img src="/images/categorie1.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name mx-auto text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Cold Pressed Oils
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                100% Pure Ghee
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Rices
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Pulses
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie2.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                100% Pure Ghee
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Rices
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Pulses
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Rices
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Pulses
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie3.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Rices
+                                            </p>
+                                        </div>
+                                        <div class="text-center">
+                                            <img src="/images/categorie4.webp" alt="" class="w-full rounded-[6px]" />
+                                            <p
+                                                class="mt-2 category-name text-center pt-[1px] text-[14px] font-medium text-[#1a181e]">
+                                                Pulses
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end  -->
+                </header>
             </div>
 
-        </div>
-        <div class="container mx-auto px-5 relative">
-            <div class=" flex justify-between  py-1 md:py-3">
-                <div>
-                    <div class="flex items-center gap-x-1">
+            <div class="container mx-auto px-5 relative">
+                <div class=" hidden lg:flex justify-between">
+                    <a href="/index.html" class="flex items-center gap-x-1">
                         <div>
                             <img src="/assets/icons/arrow.svg" alt class="w-5 h-5 object-contain">
                         </div>
-                        <h1 class="text-lg leading-[1.625rem] font-medium text-[#1a181e] hidden lg:block">Pulses</h1>
-                        <span class="text-sm  hidden lg:block">(7
+                        <h1 class="text-lg leading-[1.625rem] font-medium text-[#1a181e] hidden lg:block">Cold
+                            Pressed Oils
+                        </h1>
+                        <span class="text-sm text-[#1a181e] hidden lg:block">(7
                             items)</span>
                         <div>
                             <h1 class="text-lg leading-[1.625rem] font-medium text-[#1a181e] lg:hidden">Pulses</h1>
                             <span class="text-sm lg:hidden text-[#808080]">(7
                                 items)</span>
                         </div>
-                    </div>
-                </div>
-                <div class="flex items-center  gap-x-4  cursor-pointer" @click="open = !open">
-                    <h1 class="text-sm hidden lg:block">Sort by</h1>
-                    <div class="lg:flex items-center hidden">
-                        <h1 class="text-[#146eb4] text-sm hidden lg:block">Discount</h1>
-                        <div class="hidden lg:block">
-                            <img src="/assets/icons/down-arrow.svg" alt="" :class="open ?
-                                'w-5 h-5 object-contain rotate-180  transition-transform duration-500 ease-in-out' :
-                                'w-5 h-5 object-contain transition-transform duration-500 ease-in-out'">
+                    </a>
+
+                    <div class="md:flex md:items-center md:gap-x-5" x-data="{
+                        discount : false,
+                        comment: 1,
+                        getCommentText() {
+                            switch(this.comment) {
+                                case 1: return 'Featured';
+                                case 2: return 'Discount';
+                                case 3: return 'Price low to high';
+                                case 4: return 'Price high to low';
+                            }
+                        }
+                    }">
+                        <span class="text-sm text-[#1a181e] leading-[20px]">Sort by</span>
+                        <div class=" relative">
+                            <div @click.outside="discount = false" @click="discount = true"
+                                class=" flex items-center gap-x-1 cursor-pointer">
+                                <h5 x-text="getCommentText()" class="text-sm text-[#146eb4] leading-[20px] font-medium">
+                                </h5>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="#146eb4"
+                                    :class="discount == true ? ' size-5 -rotate-180 transition-all duration-300' : ' size-5' ">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                            <div x-show="discount" class="absolute top-5 right-0">
+                                <div
+                                    class="bg-white w-[170px] shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] pl-3 py-3 grid grid-cols-1 gap-y-3 rounded">
+                                    <div class="text-sm flex items-center gap-x-1.5">
+                                        <input @click="comment = 1" id="new" name="comments" type="radio"
+                                            class="cursor-pointer" checked>
+                                        <label for="new"
+                                            :class="comment == 1 ? 'font-semibold cursor-pointer w-full' : 'cursor-pointer w-full'">Featured</label>
+                                    </div>
+                                    <div class="text-sm flex items-center gap-x-1.5">
+                                        <input @click="comment = 2" id="old" name="comments" type="radio"
+                                            class="cursor-pointer">
+                                        <label for="old"
+                                            :class="comment == 2 ? 'font-semibold cursor-pointer w-full' : 'cursor-pointer w-full'">Discount</label>
+                                    </div>
+                                    <div class="text-sm flex items-center gap-x-1.5">
+                                        <input @click="comment = 3" id="high" name="comments" type="radio"
+                                            class="cursor-pointer">
+                                        <label for="high"
+                                            :class="comment == 3 ? 'font-semibold cursor-pointer w-full' : 'cursor-pointer w-full'">Price
+                                            low to high</label>
+                                    </div>
+                                    <div class="text-sm flex items-center gap-x-1.5">
+                                        <input @click="comment = 4" id="low" name="comments" type="radio"
+                                            class="cursor-pointer">
+                                        <label for="low"
+                                            :class="comment == 4 ? 'font-semibold cursor-pointer w-full' : 'cursor-pointer w-full'">Price
+                                            high to low</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- mobile view -->
-                    <a href class="lg:hidden"><img src="/assets/icons/search.svg" alt
-                            class="w-6 h-6 object-container"></a>
-                    <a href class="lg:hidden"><img src="/assets/icons/category.svg" alt
-                            class="w-6 h-6 object-container"></a>
-                    <a href class="lg:hidden"><img src="/assets/icons/cart.svg" alt
-                            class="w-6 h-6 object-container"></a>
+                </div>
+                <ul x-show="open"
+                    class="absolute -right-5 bg-white shadow-xl p-5 top-10 rounded-sm w-[200px] h-[150px] flex justify-center items-center flex-col"
+                    x-cloak>
+                    <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input>
+                    </li>
+                    <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input>
+                    </li>
+                    <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input>
+                    </li>
+                    <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input>
+                    </li>
+                    <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- mobile header section  -->
+        <div class=" px-5 py-4 lg:hidden border-b border-gray-300 sticky top-0 z-20 bg-white w-full">
+            <div class=" flex justify-between items-center">
+                <div class=" flex items-center gap-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        color="var(--black-30)">
+                        <g fill="none" fill-rule="evenodd">
+                            <g fill="currentColor" fill-rule="nonzero">
+                                <g>
+                                    <g>
+                                        <path
+                                            d="M12.69 3.88c.396-.386 1.029-.379 1.415.016.356.364.378.932.068 1.32l-.084.094-8.55 8.36c-.359.35-.915.378-1.305.081l-.093-.081-8.55-8.36c-.395-.386-.402-1.02-.016-1.414.356-.365.923-.399 1.319-.098l.095.082 7.851 7.675 7.85-7.675z"
+                                            transform="translate(-16 -95) translate(16 95) translate(1 3) rotate(90 4.84 8.775)">
+                                        </path>
+                                        <path
+                                            d="M21.78 7.775c.552 0 1 .448 1 1 0 .513-.386.936-.883.993l-.117.007H.66c-.552 0-1-.448-1-1 0-.513.386-.936.883-.993l.117-.007h21.12z"
+                                            transform="translate(-16 -95) translate(16 95) translate(1 3)">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <h3>Cold Pressed Olis</h3>
+                </div>
+                <div class=" flex items-center gap-x-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        color="var(--primary-black)" alt="Search" text="">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M3.875 11C3.875 7.06497 7.06497 3.875 11 3.875C14.935 3.875 18.125 7.06497 18.125 11C18.125 12.9232 17.363 14.6685 16.1245 15.9503C16.092 15.9747 16.0609 16.0017 16.0313 16.0313C16.0017 16.0609 15.9747 16.092 15.9503 16.1245C14.6685 17.363 12.9232 18.125 11 18.125C7.06497 18.125 3.875 14.935 3.875 11ZM16.6265 17.8639C15.0951 19.1207 13.1356 19.875 11 19.875C6.09847 19.875 2.125 15.9015 2.125 11C2.125 6.09847 6.09847 2.125 11 2.125C15.9015 2.125 19.875 6.09847 19.875 11C19.875 13.1356 19.1207 15.0951 17.8639 16.6265L21.6187 20.3813C21.9605 20.723 21.9605 21.277 21.6187 21.6187C21.277 21.9605 20.723 21.9605 20.3813 21.6187L16.6265 17.8639Z"
+                            fill="currentColor">
+                        </path>
+                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" alt="Categories"
+                        color="var(--primary-black)" text="">
+                        <path
+                            d="M20.4971 13C21.3255 13 21.9971 13.6716 21.9971 14.5V20.5C21.9971 21.3284 21.3255 22 20.4971 22H14.4971C13.6686 22 12.9971 21.3284 12.9971 20.5V14.5C12.9971 13.6716 13.6686 13 14.4971 13H20.4971ZM9.5 13C10.3284 13 11 13.6716 11 14.5V20.5C11 21.3284 10.3284 22 9.5 22H3.5C2.67157 22 2 21.3284 2 20.5V14.5C2 13.6716 2.67157 13 3.5 13H9.5ZM20.297 14.7H14.697V20.3H20.297V14.7ZM9.3 14.7H3.7V20.3H9.3V14.7ZM9.5 2C10.3284 2 11 2.67157 11 3.5V9.5C11 10.3284 10.3284 11 9.5 11H3.5C2.67157 11 2 10.3284 2 9.5V3.5C2 2.67157 2.67157 2 3.5 2H9.5ZM20.4971 2C21.3255 2 21.9971 2.67157 21.9971 3.5V9.5C21.9971 10.3284 21.3255 11 20.4971 11H14.4971C13.6686 11 12.9971 10.3284 12.9971 9.5V3.5C12.9971 2.67157 13.6686 2 14.4971 2H20.4971ZM9.3 3.7H3.7V9.3H9.3V3.7ZM20.297 3.7H14.697V9.3H20.297V3.7Z"
+                            fill="currentColor">
+                        </path>
+                    </svg>
+                    <div class=" relative">
+                        <svg class="badgeItem" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" alt="Bag" color="var(--black-30)" text="">
+                            <path
+                                d="M17.5303 2C17.7769 2 18.0091 2.1161 18.157 2.31336L20.9105 5.985C20.9338 6.01451 20.955 6.04575 20.974 6.07848C20.9829 6.09427 20.9915 6.11041 20.9995 6.12681C21.0067 6.14109 21.0133 6.15592 21.0196 6.17098C21.0243 6.18292 21.0289 6.19482 21.0331 6.20682C21.0407 6.22728 21.0472 6.24826 21.0528 6.2696C21.0698 6.33447 21.0787 6.40189 21.0787 6.47005V19.3733C21.0787 20.824 19.9027 22 18.452 22H5.54873C4.09802 22 2.922 20.824 2.922 19.3733V6.47005C2.922 6.36611 2.94267 6.26389 2.98211 6.16909C2.98795 6.15455 2.99438 6.14034 3.00121 6.12636C3.02283 6.08242 3.04873 6.03994 3.07868 6L3.027 6.07799C3.02812 6.07606 3.02925 6.07413 3.03039 6.07221L3.07868 6L5.84366 2.31336C5.99161 2.1161 6.2238 2 6.47038 2H17.5303ZM19.511 7.253H4.488L4.48882 19.3733C4.48882 19.8806 4.84525 20.3047 5.32135 20.4087L5.43324 20.427L5.54873 20.4332H18.452C19.0373 20.4332 19.5119 19.9586 19.5119 19.3733L19.511 7.253ZM15.687 9.37327C16.1196 9.37327 16.4704 9.72402 16.4704 10.1567C16.4704 12.6254 14.4691 14.6267 12.0003 14.6267C9.5316 14.6267 7.53029 12.6254 7.53029 10.1567C7.53029 9.72402 7.88104 9.37327 8.3137 9.37327C8.74637 9.37327 9.09711 9.72402 9.09711 10.1567C9.09711 11.7601 10.3969 13.0599 12.0003 13.0599C13.6037 13.0599 14.9036 11.7601 14.9036 10.1567C14.9036 9.72402 15.2543 9.37327 15.687 9.37327ZM17.1386 3.56682H6.86117L5.27 5.686H18.728L17.1386 3.56682Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <span
+                            class="inline-block text-white text-center text-sm font-normal bg-red-600 rounded-full px-1 py-0.5 absolute -top-2.5 -right-2 min-w-[18px] h-[18px] leading-[14px] whitespace-nowrap">
+                            3
+                        </span>
+                    </div>
                 </div>
             </div>
-            <ul x-show="open"
-                class="absolute -right-5 bg-white shadow-xl p-5 top-10 rounded-sm w-[200px] h-[150px] flex justify-center items-center flex-col"
-                x-cloak>
-                <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input></li>
-                <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input></li>
-                <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input></li>
-                <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input></li>
-                <li><input type="radio"><label class="pl-4 font-medium text-base" for="">Featured</label></input></li>
-            </ul>
         </div>
+
         <!-- border -->
         <div class=" border-t border-[#e6e6e6]">
         </div>
-        <div class="container mx-auto px-5">
+        <div class="container mx-auto px-5 mt-5 lg:mt-36">
             <!-- breadcrumbs -->
             <ul class="mt-5 lg:flex items-center gap-x-2 hidden">
                 <li class="text-[#4d4d4d] text-sm hover:underline cursor-pointer">Home </li>
@@ -557,11 +1127,10 @@ continue : false}">
                 <li class="border-l border-[#4d4d4d] h-3 -skew-x-[20deg]"></li>
                 <li class="text-[#989898] text-sm">Pulses</li>
             </ul>
-            <div class="lg:grid grid-cols-12 gap-x-10 mt-8">
-
+            <div class="lg:grid grid-cols-12 gap-x-10 mt-5">
                 <div class=" col-span-2 hidden lg:block">
                     <div class="border border-[#e6e6e6] rounded-xl">
-                        <div class="flex items-center justify-between p-4 ">
+                        <div class="flex items-center justify-between p-4">
                             <h1 class="text-[#4d4d4d] text-base">Filters</h1>
                             <a href class="text-[#e50b20] text-sm">Clear
                                 all</a>
@@ -583,7 +1152,7 @@ continue : false}">
                                         type="checkbox" id="checkbox5"><label for="checkbox5"> 5 g</label></li>
                             </ul>
                         </div>
-                        <div class="border-b border-[e6e6e6] ">
+                        <div class="border-b border-[e6e6e6]">
                         </div>
                         <div class="p-4">
                             <h1 class="text-[#1a181e] leading-[20px] font-medium">Price</h1>
@@ -606,153 +1175,317 @@ continue : false}">
                             </ul>
                         </div>
                     </div>
-
                 </div>
                 <!-- list -->
                 <div class="col-span-10">
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-8 gap-5">
                         <!-- 1 -->
                         <div>
-                            <div class="border border-[e6e6e6] rounded-lg ">
-                                <img src="/assets/images/list.png" alt class=" rounded-lg ">
+                            <div class=" img-zoom border border-gray-300 rounded mb-2.5">
+                                <img src="/assets/images/img-1.webp" alt="" class=" w-full rounded pt-1">
                             </div>
-                            <div>
-                                <p class="text-[#1a181e] leading-[18px] text-sm mt-4">Black
-                                    Chana (Bengal Gram Whole / Black
-                                    Chickpeas) / கருப்பு கொண்டைக்கடலை
-                                    (கருப்பு மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్
-                                    చానా / काला चना / കടലക്കരി</p>
-
-                                <div class="flex items-center gap-x-3 mt-1">
-                                    <p class="font-medium text-sm">₹80</p>
-                                    <p class="text-sm  leading-5 line-through text-[#808080]">₹95</p>
-                                    <p class="text-[#ee741f] leading-5 text-sm">(16%
-                                        OFF)</p>
-
-                                </div>
-                                <div class="flex justify-center mt-4">
-
-                                    <button @click="add_popup = true"
-                                        class="text-[#146eb4] border-[#146eb4] justify-center lg:lg:w-[30%] leading-[18px]  border rounded-[4px] flex items-center gap-x-2 p-1 text-sm font-medium">
-                                        ADD <img src="/assets/icons/add.svg" alt
-                                            class="w-3 h-3 object-contain"></button>
-                                </div>
-
+                            <a href="#" class=" text-sm text-[#1a181e] hover:underline hover:underline-offset-1">Cold
+                                Pressed
+                                Sunflower
+                                Oil / மரச்செக்கு சூரியகாந்தி எண்ணெய் / ಸೂರ್ಯಕಾಂತಿ ಎಣ್ಣೆ / సన్‌ఫ్లవర్ ఆయిల్ /
+                                सूरजमुखी का तेल / സൂര്യകാന്തി എണ്ണ</a>
+                            <div class=" flex items-center gap-x-2 pt-1">
+                                <h1 class=" text-[#1a181e] leading-[32px] font-medium">₹320</h1>
+                                <h1 class=" text-sm text-[#808080] leading-[26px] line-through">₹340</h1>
+                                <h1 class=" text-[#ee741f] leading-[28px] font-medium">(6% OFF)</h1>
                             </div>
+                            <button @click="add_popup = true"
+                                class=" flex items-center justify-center gap-x-1.5 mx-auto border border-[#146EB4] rounded px-3 py-1 mt-4 hover:bg-[#E7F0F7]">
+                                <span class=" text-[#146EB4] text-sm font-medium">ADD</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                                    alt="+" class=" ">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g fill="#146EB4" fill-rule="nonzero">
+                                            <g>
+                                                <g>
+                                                    <path
+                                                        d="M6 0c.385 0 .702.29.745.663L6.75.75v10.5c0 .414-.336.75-.75.75-.385 0-.702-.29-.745-.663l-.005-.087V.75C5.25.336 5.586 0 6 0z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                    <path
+                                                        d="M11.25 5.25c.414 0 .75.336.75.75 0 .385-.29.702-.663.745l-.087.005H.75C.336 6.75 0 6.414 0 6c0-.385.29-.702.663-.745L.75 5.25h10.5z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
                         </div>
                         <!-- 2 -->
                         <div>
-                            <div class="border border-[e6e6e6] rounded-lg ">
-                                <img src="/assets/images/list.png" alt class=" rounded-lg ">
+                            <div class=" img-zoom border border-gray-300 rounded mb-2.5">
+                                <img src="/assets/images/img-1.webp" alt="" class=" w-full rounded pt-1">
                             </div>
-                            <div>
-                                <p class="text-[#1a181e] leading-[18px] text-sm mt-4">Black
-                                    Chana (Bengal Gram Whole / Black
-                                    Chickpeas) / கருப்பு கொண்டைக்கடலை
-                                    (கருப்பு மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్
-                                    చానా / काला चना / കടലക്കരി</p>
-
-                                <div class="flex items-center gap-x-3 mt-1">
-                                    <p class="font-medium text-sm">₹80</p>
-                                    <p class="text-sm  leading-5 line-through text-[#808080]">₹95</p>
-                                    <p class="text-[#ee741f] leading-5 text-sm">(16%
-                                        OFF)</p>
-
-                                </div>
-                                <div class="flex justify-center mt-4">
-
-                                    <button
-                                        class="text-[#146eb4] border-[#146eb4] justify-center lg:lg:w-[30%] leading-[18px]  border rounded-[4px] flex items-center gap-x-2 p-1 text-sm font-medium">
-                                        ADD <img src="/assets/icons/add.svg" alt
-                                            class="w-3 h-3 object-contain"></button>
-                                </div>
-
+                            <a href="#" class=" text-sm text-[#1a181e] hover:underline hover:underline-offset-1">Cold
+                                Pressed
+                                Sunflower
+                                Oil / மரச்செக்கு சூரியகாந்தி எண்ணெய் / ಸೂರ್ಯಕಾಂತಿ ಎಣ್ಣೆ / సన్‌ఫ్లవర్ ఆయిల్ /
+                                सूरजमुखी का तेल / സൂര്യകാന്തി എണ്ണ</a>
+                            <div class=" flex items-center gap-x-2 pt-1">
+                                <h1 class=" text-[#1a181e] leading-[32px] font-medium">₹320</h1>
+                                <h1 class=" text-sm text-[#808080] leading-[26px] line-through">₹340</h1>
+                                <h1 class=" text-[#ee741f] leading-[28px] font-medium">(6% OFF)</h1>
                             </div>
+                            <button @click="add_popup = true"
+                                class=" flex items-center justify-center gap-x-1.5 mx-auto border border-[#146EB4] rounded px-3 py-1 mt-4 hover:bg-[#E7F0F7]">
+                                <span class=" text-[#146EB4] text-sm font-medium">ADD</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                                    alt="+" class=" ">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g fill="#146EB4" fill-rule="nonzero">
+                                            <g>
+                                                <g>
+                                                    <path
+                                                        d="M6 0c.385 0 .702.29.745.663L6.75.75v10.5c0 .414-.336.75-.75.75-.385 0-.702-.29-.745-.663l-.005-.087V.75C5.25.336 5.586 0 6 0z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                    <path
+                                                        d="M11.25 5.25c.414 0 .75.336.75.75 0 .385-.29.702-.663.745l-.087.005H.75C.336 6.75 0 6.414 0 6c0-.385.29-.702.663-.745L.75 5.25h10.5z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
                         </div>
                         <!-- 3 -->
                         <div>
-                            <div class="border border-[e6e6e6] rounded-lg ">
-                                <img src="/assets/images/list.png" alt class=" rounded-lg ">
+                            <div class=" img-zoom border border-gray-300 rounded mb-2.5">
+                                <img src="/assets/images/img-1.webp" alt="" class=" w-full rounded pt-1">
                             </div>
-                            <div>
-                                <p class="text-[#1a181e] leading-[18px] text-sm mt-4">Black
-                                    Chana (Bengal Gram Whole / Black
-                                    Chickpeas) / கருப்பு கொண்டைக்கடலை
-                                    (கருப்பு மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్
-                                    చానా / काला चना / കടലക്കരി</p>
-
-                                <div class="flex items-center gap-x-3 mt-1">
-                                    <p class="font-medium text-sm">₹80</p>
-                                    <p class="text-sm  leading-5 line-through text-[#808080]">₹95</p>
-                                    <p class="text-[#ee741f] leading-5 text-sm">(16%
-                                        OFF)</p>
-
-                                </div>
-                                <div class="flex justify-center mt-4">
-
-                                    <button
-                                        class="text-[#146eb4] border-[#146eb4] justify-center lg:lg:w-[30%] leading-[18px]  border rounded-[4px] flex items-center gap-x-2 p-1 text-sm font-medium">
-                                        ADD <img src="/assets/icons/add.svg" alt
-                                            class="w-3 h-3 object-contain"></button>
-                                </div>
-
+                            <a href="#" class=" text-sm text-[#1a181e] hover:underline hover:underline-offset-1">Cold
+                                Pressed
+                                Sunflower
+                                Oil / மரச்செக்கு சூரியகாந்தி எண்ணெய் / ಸೂರ್ಯಕಾಂತಿ ಎಣ್ಣೆ / సన్‌ఫ్లవర్ ఆయిల్ /
+                                सूरजमुखी का तेल / സൂര്യകാന്തി എണ്ണ</a>
+                            <div class=" flex items-center gap-x-2 pt-1">
+                                <h1 class=" text-[#1a181e] leading-[32px] font-medium">₹320</h1>
+                                <h1 class=" text-sm text-[#808080] leading-[26px] line-through">₹340</h1>
+                                <h1 class=" text-[#ee741f] leading-[28px] font-medium">(6% OFF)</h1>
                             </div>
+                            <button @click="add_popup = true"
+                                class=" flex items-center justify-center gap-x-1.5 mx-auto border border-[#146EB4] rounded px-3 py-1 mt-4 hover:bg-[#E7F0F7]">
+                                <span class=" text-[#146EB4] text-sm font-medium">ADD</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                                    alt="+" class=" ">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g fill="#146EB4" fill-rule="nonzero">
+                                            <g>
+                                                <g>
+                                                    <path
+                                                        d="M6 0c.385 0 .702.29.745.663L6.75.75v10.5c0 .414-.336.75-.75.75-.385 0-.702-.29-.745-.663l-.005-.087V.75C5.25.336 5.586 0 6 0z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                    <path
+                                                        d="M11.25 5.25c.414 0 .75.336.75.75 0 .385-.29.702-.663.745l-.087.005H.75C.336 6.75 0 6.414 0 6c0-.385.29-.702.663-.745L.75 5.25h10.5z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
                         </div>
                         <!-- 4 -->
                         <div>
-                            <div class="border border-[e6e6e6] rounded-lg ">
-                                <img src="/assets/images/list.png" alt class=" rounded-lg ">
+                            <div class=" img-zoom border border-gray-300 rounded mb-2.5">
+                                <img src="/assets/images/img-1.webp" alt="" class=" w-full rounded pt-1">
                             </div>
-                            <div>
-                                <p class="text-[#1a181e] leading-[18px] text-sm mt-4">Black
-                                    Chana (Bengal Gram Whole / Black
-                                    Chickpeas) / கருப்பு கொண்டைக்கடலை
-                                    (கருப்பு மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్
-                                    చానా / काला चना / കടലക്കരി</p>
-
-                                <div class="flex items-center gap-x-3 mt-1">
-                                    <p class="font-medium text-sm">₹80</p>
-                                    <p class="text-sm  leading-5 line-through text-[#808080]">₹95</p>
-                                    <p class="text-[#ee741f] leading-5 text-sm">(16%
-                                        OFF)</p>
-
-                                </div>
-                                <div class="flex justify-center mt-4">
-
-                                    <button
-                                        class="text-[#146eb4] border-[#146eb4] justify-center lg:lg:w-[30%] leading-[18px]  border rounded-[4px] flex items-center gap-x-2 p-1 text-sm font-medium">
-                                        ADD <img src="/assets/icons/add.svg" alt
-                                            class="w-3 h-3 object-contain"></button>
-                                </div>
+                            <a href="#" class=" text-sm text-[#1a181e] hover:underline hover:underline-offset-1">Cold
+                                Pressed
+                                Sunflower
+                                Oil / மரச்செக்கு சூரியகாந்தி எண்ணெய் / ಸೂರ್ಯಕಾಂತಿ ಎಣ್ಣೆ / సన్‌ఫ్లవర్ ఆయిల్ /
+                                सूरजमुखी का तेल / സൂര്യകാന്തി എണ്ണ</a>
+                            <div class=" flex items-center gap-x-2 pt-1">
+                                <h1 class=" text-[#1a181e] leading-[32px] font-medium">₹320</h1>
+                                <h1 class=" text-sm text-[#808080] leading-[26px] line-through">₹340</h1>
+                                <h1 class=" text-[#ee741f] leading-[28px] font-medium">(6% OFF)</h1>
                             </div>
+                            <button @click="add_popup = true"
+                                class=" flex items-center justify-center gap-x-1.5 mx-auto border border-[#146EB4] rounded px-3 py-1 mt-4 hover:bg-[#E7F0F7]">
+                                <span class=" text-[#146EB4] text-sm font-medium">ADD</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                                    alt="+" class=" ">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g fill="#146EB4" fill-rule="nonzero">
+                                            <g>
+                                                <g>
+                                                    <path
+                                                        d="M6 0c.385 0 .702.29.745.663L6.75.75v10.5c0 .414-.336.75-.75.75-.385 0-.702-.29-.745-.663l-.005-.087V.75C5.25.336 5.586 0 6 0z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                    <path
+                                                        d="M11.25 5.25c.414 0 .75.336.75.75 0 .385-.29.702-.663.745l-.087.005H.75C.336 6.75 0 6.414 0 6c0-.385.29-.702.663-.745L.75 5.25h10.5z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
                         </div>
                         <!-- 5 -->
                         <div>
-                            <div class="border border-[e6e6e6] rounded-lg ">
-                                <img src="/assets/images/list.png" alt class=" rounded-lg ">
+                            <div class=" img-zoom border border-gray-300 rounded mb-2.5">
+                                <img src="/assets/images/img-1.webp" alt="" class=" w-full rounded pt-1">
                             </div>
-                            <div>
-                                <p class="text-[#1a181e] leading-[18px] text-sm mt-4">Black
-                                    Chana (Bengal Gram Whole / Black
-                                    Chickpeas) / கருப்பு கொண்டைக்கடலை
-                                    (கருப்பு மூக்கடலை) /ಕಪ್ಪು ಚನಾ / బ్లాక్
-                                    చానా / काला चना / കടലക്കരി</p>
+                            <a href="#" class=" text-sm text-[#1a181e] hover:underline hover:underline-offset-1">Cold
+                                Pressed
+                                Sunflower
+                                Oil / மரச்செக்கு சூரியகாந்தி எண்ணெய் / ಸೂರ್ಯಕಾಂತಿ ಎಣ್ಣೆ / సన్‌ఫ్లవర్ ఆయిల్ /
+                                सूरजमुखी का तेल / സൂര്യകാന്തി എണ്ണ</a>
+                            <div class=" flex items-center gap-x-2 pt-1">
+                                <h1 class=" text-[#1a181e] leading-[32px] font-medium">₹320</h1>
+                                <h1 class=" text-sm text-[#808080] leading-[26px] line-through">₹340</h1>
+                                <h1 class=" text-[#ee741f] leading-[28px] font-medium">(6% OFF)</h1>
+                            </div>
+                            <button @click="add_popup = true"
+                                class=" flex items-center justify-center gap-x-1.5 mx-auto border border-[#146EB4] rounded px-3 py-1 mt-4 hover:bg-[#E7F0F7]">
+                                <span class=" text-[#146EB4] text-sm font-medium">ADD</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                                    alt="+" class=" ">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <g fill="#146EB4" fill-rule="nonzero">
+                                            <g>
+                                                <g>
+                                                    <path
+                                                        d="M6 0c.385 0 .702.29.745.663L6.75.75v10.5c0 .414-.336.75-.75.75-.385 0-.702-.29-.745-.663l-.005-.087V.75C5.25.336 5.586 0 6 0z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                    <path
+                                                        d="M11.25 5.25c.414 0 .75.336.75.75 0 .385-.29.702-.663.745l-.087.005H.75C.336 6.75 0 6.414 0 6c0-.385.29-.702.663-.745L.75 5.25h10.5z"
+                                                        transform="translate(-1235 -300) translate(1173 292) translate(62 8)">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border border-b-0 border-x-0 border-[#e6e6e6] py-2 bg-white sticky bottom-0 z-20 w-full lg:hidden mt-5"
+                        x-data="{
+                            sort : false,
+                            filter : false,
+                        }">
+                        <div class="flex justify-between items-center px-20">
+                            <div @click="sort = true" class=" flex items-center gap-x-2">
+                                <img src="/assets/icons/sort.svg" alt="sort" class="w-4 h-4 object-contain">
+                                <span>sort</span>
+                            </div>
+                            <div class="border-l border-[#e6e6e6] h-6">
+                            </div>
+                            <div @click="filter = true" class=" flex items-center gap-x-2">
+                                <img src="/assets/icons/sort.svg" alt="filter" class="w-4 h-4 object-contain">
+                                <span>Filter</span>
+                            </div>
+                        </div>
 
-                                <div class="flex items-center gap-x-3 mt-1">
-                                    <p class="font-medium text-sm">₹80</p>
-                                    <p class="text-sm  leading-5 line-through text-[#808080]">₹95</p>
-                                    <p class="text-[#ee741f] leading-5 text-sm">(16%
-                                        OFF)</p>
-
+                        <!-- sort popup  -->
+                        <div x-show="sort" x-cloak class=" fixed inset-0 bg-white pt-5">
+                            <div class=" container mx-auto px-5">
+                                <div class=" flex justify-between items-center">
+                                    <h3 class=" text-xl font-medium">Sort</h3>
+                                    <svg @click="sort = false" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
                                 </div>
-                                <div class="flex justify-center mt-4">
+                                <ul class=" grid grid-cols-1 gap-y-1.5 mt-10">
+                                    <li class=" flex items-center gap-x-4">
+                                        <input type="radio" name="sort" id="" class=" text-sm w-5 h-5 accent-black"
+                                            checked>
+                                        <label for="">Featured</label>
+                                    </li>
+                                    <li class=" flex items-center gap-x-4">
+                                        <input type="radio" name="sort" id="" class=" text-sm w-5 h-5 accent-black">
+                                        <label for="">Discount</label>
+                                    </li>
+                                    <li class=" flex items-center gap-x-4">
+                                        <input type="radio" name="sort" id="" class=" text-sm w-5 h-5 accent-black">
+                                        <label for="">Price low to high</label>
+                                    </li>
+                                    <li class=" flex items-center gap-x-4">
+                                        <input type="radio" name="sort" id="" class=" text-sm w-5 h-5 accent-black">
+                                        <label for="">Price high to low</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class=" flex items-center gap-x-4 fixed bottom-0 w-full border-t border-gray-300 p-5">
+                                <a href="" @click="sort = false"
+                                    class="text-lg text-[#146eb4] text-center leading-[26px] font-medium border border-[#146eb4] py-3 w-full rounded-md">Clear</a>
+                                <button @click="sort = false"
+                                    class="text-lg text-white leading-[26px] bg-[#146EB4] font-medium py-3 w-full rounded-md">Apply</button>
+                            </div>
+                        </div>
 
-                                    <button
-                                        class="text-[#146eb4] border-[#146eb4] justify-center lg:w-[30%] leading-[18px]  border rounded-[4px] flex items-center gap-x-2 p-1 text-sm font-medium">
-                                        ADD <img src="/assets/icons/add.svg" alt
-                                            class="w-3 h-3 object-contain"></button>
+                        <!-- filter popup  -->
+                        <div x-show="filter" x-cloak class=" fixed inset-0 bg-white">
+                            <div class="border border-[#e6e6e6] rounded-xl">
+                                <div class="flex items-center justify-between p-4 ">
+                                    <h1 class="text-[#4d4d4d] text-base">Filters</h1>
+                                    <svg @click="filter = false" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                    </svg>
                                 </div>
-
+                                <div class="border-b border-[e6e6e6] ">
+                                </div>
+                                <div class="p-4">
+                                    <h1 class="text-[#1a181e] leading-[20px] font-medium">Size</h1>
+                                    <ul class="mt-3 space-y-2">
+                                        <li class="flex items-center gap-x-3 font-normal text-sm text-[#1a181e]"><input
+                                                type="checkbox" id="checkbox1"><label for="checkbox1"> 500 g</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-sm text-[#1a181e]"><input
+                                                type="checkbox" id="checkbox2"><label for="checkbox2"> 5 g</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-sm text-[#1a181e]"><input
+                                                type="checkbox" id="checkbox3"><label for="checkbox3"> 5 g</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-sm text-[#1a181e]"><input
+                                                type="checkbox" id="checkbox4"><label for="checkbox4"> 5 g</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-sm text-[#1a181e]"><input
+                                                type="checkbox" id="checkbox5"><label for="checkbox5"> 5 g</label></li>
+                                    </ul>
+                                </div>
+                                <div class="border-b border-[e6e6e6]">
+                                </div>
+                                <div class="p-4">
+                                    <h1 class="text-[#1a181e] leading-[20px] font-medium">Price</h1>
+                                    <ul class="mt-3 space-y-2">
+                                        <li class="flex items-center gap-x-3 font-normal text-[#1a181e] text-sm"><input
+                                                type="checkbox" id="checkbox1"><label for="checkbox1"> ₹80 -
+                                                ₹280</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-[#1a181e] text-sm"><input
+                                                type="checkbox" id="checkbox2"><label for="checkbox2"> ₹280 -
+                                                ₹480</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-[#1a181e] text-sm"><input
+                                                type="checkbox" id="checkbox3"><label for="checkbox3">₹480 -
+                                                ₹680</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-[#1a181e] text-sm"><input
+                                                type="checkbox" id="checkbox4"><label for="checkbox4">₹680 -
+                                                ₹880</label></li>
+                                        <li class="flex items-center gap-x-3 font-normal text-[#1a181e] text-sm"><input
+                                                type="checkbox" id="checkbox5"><label for="checkbox5">₹880 -
+                                                ₹1080</label></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class=" flex items-center gap-x-4 fixed bottom-0 w-full border-t border-gray-300 p-5">
+                                <a href="" @click="filter = false"
+                                    class=" text-lg text-[#146eb4] text-center leading-[26px] font-medium border border-[#146eb4] py-3 w-full rounded-md">Clear</a>
+                                <button @click="filter = false"
+                                    class="text-lg text-white leading-[26px] bg-[#146EB4] font-medium py-3 w-full rounded-md">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -762,54 +1495,252 @@ continue : false}">
         <div class="border-t border-[#e6e6e6] mt-6 show">
             <div class="flex justify-between items-center px-16 py-2 ">
                 <h1 class=" flex items-center gap-x-2" @click="sort = true"><img src="/assets/icons/sort.svg" alt
-                        class="w-4 h-4 object-contain text-[0.833rem]">Sort</a></h1>
+                        class="w-4 h-4 object-contain text-[0.833rem]"><a href="">Sort</a></h1>
                 <div class="border-l border-[#e6e6e6] h-6">
 
                 </div>
                 <h1 class="flex items-center gap-x-2" @click="slide = true"><img src="/assets/icons/filter.svg" alt
-                        class="w-4 h-4 object-contain text-[0.833rem]"><a href>Filter</a></h1>
+                        class="w-4 h-4 object-contain text-[0.833rem]"><a href="">Filter</a></h1>
             </div>
         </div>
 
-        
+
         <!-- Pulses -->
-        <div class="bg-[#fafafa] py-10 md:py-20 mt-10 md:mt-24">
+        <div class="bg-[#fafafa] py-5 md:py-10 mt-10 md:mt-24">
             <div class="container mx-auto px-5">
-                <h1 class="text-[28px] text-[#1a181e]">Pulses</h1>
-                <div class=" space-y-3 mt-4 md:mt-8">
-                    <p class="text-sm leading-[23px]">✅ "Get ready to add a
-                        whole lot of flavor to your meals with our top-notch
-                        spice collection! Our Dosai Tamarind packs a tangy
-                        punch that is perfect for adding an authentic South
-                        Indian twist to your dishes. Meanwhile, our Tamarind
-                        Paste is a must-have for any kitchen looking to take
-                        its sauces, marinades, and chutneys to the next
-                        level.</p>
-                    <p class="text-sm leading-[23px]">
-                        ✅ Looking to add some zing to your food? Our Red
-                        Chili Flakes will do just that! This versatile spice
-                        can be used to add heat to any dish, from pasta to
-                        pizza. And for those looking for a deep and earthy
-                        flavor, our Cumin Powder will do the trick. Perfect
-                        for creating mouthwatering curries, soups, and
-                        stews.
-                    </p>
-                    <p class="text-sm leading-[23px]">✅ So why settle for
-                        bland and boring meals? With our spice collection,
-                        you can bring your taste buds on a journey around
-                        the world. Whether you're cooking up a storm or
-                        looking to experiment with new flavors, our spices
-                        will take your meals to the next level. Order now
-                        and start experiencing the difference!"</p>
+                <h1 class="text-[28px] text-[#1a181e]">Cold Pressed Oils</h1>
+                <div class=" text-[#1a181e]' space-y-3 mt-4 md:mt-8">
+                    <p class=" leading-[23px]">✅ Explore our wide range of high quality cold pressed oils. Perfect for
+                        adding a touch of elegance to your health. Shop now for the best deals and offers.</p>
+                    <p class=" leading-[23px]">✅ Our oils are carefully extracted using the traditional cold-press
+                        method, ensuring that you get the purest and most natural oils that are packed with nutrients
+                        and health benefits. made from the finest quality seeds and nuts.</p>
+                    <p class=" leading-[23px]">✅ Our Cold Pressed White Sesame Oil is rich in antioxidants and has a
+                        high smoke point, making it perfect for all your cooking needs. The Cold Pressed Mustard Oil,
+                        with its pungent flavor and aroma, is a staple in many Indian kitchens and is perfect for all
+                        your pickling and frying needs.</p>
                     <p></p>
                 </div>
             </div>
         </div>
         <!-- sort movile view -->
-        <div class="bg-white absolute h-screen" x-show="sort">
-            <h1>lkj</h1>
-        </div>
+        <!-- <div class="bg-white absolute h-screen" x-show="sort">
+            <h1>lkj</h1>2
+        </div> -->
     </main>
+
+    <!-- footer section  -->
+    <div
+        class=" bg-[#49C759] flex justify-center items-center w-14 h-14 rounded-full cursor-pointer fixed bottom-20 right-2">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2032_888)">
+                <path
+                    d="M27.36 4.59867C24.32 1.66 20.32 0 16.06 0C3.83333 0 -3.844 13.2467 2.26133 23.784L0 32L8.44667 29.7973C12.1267 31.7853 15.1413 31.6093 16.068 31.7267C30.2453 31.7267 37.3027 14.5747 27.34 4.65067L27.36 4.59867Z"
+                    fill="white"></path>
+                <path
+                    d="M16.0892 29.0016L16.0812 29.0003H16.0598C11.8172 29.0003 9.10651 26.991 8.83984 26.875L3.83984 28.175L5.17984 23.315L4.86118 22.815C3.54118 20.7136 2.83984 18.2936 2.83984 15.8016C2.83984 4.07762 17.1665 -1.78505 25.4572 6.50162C33.7278 14.7016 27.9212 29.0016 16.0892 29.0016Z"
+                    fill="#49C759"></path>
+                <path
+                    d="M23.3429 19.0759L23.3309 19.1759C22.9295 18.9759 20.9749 18.0199 20.6109 17.8879C19.7935 17.5852 20.0242 17.8399 18.4549 19.6372C18.2215 19.8972 17.9895 19.9172 17.5935 19.7372C17.1935 19.5372 15.9095 19.1172 14.3895 17.7572C13.2055 16.6972 12.4109 15.3972 12.1762 14.9972C11.7855 14.3226 12.6029 14.2266 13.3469 12.8186C13.4802 12.5386 13.4122 12.3186 13.3135 12.1199C13.2135 11.9199 12.4175 9.9599 12.0842 9.17857C11.7642 8.3999 11.4349 8.49857 11.1882 8.49857C10.4202 8.4319 9.85885 8.44257 9.36418 8.95723C7.21218 11.3226 7.75485 13.7626 9.59618 16.3572C13.2149 21.0932 15.1429 21.9652 18.6682 23.1759C19.6202 23.4786 20.4882 23.4359 21.1749 23.3372C21.9402 23.2159 23.5309 22.3759 23.8629 21.4359C24.2029 20.4959 24.2029 19.7159 24.1029 19.5359C24.0042 19.3559 23.7429 19.2559 23.3429 19.0759V19.0759Z"
+                    fill="white"></path>
+            </g>
+            <defs>
+                <clipPath id="clip0_2032_888">
+                    <rect width="32" height="32" fill="white"></rect>
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+    <footer class=" bg-[#1a181e]">
+        <div class=" container mx-auto px-5">
+            <div
+                class=" lg:p-[40px] py-[32px] flex-row lg:justify-between gap-y-6 lg:gap-y-0 lg:flex grid place-items-center border-b border-[#4d4d4d]">
+                <div class=" lg:w-[33%] text-center flex-col justify-center flex">
+                    <svg class="matrixIcon mx-auto" width="57" height="56" viewBox="0 0 57 56" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M43.6663 19H38.333C37.2284 19 36.333 19.8954 36.333 21V41H39.433C39.8963 38.7178 41.9141 37 44.333 37C46.752 37 48.7697 38.7178 49.233 41H50.333C51.4376 41 52.333 40.1046 52.333 39V30.625C52.333 30.218 52.2089 29.8208 51.9771 29.4862L45.3105 19.8612C44.9369 19.3218 44.3225 19 43.6663 19ZM42.6032 22H40.333C39.7807 22 39.333 22.4477 39.333 23V27C39.333 27.5523 39.7807 28 40.333 28H43.9997H45.3495C45.8927 28 46.333 27.5597 46.333 27.0165C46.333 26.8196 46.2739 26.6272 46.1633 26.4642L43.4306 22.4384C43.2445 22.1642 42.9346 22 42.6032 22Z"
+                            fill="#FFA730"></path>
+                        <circle cx="44.333" cy="42" r="3.2" fill="#1A181E" stroke="#FFC34C" stroke-width="1.6"></circle>
+                        <path
+                            d="M20.533 42C20.533 43.7673 19.1003 45.2 17.333 45.2C15.5657 45.2 14.133 43.7673 14.133 42C14.133 40.2327 15.5657 38.8 17.333 38.8C19.1003 38.8 20.533 40.2327 20.533 42Z"
+                            fill="#1A181E" stroke="#FFC34C" stroke-width="1.6"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M8.33301 10C7.78072 10 7.33301 10.4477 7.33301 11V40C7.33301 40.5523 7.78072 41 8.33301 41H12.433C12.8963 38.7178 14.9141 37 17.333 37C19.752 37 21.7697 38.7178 22.233 41H34.333V14C34.333 11.7909 32.5421 10 30.333 10H8.33301Z"
+                            fill="#FF4B34"></path>
+                        <line x1="8.33301" y1="34.2" x2="34.333" y2="34.2" stroke="#CC3C2A" stroke-width="1.6"></line>
+                        <line x1="36.333" y1="34.2" x2="52.333" y2="34.2" stroke="#D78B26" stroke-width="1.6"></line>
+                        <line x1="5.13301" y1="26.2" x2="17.533" y2="26.2" stroke="white" stroke-width="1.6"
+                            stroke-linecap="round"></line>
+                        <line x1="10.133" y1="19.2" x2="20.533" y2="19.2" stroke="white" stroke-width="1.6"
+                            stroke-linecap="round"></line>
+                    </svg>
+                    <div class="pt-2">
+                        <span class="block font-medium text-white">
+                            Free delivery (Above ₹1,000) </span>
+                        <span class=" block text-[14px] font-normal text-[#d9d9d9]">
+                            Delivery happens within: 2-5 days</span>
+                    </div>
+                </div>
+                <div class=" lg:w-[33%] text-center flex-col justify-center flex">
+                    <svg class="matrixIcon mx-auto" width="56" height="56" viewBox="0 0 56 56" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M50 27H20C18.8954 27 18 27.8954 18 29V48C18 49.1046 18.8954 50 20 50H50C51.1046 50 52 49.1046 52 48V29C52 27.8954 51.1046 27 50 27Z"
+                            fill="#FF4B34"></path>
+                        <g opacity="0.2">
+                            <path opacity="0.8" d="M52 31.5H18V35.5H52V31.5Z" fill="black"></path>
+                        </g>
+                        <path
+                            d="M31.7128 7L5.73205 22C4.77547 22.5523 4.44772 23.7755 5 24.7321L15 42.0526C15.5523 43.0091 16.7755 43.3369 17.7321 42.7846L43.7128 27.7846C44.6694 27.2323 44.9971 26.0091 44.4449 25.0526L34.4449 7.73205C33.8926 6.77547 32.6694 6.44772 31.7128 7Z"
+                            fill="#FFA730"></path>
+                        <path
+                            d="M33.7035 7.94824L5.55772 24.1982C5.199 24.4053 5.0761 24.864 5.2832 25.2228C5.49031 25.5815 5.949 25.7044 6.30772 25.4973L34.4535 9.24728C34.8123 9.04017 34.9352 8.58148 34.7281 8.22276C34.521 7.86404 34.0623 7.74114 33.7035 7.94824Z"
+                            fill="#CD8424"></path>
+                        <path
+                            d="M43.2153 24.4229L15.0694 40.6729C14.7107 40.88 14.5878 41.3387 14.7949 41.6974C15.002 42.0561 15.4607 42.179 15.8194 41.9719L43.9653 25.7219C44.324 25.5148 44.4469 25.0561 44.2398 24.6974C44.0327 24.3387 43.574 24.2157 43.2153 24.4229Z"
+                            fill="#CD8424"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M28.1526 30.8415C28.9351 30.3908 29.6209 29.7904 30.1711 29.0744C30.7213 28.3584 31.1251 27.541 31.3591 26.6689C31.5932 25.7968 31.6532 24.8871 31.5354 23.9919C31.4176 23.0966 31.1243 22.2332 30.6726 21.4514C30.221 20.6685 29.6194 19.9824 28.9026 19.4321C28.1857 18.8817 27.3678 18.4781 26.4949 18.2441C25.6219 18.0101 24.7112 17.9503 23.8152 18.0683C22.9192 18.1862 22.0553 18.4794 21.2727 18.9313C20.4899 19.3829 19.8035 19.9845 19.2532 20.7014C18.7028 21.4182 18.2992 22.2364 18.0652 23.1093C17.8312 23.9822 17.7714 24.8927 17.8894 25.7888C18.0073 26.6848 18.3007 27.5489 18.7527 28.3315C19.6664 29.9108 21.17 31.0624 22.9328 31.5331C24.6957 32.0038 26.5732 31.7551 28.1526 30.8415ZM28.8425 32.0414C30.7348 30.9422 32.1135 29.137 32.676 27.0222C33.2385 24.9073 32.9387 22.6555 31.8425 20.7614C30.7433 18.8691 28.9384 17.4904 26.8235 16.9279C24.7086 16.3654 22.4568 16.6652 20.5627 17.7614C18.6711 18.8587 17.2923 20.6623 16.7297 22.7756C16.1672 24.8888 16.467 27.1389 17.5627 29.0314C18.6653 30.9204 20.472 32.2948 22.5867 32.8535C24.7013 33.4121 26.9509 33.1093 28.8425 32.0114V32.0414Z"
+                            fill="#CD8424"></path>
+                        <circle cx="24.7031" cy="24.8896" r="3" fill="white"></circle>
+                    </svg>
+                    <div class="pt-2">
+                        <span class="block font-medium text-white">Payment options</span>
+                        <span class=" block text-[14px] font-normal text-[#d9d9d9]">
+                            Cash on delivery and online payment</span>
+                    </div>
+                </div>
+                <div class=" lg:w-[33%] text-center flex-col justify-center flex">
+                    <svg class="matrixIcon mx-auto" width="57" height="56" viewBox="0 0 57 56" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M45.566 26.2C46.6154 26.2 47.466 27.0507 47.466 28.1V39.0379C47.466 40.6396 46.1676 41.9379 44.566 41.9379H43.8865C42.7267 41.9379 41.7865 42.8781 41.7865 44.0379V46.4085L38.0169 42.5671C37.622 42.1647 37.0819 41.9379 36.5181 41.9379H31.566C30.5167 41.9379 29.666 41.0873 29.666 40.0379V36.6C29.666 35.9925 29.1735 35.5 28.566 35.5C27.9585 35.5 27.466 35.9925 27.466 36.6V40.0379C27.466 42.3023 29.3016 44.1379 31.566 44.1379H36.4761L40.3877 48.124C41.7047 49.4662 43.9865 48.5337 43.9865 46.6532V44.1379H44.566C47.3827 44.1379 49.666 41.8546 49.666 39.0379V28.1C49.666 25.8356 47.8304 24 45.566 24H41.1429C40.5354 24 40.0429 24.4925 40.0429 25.1C40.0429 25.7075 40.5354 26.2 41.1429 26.2H45.566Z"
+                            fill="#FFA730"></path>
+                        <path
+                            d="M7.66602 13.1C7.66602 10.2833 9.94936 8 12.766 8H35.766C38.5827 8 40.866 10.2833 40.866 13.1V31.5039C40.866 34.3205 38.5827 36.6038 35.766 36.6038H25.164L18.2702 43.4976C16.9472 44.8206 14.6852 43.8836 14.6852 42.0127V36.6038H12.766C9.94937 36.6038 7.66602 34.3205 7.66602 31.5038V13.1Z"
+                            fill="#FF4B34"></path>
+                        <path
+                            d="M23.7383 26.2949C24.5 26.2949 24.8516 25.8027 24.9102 25.0527C24.9688 23.9043 25.3672 23.3066 26.8789 22.416C28.4258 21.4902 29.3398 20.248 29.3398 18.4316C29.3398 15.8418 27.2188 14.0488 24.1602 14.0488C21.8164 14.0488 20.0352 15.0332 19.3203 16.6504C19.1094 17.1074 19.0039 17.5176 19.0039 18.0215C19.0039 18.7363 19.4141 19.1699 20.1406 19.1699C20.7266 19.1699 21.0898 18.9121 21.3242 18.1855C21.6992 16.9082 22.6367 16.2051 24.0547 16.2051C25.6133 16.2051 26.6797 17.1543 26.6797 18.5371C26.6797 19.6855 26.1758 20.3887 24.7578 21.2441C23.2344 22.1582 22.5078 23.1543 22.5078 24.6543V24.9238C22.5078 25.6973 22.918 26.2949 23.7383 26.2949ZM23.7383 31.2754C24.6172 31.2754 25.2852 30.6191 25.2852 29.7637C25.2852 28.9082 24.6172 28.252 23.7383 28.252C22.8828 28.252 22.2031 28.9082 22.2031 29.7637C22.2031 30.6191 22.8828 31.2754 23.7383 31.2754Z"
+                            fill="white"></path>
+                        <path d="M37.7656 19.5V31.5C37.7656 32.6046 36.8702 33.5 35.7656 33.5H30.2656" stroke="#FF624B"
+                            stroke-width="2" stroke-linecap="round"></path>
+                        <path d="M45.666 36V38C45.666 39.1046 44.7706 40 43.666 40H43.166" stroke="#FFC34C"
+                            stroke-width="1.5" stroke-linecap="round"></path>
+                        <circle cx="11.166" cy="31.5" r="1.5" fill="#FF624B"></circle>
+                        <circle cx="12.666" cy="29" r="1" fill="#FF624B"></circle>
+                    </svg>
+                    <div class="pt-2">
+                        <span class="block font-medium text-white">Customer support</span>
+                        <span class=" block text-[14px] font-normal text-[#d9d9d9]">
+                            support@standardstore.in</span>
+                    </div>
+                </div>
+            </div>
+            <div class="matrixDetails border-b border-[#4d4d4d] p-[24px]">
+                <p class=" text-[#999999] text-[15px] font-normal" style="text-transform: uppercase;">
+                    Store details
+                </p>
+                <h3 class=" font-medium pt-[12px] text-white">
+                    Standard Store
+                </h3>
+                <p class=" text-[#d9d9d9] text-[14px] line-clamp-[20px]">
+                    New No.104, Old, 42, Valmiki St, Thiruvanmiyur, Chennai, Tamil Nadu 600041 | Mobile: 9677227688
+                    &amp; 9677063560
+                </p>
+                <p style="margin-top:10px;">
+                </p>
+                <div class="">
+                    <iframe class="lg:w-[700px] lg:h-[350px] sm:w-[343px] w-[288px] h-[450px]"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.747764480145!2d80.25990089999999!3d12.9879783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d0bbada034d%3A0x339904c170441751!2sStandard%20Cold%20Pressed%20Oil%20Wood%20Pressed%20Oil%20Coconut%20Groundnut%20Gingelly%20Marachekku%20Oil!5e0!3m2!1sen!2sin!4v1679295684530!5m2!1sen!2sin"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <p></p>
+            </div>
+            <div class="matrixSocials ">
+                <p class="matrixSocialText matrixStoreTitle font-normal text-[#999999] text-[15px]"
+                    style="text-transform: uppercase;">
+                    Follow us
+                </p>
+                <div class=" justify-center flex text-center pt-[12px] w-full gap-x-8">
+                    <a class="flex gap-x-1.5 items-center" href="https://facebook.com/StandardColdPressedOil"
+                        rel="noopener noreferrer" target="_blank">
+                        <svg class="matrixSocialIcon" color="white" id="facebook" width="24" height="24"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22.5 12C22.5 6.19875 17.8013 1.5 12 1.5C6.19875 1.5 1.5 6.19875 1.5 12C1.5 17.2412 5.34125 21.5812 10.355 22.3687V15.0275H7.695V12H10.3638V9.69C10.3638 7.05625 11.93 5.60375 14.3275 5.60375C15.4738 5.60375 16.6813 5.805 16.6813 5.805V8.38625H15.36C14.0563 8.38625 13.645 9.2 13.645 10.0225V12H16.5587L16.095 15.0362H13.645V22.3775C18.6588 21.5812 22.5 17.2412 22.5 12Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <span class="text-[15px] text-white hidden lg:block">
+                            Facebook
+                        </span>
+                    </a>
+                    <a class="flex gap-x-1.5 items-center" href="https://twitter.com/standardstores"
+                        rel="noopener noreferrer" target="_blank">
+                        <svg class="matrixSocialIcon" color="white" id="twitter" width="24" height="24"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor"
+                                d="M20.6891 7.5499C20.7025 7.7424 20.7025 7.9349 20.7025 8.12917C20.7025 14.0488 16.196 20.8759 7.95576 20.8759V20.8723C5.52157 20.8759 3.13794 20.1786 1.08875 18.8639C1.4427 18.9065 1.79842 18.9278 2.15504 18.9287C4.17229 18.9305 6.13189 18.2536 7.71891 17.0072C5.80189 16.9709 4.12084 15.7209 3.53358 13.8962C4.20512 14.0257 4.89705 13.9991 5.55616 13.819C3.46616 13.3968 1.96254 11.5605 1.96254 9.42788C1.96254 9.40837 1.96254 9.38974 1.96254 9.37111C2.58528 9.71797 3.28254 9.91046 3.99576 9.93176C2.02729 8.61619 1.42052 5.99748 2.60923 3.95006C4.88374 6.74885 8.23963 8.4503 11.8421 8.63038C11.4811 7.07442 11.9743 5.44393 13.1382 4.35014C14.9425 2.65401 17.7804 2.74095 19.4765 4.54442C20.4798 4.34659 21.4414 3.97845 22.3214 3.45684C21.987 4.49385 21.2871 5.37474 20.3521 5.9345C21.24 5.82982 22.1076 5.59208 22.9246 5.22925C22.3232 6.13055 21.5656 6.91563 20.6891 7.5499Z">
+                            </path>
+                        </svg>
+                        <span class="text-[15px] text-white hidden lg:block">
+                            Twitter
+                        </span>
+                    </a>
+                    <a class="flex gap-x-1.5 items-center" href="https://pinterest.com/standard_coldpressedoil"
+                        rel="noopener noreferrer" target="_blank">
+                        <svg class="matrixSocialIcon" color="white" id="pinterest" width="24" height="24"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor"
+                                d="M21.9957 12.2929C22.1589 6.5864 17.5398 1.91811 11.851 2.00084C6.37576 2.08046 1.95828 6.60225 2.00017 12.0779C2.03024 16.0015 4.32008 19.3869 7.63229 20.9976C7.82388 21.0907 8.04568 20.9459 8.03768 20.7329C8.01353 20.0896 8.03434 19.4017 8.16308 18.8488C8.28979 18.3044 8.78698 16.1991 9.11387 14.816C9.27297 14.1427 9.29217 13.4436 9.16406 12.7637C9.12201 12.5405 9.09156 12.2784 9.09156 11.9872C9.09156 10.5092 9.94822 9.40568 11.0149 9.40568C11.9218 9.40568 12.3598 10.0866 12.3598 10.903C12.3598 11.815 11.7791 13.1785 11.4795 14.4421C11.229 15.5001 12.0101 16.3629 13.0535 16.3629C14.9428 16.3629 16.395 14.3708 16.395 11.4953C16.395 8.95034 14.5662 7.17087 11.955 7.17087C8.93057 7.17087 7.15532 9.43938 7.15532 11.7838C7.15532 12.6973 7.50728 13.677 7.94637 14.2095C8.03317 14.3148 8.04597 14.4071 8.02013 14.5144C7.93944 14.8502 7.76011 15.5722 7.72491 15.7199C7.6785 15.9145 7.57085 15.9557 7.36946 15.8621C6.0418 15.2441 5.21185 13.3032 5.21185 11.7442C5.21185 8.39108 7.64805 5.31183 12.2351 5.31183C15.9225 5.31183 18.788 7.93933 18.788 11.4509C18.788 15.1142 16.4782 18.0624 13.2722 18.0624C12.425 18.0624 11.6177 17.7162 11.143 17.2468C10.9971 17.1024 10.7503 17.1681 10.6982 17.3667C10.531 18.0036 10.2609 19.0337 10.1738 19.3687C10.0171 19.9714 9.6868 20.6734 9.3557 21.2847C9.26773 21.4471 9.35672 21.6478 9.5358 21.6932C10.3532 21.9005 11.2106 22.0075 12.0944 21.9993C17.3417 21.9506 21.8457 17.5384 21.9957 12.2929Z">
+                            </path>
+                        </svg>
+                        <span class="text-[15px] text-white hidden lg:block">
+                            Pinterest
+                        </span>
+                    </a>
+                    <a class="flex gap-x-1.5 items-center" href="https://youtube.com/StandardColdPressedOil"
+                        rel="noopener noreferrer" target="_blank">
+                        <svg class="matrixSocialIcon" id="youtube" width="24" height="24" viewBox="0 0 24 24"
+                            color="white" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M21.8382 5.15941C22.1789 5.51057 22.4208 5.94541 22.5396 6.42C22.8568 8.1787 23.0108 9.96295 22.9996 11.75C23.0059 13.5103 22.852 15.2676 22.5396 17C22.4208 17.4746 22.1789 17.9094 21.8382 18.2606C21.4976 18.6118 21.0703 18.8668 20.5996 19C18.8796 19.46 11.9996 19.46 11.9996 19.46C11.9996 19.46 5.1196 19.46 3.3996 19C2.93842 18.8738 2.51758 18.6308 2.17774 18.2945C1.8379 17.9581 1.59055 17.5398 1.4596 17.08C1.14236 15.3213 0.988374 13.537 0.999595 11.75C0.990831 9.97631 1.14481 8.20556 1.4596 6.46C1.57838 5.98541 1.82031 5.55057 2.16094 5.19941C2.50157 4.84824 2.92884 4.59318 3.3996 4.46C5.1196 4 11.9996 4 11.9996 4C11.9996 4 18.8796 4 20.5996 4.42C21.0703 4.55318 21.4976 4.80824 21.8382 5.15941ZM9.74298 15.1859C9.40971 15.3715 8.99963 15.1306 8.99963 14.7491V8.65094C8.99963 8.26943 9.40971 8.02847 9.74298 8.21416L15.2157 11.2632C15.5579 11.4539 15.5579 11.9461 15.2157 12.1368L9.74298 15.1859Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <span class="text-[15px] text-white hidden lg:block">
+                            Youtube
+                        </span>
+                    </a>
+                    <a class="flex gap-x-1.5 items-center" href="https://instagram.com/standardstore.in_organic_shop"
+                        rel="noopener noreferrer" target="_blank">
+                        <svg class="matrixSocialIcon" color="white" id="instagram" width="24" height="24"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M7 2H17C19.7614 2 22 4.23858 22 7V17C22 19.7614 19.7614 22 17 22H7C4.23858 22 2 19.7614 2 17V7C2 4.23858 4.23858 2 7 2ZM16.65 6.49999C16.65 6.03055 17.0306 5.64999 17.5 5.64999H17.51C17.9795 5.64999 18.36 6.03055 18.36 6.49999C18.36 6.96944 17.9795 7.34999 17.51 7.34999H17.5C17.0306 7.34999 16.65 6.96944 16.65 6.49999ZM12.5127 8.79134C11.8469 8.69261 11.1669 8.80633 10.5695 9.11633C9.97203 9.42633 9.48755 9.91682 9.18494 10.518C8.88233 11.1193 8.777 11.8006 8.88393 12.4651C8.99086 13.1296 9.30461 13.7435 9.78055 14.2195C10.2565 14.6954 10.8704 15.0092 11.5349 15.1161C12.1994 15.223 12.8808 15.1177 13.482 14.8151C14.0832 14.5125 14.5737 14.028 14.8837 13.4306C15.1937 12.8331 15.3074 12.1531 15.2087 11.4873C15.108 10.8082 14.7915 10.1795 14.306 9.69399C13.8206 9.20851 13.1918 8.89205 12.5127 8.79134ZM9.83255 7.69614C10.7287 7.23114 11.7487 7.06055 12.7474 7.20865C13.7661 7.35971 14.7092 7.8344 15.4374 8.56262C16.1656 9.29083 16.6403 10.2339 16.7914 11.2526C16.9395 12.2513 16.7689 13.2713 16.3039 14.1675C15.8389 15.0636 15.1031 15.7903 14.2013 16.2443C13.2995 16.6982 12.2775 16.8562 11.2807 16.6958C10.2839 16.5354 9.36308 16.0647 8.64918 15.3508C7.93527 14.6369 7.46465 13.7161 7.30425 12.7193C7.14386 11.7225 7.30185 10.7005 7.75576 9.7987C8.20968 8.89687 8.9364 8.16114 9.83255 7.69614Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <span class="text-[15px] text-white hidden lg:block">
+                            Instagram
+                        </span>
+                    </a>
+                    <a class="flex gap-x-1 items-center"
+                        href="https://linkedin.com/in/standard-cold-pressed-oil-1a27a5135" rel="noopener noreferrer"
+                        target="_blank">
+                        <svg class="matrixSocialIcon" color="white" id="linkedin" width="24" height="24"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20.1909 2H3.80909C2.80909 2 2 2.80909 2 3.80909V20.1909C2 21.1909 2.80909 22 3.80909 22H20.1909C21.1909 22 22 21.1909 22 20.1909V3.80909C22 2.80909 21.1909 2 20.1909 2ZM8.19091 19.2727C8.19091 19.5636 7.95455 19.8 7.66364 19.8H5.41818C5.12727 19.8 4.89091 19.5636 4.89091 19.2727V9.87273C4.89091 9.58182 5.12727 9.34545 5.41818 9.34545H7.66364C7.95455 9.34545 8.19091 9.58182 8.19091 9.87273V19.2727ZM6.54545 8.46364C5.37273 8.46364 4.41818 7.50909 4.41818 6.33636C4.41818 5.16364 5.36364 4.2 6.54545 4.2C7.72727 4.2 8.67273 5.15455 8.67273 6.32727C8.67273 7.5 7.71818 8.46364 6.54545 8.46364ZM19.9 19.3091C19.9 19.5727 19.6818 19.7909 19.4182 19.7909H17.0091C16.7455 19.7909 16.5273 19.5727 16.5273 19.3091V14.9091C16.5273 14.2545 16.7182 12.0273 14.8091 12.0273C13.3273 12.0273 13.0273 13.5455 12.9636 14.2364V19.3182C12.9636 19.5818 12.7455 19.8 12.4818 19.8H10.1545C9.89091 19.8 9.67273 19.5818 9.67273 19.3182V9.83636C9.67273 9.57273 9.89091 9.35455 10.1545 9.35455H12.4818C12.7455 9.35455 12.9636 9.57273 12.9636 9.83636V10.6545C13.5091 9.82727 14.3273 9.19091 16.0727 9.19091C19.9273 9.19091 19.9 12.7909 19.9 14.7636V19.3091Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <span class="text-[15px] text-white hidden lg:block ">
+                            Linkedin
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
